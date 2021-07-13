@@ -6,11 +6,14 @@ public class Mover : MonoBehaviour
 {
     private RoadRepeater roadRepeater;
     private Road road;
+
     private Player player;
     private GameObject constraction;
+
     public float speed = 50;
     public float stopDistance=10;
     public static bool isMovable;
+
     private void Start()
     {
         roadRepeater = GameObject.FindObjectOfType<RoadRepeater>();
@@ -21,7 +24,6 @@ public class Mover : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
-
     }
     private void RoadMove()
     {
@@ -52,6 +54,6 @@ public class Mover : MonoBehaviour
             isMovable = distance >= stopDistance;
         }
         else constraction = FoodSpawner.construction;
-
     }
+    
 }

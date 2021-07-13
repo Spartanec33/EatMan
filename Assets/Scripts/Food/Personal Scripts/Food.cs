@@ -7,10 +7,6 @@ using UnityEngine;
 [RequireComponent(typeof(FoodAnimation))]
 public class Food : MonoBehaviour
 {
-    // делегат для вызова сравнения
-    readonly Comparer comparer = new Comparer(FoodComparer.Compare);
-
-
     public enum Type
     {
         Fruit,
@@ -46,12 +42,11 @@ public class Food : MonoBehaviour
     [SerializeField]
     protected Shape shape;
 
+
     private void OnMouseDown()
     {
-        if(comparer(this) && Mover.isMovable==false)
-        {
-            FoodSpawner.Delete();
-            FoodSpawner.Spawn();
-        }
+        if (FoodFinal.isCoroutineActive==false)
+            StartCoroutine(FoodFinal.Final(this));
     }
+
 }
