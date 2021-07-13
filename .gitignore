@@ -362,8 +362,8 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-EatMan/.vsconfig
-EatMan/Library
-EatMan/ProjectSettings
-EatMan/Temp
-EatMan/UserSettings
+/.vsconfig
+/Library
+/ProjectSettings
+/Temp
+/UserSettings
