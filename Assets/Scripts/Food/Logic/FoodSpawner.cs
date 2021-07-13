@@ -4,9 +4,10 @@ using UnityEngine;
 public static class FoodSpawner 
 {
     private static FoodSpawnData data;
+    private static Player player=GameObject.FindObjectOfType<Player>();
     private static readonly InspectorFoodSpawnData inspectorData = GameObject.FindObjectOfType<InspectorFoodSpawnData>();
     //родительский обьект для упрощения манипуляций с малышами
-    private static GameObject construction;
+    public static GameObject construction;
 
     private static readonly Food[] foods = FoodGetter.GetFoods();
 
@@ -21,6 +22,7 @@ public static class FoodSpawner
     {
         if (construction==null)
         {
+
             ChooseFood();
             int placeForTargetFood = Random.Range(0, data.numberOfPieces);
 
@@ -52,15 +54,20 @@ public static class FoodSpawner
     public static void Delete()
     {
         if (construction != null)
+        {
             GameObject.Destroy(construction);
+            construction = null;
+        }
+            
+            
     }
     private static GameObject CreateConstuction()
     {
         var construction = new GameObject();
-        construction.transform.SetParent(GameObject.FindObjectOfType<Road>().transform);
         data = inspectorData.data;
-        construction.transform.SetPositionAndRotation(new Vector3(data.constructionPosition.x-data.numberOfPieces - 1, data.constructionPosition.y,
-                                                      data.constructionPosition.z), data.constructionRotation);
+        var z = player.transform.position.z + Random.Range(data.zMinPosition, data.zMaxPosition);
+        var pos = new Vector3(data.constructionPosition.x, data.constructionPosition.y, z);
+        construction.transform.SetPositionAndRotation(pos, data.constructionRotation);
         return construction;
     }
 }

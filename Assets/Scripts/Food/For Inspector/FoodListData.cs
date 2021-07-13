@@ -15,7 +15,9 @@ public class FoodListData : MonoBehaviour
         {
             
             FoodSpawner.Spawn();
-            Debug.Log("тф:"+FoodComparer.TargetFood);
+            for (int i = 0; i < FoodComparer.TargetProperties.Length; i++)
+                Debug.Log(FoodComparer.TargetProperties[i]);
+            
         }
         if (Input.GetKeyDown(KeyCode.C))
         {

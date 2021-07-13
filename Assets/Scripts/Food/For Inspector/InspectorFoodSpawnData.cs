@@ -7,7 +7,9 @@ public struct FoodSpawnData
 {
     public float offset;
     public int numberOfPieces;
-    public Vector3 constructionPosition;
+    public Vector2 constructionPosition;
+    public float zMinPosition;
+    public float zMaxPosition;
     public Quaternion constructionRotation;
 }
 

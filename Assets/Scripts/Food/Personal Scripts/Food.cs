@@ -10,7 +10,7 @@ public class Food : MonoBehaviour
     // делегат для вызова сравнения
     readonly Comparer comparer = new Comparer(FoodComparer.Compare);
 
-    //посадить на свойства
+
     public enum Type
     {
         Fruit,
@@ -48,6 +48,10 @@ public class Food : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log(comparer(this));
+        if(comparer(this) && Mover.isMovable==false)
+        {
+            FoodSpawner.Delete();
+            FoodSpawner.Spawn();
+        }
     }
 }

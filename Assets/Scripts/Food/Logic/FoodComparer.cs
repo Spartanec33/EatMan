@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-delegate bool Comparer(Food food);
+
 public static class FoodComparer
 {
 
