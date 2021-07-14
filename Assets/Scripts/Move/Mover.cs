@@ -10,8 +10,8 @@ public class Mover : MonoBehaviour
     private Player player;
     private GameObject constraction;
 
-    public float speed = 50;
-    public float stopDistance=10;
+    [SerializeField] private float speed = 50;
+    [SerializeField] private float stopDistance=10;
     public static bool isMovable;
 
     private void Start()
@@ -23,7 +23,11 @@ public class Mover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        CheckDistance();
+        if (isMovable)
+        {
+            Move();
+        }
     }
     private void RoadMove()
     {
@@ -37,23 +41,23 @@ public class Mover : MonoBehaviour
         else
             constraction = FoodSpawner.construction;
     }
-    private void Move()
+    public void Move()
     {
-        if(isMovable)
-        {
             RoadMove();
             FoodMove();
-        }
-        CheckDistance();
     }
     private void CheckDistance()
     {
         if(constraction!=null && road!=null)
         {
-            var distance = Vector3.Distance(constraction.transform.position, player.transform.position);
+            var distance = FindDistance();
             isMovable = distance >= stopDistance;
         }
         else constraction = FoodSpawner.construction;
+    }
+    public float FindDistance()
+    {
+        return constraction.transform.position.z - player.transform.position.z;
     }
     
 }
