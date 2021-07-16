@@ -4,10 +4,10 @@ using UnityEngine;
 
 
 
-[RequireComponent(typeof(FoodAnimation))]
+
 public class Food : MonoBehaviour
 {
-    public FoodOnClick onClick;
+    private FoodOnClick onClick;
     public enum Type
     {
         Fruit,
@@ -36,12 +36,9 @@ public class Food : MonoBehaviour
         Shapeless,
     }
 
-    [SerializeField]
-    protected Type type;
-    [SerializeField]
-    protected Color color;
-    [SerializeField]
-    protected Shape shape;
+    public Type type;
+    public Color color;
+    public Shape shape;
 
     private void Start()
     {

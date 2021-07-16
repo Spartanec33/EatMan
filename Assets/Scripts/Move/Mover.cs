@@ -5,8 +5,8 @@ using UnityEngine;
 public class Mover : MonoBehaviour
 {
     private RoadRepeater roadRepeater;
-    private Road road;
 
+    private Road road;
     private Player player;
     private GameObject constraction;
 
