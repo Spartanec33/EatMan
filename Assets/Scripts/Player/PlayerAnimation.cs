@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Mover mover;
+    private Animator animator;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        mover = GameObject.FindObjectOfType<Mover>();
+        animator = GameObject.FindObjectOfType<Player>().GetComponent<Animator>();
+    }
+    private void Update()
+    {
+        //посадить на событие
+        animator.SetFloat("Speed", mover.Speed);
+
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Mover : MonoBehaviour
@@ -10,9 +8,18 @@ public class Mover : MonoBehaviour
     private Player player;
     private GameObject constraction;
 
-    [SerializeField] private float speed = 50;
+    [SerializeField] private float speed;
+    public float Speed => speed;
+    [SerializeField] private float maxSpeed;
+    [SerializeField] private float speedPerClick;
+    [SerializeField] private float speedReduction;
+    [SerializeField] float baseSpeedReduction;
+
+
     [SerializeField] private float stopDistance=10;
-    public static bool isMovable;
+
+    public static bool oneTimeStop;
+    public static bool needOneTimeStop=true;
 
     private void Start()
     {
@@ -23,12 +30,12 @@ public class Mover : MonoBehaviour
 
     private void FixedUpdate()
     {
+        ReduceSpeed();
         CheckDistance();
-        if (isMovable)
-        {
-            Move();
-        }
+        Move();
     }
+
+
     private void RoadMove()
     {
         roadRepeater.TryRepeat();
@@ -46,12 +53,21 @@ public class Mover : MonoBehaviour
             RoadMove();
             FoodMove();
     }
+
+
     private void CheckDistance()
     {
         if(constraction!=null && road!=null)
         {
             var distance = FindDistance();
-            isMovable = distance >= stopDistance;
+            if (distance <= stopDistance && oneTimeStop==false && needOneTimeStop==true)
+            {
+                speed = 0;
+
+                if (FoodOnClick.isCoroutineActive==true)
+                    oneTimeStop = true;
+                
+            }
         }
         else constraction = FoodSpawner.construction;
     }
@@ -59,5 +75,16 @@ public class Mover : MonoBehaviour
     {
         return constraction.transform.position.z - player.transform.position.z;
     }
-    
+
+    public void AddSpeedPerClick() => speed += speedPerClick;
+    private void ReduceSpeed()
+    {
+        speedReduction = (speed / maxSpeed)*0.1f+baseSpeedReduction;
+        if (speed > 0)
+            speed -= speedReduction;
+        else if(speed < 0)
+            speed = 0;
+        if (speed > 0 && speed < 0.3f)
+            speed = 0;
+    }
 }

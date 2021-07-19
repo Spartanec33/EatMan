@@ -13,7 +13,7 @@ public static class FoodGetter
 
     public static string[] GetProperties(Food food)
     {
-        FieldInfo[] fields = food.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic) ;
+        FieldInfo[] fields = food.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public) ;
         string[] res = new string[fields.Length];
         for (int i = 0; i < fields.Length; i++)
             res[i] = fields[i].GetValue(food).ToString();
