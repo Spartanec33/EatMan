@@ -3,93 +3,126 @@ using UnityEngine;
 
 public class FoodOnClick: MonoBehaviour
 {
-    private Player player;
-    private Mover mover;
+    public static bool IsCoroutineActive;
 
-    private Vector3 startPosition;
-    private Quaternion startRotation;
+    [SerializeField] private float _coroutineStep = 0.05f;
+    [SerializeField] private float _newStopDistance = 2;
+    [SerializeField] private float _lengthReturnPath = 15;
 
-    public float coroutineStep=0.05f;
-    public float newStopDistance=2;
+    private readonly WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
 
-    public static bool isCoroutineActive;
+    private Player _player;
+    private Mover _mover;
+
+    private Vector3 _basePlayerPosition;
+    private Quaternion _basePlayerRotation;
+
+
     private void Start()
     {
-        player = GameObject.FindObjectOfType<Player>();
-        mover = GameObject.FindObjectOfType<Mover>();
+        _player = GameObject.FindObjectOfType<Player>();
+        _mover = GameObject.FindObjectOfType<Mover>();
 
-        startPosition = player.transform.position;
-        startRotation = player.transform.rotation;
+        _basePlayerPosition = _player.transform.position;
+        _basePlayerRotation = _player.transform.rotation;
     }
 
     public  IEnumerator Final(Food food)
     {
-        isCoroutineActive = true;
-        Mover.needOneTimeStop = false;
+        IsCoroutineActive = true;
+        Mover.NeedOneTimeStop = false;
 
-
+        yield return StartCoroutine(Rotate(food));
         yield return StartCoroutine(Move(food));        
         
         //анимация
 
         // сравнение
-        if (FoodComparer.Compare(food) && mover.FindDistance() <= newStopDistance)
+        if (FoodComparer.Compare(food) && _mover.FindDistance() <= _newStopDistance)
         {
             FoodSpawner.Delete();
             FoodSpawner.Spawn();
         }
-
+        
 
         
 
-        isCoroutineActive = false;
-        Mover.oneTimeStop = false;
-        Mover.needOneTimeStop = true;
+        IsCoroutineActive = false;
+        Mover.OneTimeStop = false;
+        Mover.NeedOneTimeStop = true;
         yield return StartCoroutine(Undo());
     }
+
+
+
+
     public IEnumerator Rotate(Food food)
     {
-        var startRotation = player.transform.rotation;
-        player.transform.LookAt(food.transform);
-        var finalRotation = player.transform.rotation;
-        finalRotation = new Quaternion(startRotation.x, finalRotation.y, startRotation.z, startRotation.w);
+        _player.transform.LookAt(food.transform);
+        var finalRotation = _player.transform.rotation;
+        finalRotation = new Quaternion(_basePlayerRotation.x, finalRotation.y, _basePlayerRotation.z, _basePlayerRotation.w);
         float progress = 0;
         while (progress < 1)
         {
-            player.transform.rotation = Quaternion.Lerp(startRotation, finalRotation, progress);
-            yield return new WaitForFixedUpdate();
-            progress += coroutineStep;
+            _player.transform.rotation = Quaternion.Lerp(_basePlayerRotation, finalRotation, progress);
+            yield return _waitForFixedUpdate;
+            progress += _coroutineStep;
         }
     }
     public IEnumerator Move(Food food)
     {
-        yield return StartCoroutine(Rotate(food));
-
-        float allWay = mover.FindDistance() - newStopDistance;
+        float allWay = _mover.FindDistance() - _newStopDistance;
         float coveredDistance = 0;
 
         var foodPos = food.transform.position;
-        var basePlayerPos = player.transform.position;
-       
-
-        while (mover.FindDistance()>=newStopDistance)
+        var playerPos = _player.transform.position;
+        while (_mover.FindDistance() >= _newStopDistance)
         {
 
-            yield return new WaitForFixedUpdate();
+            yield return _waitForFixedUpdate;
 
             var progress = (coveredDistance / allWay);
-            var posX = Vector3.Lerp(basePlayerPos, foodPos, progress).x;
-            player.transform.position = new Vector3(posX, player.transform.position.y, player.transform.position.z);
+            var posX = Vector3.Lerp(playerPos, foodPos, progress).x;
+            _player.transform.position = new Vector3(posX, _player.transform.position.y, _player.transform.position.z);
 
-            if (Mover.oneTimeStop==true)
-                mover.Move();
-            coveredDistance += (mover.Speed * Time.deltaTime);
+            if (Mover.OneTimeStop==true)
+                _mover.Move();
+            coveredDistance += (_mover.Speed * Time.deltaTime);
         }
     }
 
     //возвращает игрока на место
     public IEnumerator Undo()
     {
-        yield return new WaitForFixedUpdate();
+        yield return StartCoroutine(UndoRotation());
+        yield return StartCoroutine(UndoPosition());
+    }
+    public IEnumerator UndoRotation()
+    {
+        float progress = 0;
+        var startRotation = _player.transform.rotation;
+        while (progress < 1)
+        {
+            _player.transform.rotation = Quaternion.Lerp(startRotation, _basePlayerRotation, progress);
+            yield return _waitForFixedUpdate;
+            progress += _coroutineStep;
+        }
+    }
+    public IEnumerator UndoPosition()
+    {
+        float coveredDistance = 0;
+
+        var playerPos = _player.transform.position;
+        while (coveredDistance <= _lengthReturnPath)
+        {
+
+            yield return _waitForFixedUpdate;
+
+            var progress = (coveredDistance / _lengthReturnPath);
+            var posX = Vector3.Lerp(playerPos, _basePlayerPosition, progress).x;
+            _player.transform.position = new Vector3(posX, _player.transform.position.y, _player.transform.position.z);
+
+            coveredDistance += (_mover.Speed * Time.deltaTime);
+        }
     }
 }

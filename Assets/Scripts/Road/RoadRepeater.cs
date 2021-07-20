@@ -2,19 +2,19 @@
 
 public class RoadRepeater : MonoBehaviour
 {
-    private Vector3 startPos;
-    private float repeatWidth;
+    private Vector3 _startPos;
+    private float _repeatWidth;
 
-    private Road road;
+    private Road _road;
     private void Start()
     {
-        road = FindObjectOfType<Road>();
-        startPos = road.transform.position;
-        repeatWidth = road.GetComponent<BoxCollider>().size.z / 2;
+        _road = FindObjectOfType<Road>();
+        _startPos = _road.transform.position;
+        _repeatWidth = _road.GetComponent<BoxCollider>().size.z / 2;
     }
     public void TryRepeat()
     {
-        if (road.transform.position.z < startPos.z - repeatWidth)
-            road.transform.position = startPos;
+        if (_road.transform.position.z < _startPos.z - _repeatWidth)
+            _road.transform.position = _startPos;
     }
 }

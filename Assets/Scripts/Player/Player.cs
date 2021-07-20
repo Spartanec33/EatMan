@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private Mover mover;
+    private Mover _mover;
     private void Start()
     {
-        mover = GameObject.FindObjectOfType<Mover>();
+        _mover = GameObject.FindObjectOfType<Mover>();
     }
     private void OnMouseDown()
     {
-        mover.AddSpeedPerClick();
+        _mover.AddSpeedPerClick();
     }
 }

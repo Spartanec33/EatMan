@@ -2,13 +2,13 @@
 
 public static class FoodSpawner 
 {
-    private static FoodSpawnData data;
-    private static Player player=GameObject.FindObjectOfType<Player>();
-    private static readonly InspectorFoodSpawnData inspectorData = GameObject.FindObjectOfType<InspectorFoodSpawnData>();
-    //родительский обьект для упрощения манипуляций с малышами
-    public static GameObject construction;
+    private static FoodSpawnData _data;
+    private static Player _player = GameObject.FindObjectOfType<Player>();
+    private static FoodOnClick _foodOnClick = GameObject.FindObjectOfType<FoodOnClick>();
+    private static readonly InspectorFoodSpawnData _inspectorData = GameObject.FindObjectOfType<InspectorFoodSpawnData>();
+    public static GameObject _construction;
 
-    private static readonly Food[] foods = FoodGetter.GetFoods();
+    private static readonly Food[] _foods = FoodGetter.GetFoods();
 
 
     //выбрать правильную еду и получить ее рандомные свойства
@@ -19,43 +19,45 @@ public static class FoodSpawner
     }
     public static void Spawn()
     {
-        if (construction==null)
+        if (_construction == null)
         {
 
             ChooseFood();
-            int placeForTargetFood = Random.Range(0, data.numberOfPieces);
+            int placeForTargetFood = Random.Range(0, _data.NumberOfPieces);
 
-            construction=CreateConstuction();
+            _construction=CreateConstuction();
 
-            Quaternion rotation = construction.transform.rotation;
-            Vector3 position = construction.transform.position;
+            Quaternion rotation = _construction.transform.rotation;
+            Vector3 position = _construction.transform.position;
 
-            for (int i = 0; i < data.numberOfPieces; i++)
+            for (int i = 0; i < _data.NumberOfPieces; i++)
             {
-                float placeX = position.x+data.offset*i;
+                float placeX = position.x+_data.Offset*i;
                 Vector3 place = new Vector3(placeX, position.y, position.z);
 
-                if (i!=placeForTargetFood)
+                void Spawn(Food spawningFood)
                 {
-                    var randomFood = foods[Random.Range(0, foods.Length)];
-                    var food=GameObject.Instantiate(randomFood,place,rotation);
-                    food.transform.SetParent(construction.transform);
+                    var food = GameObject.Instantiate(spawningFood, place, rotation);
+                    food.Init(_foodOnClick);
+                    food.transform.SetParent(_construction.transform);
                 }
 
-                else
+                if (i != placeForTargetFood)
                 {
-                    var food = GameObject.Instantiate(FoodComparer.TargetFood, place, rotation);
-                    food.transform.SetParent(construction.transform);
+                    var randomFood = _foods[Random.Range(0, _foods.Length)];
+                    Spawn(randomFood);
                 }
+                else
+                    Spawn(FoodComparer.TargetFood);
             }
         }
     }
     public static void Delete()
     {
-        if (construction != null)
+        if (_construction != null)
         {
-            GameObject.Destroy(construction);
-            construction = null;
+            GameObject.Destroy(_construction);
+            _construction = null;
         }
             
             
@@ -63,10 +65,13 @@ public static class FoodSpawner
     private static GameObject CreateConstuction()
     {
         var construction = new GameObject();
-        data = inspectorData.data;
-        var z = player.transform.position.z + Random.Range(data.zMinPosition, data.zMaxPosition);
-        var pos = new Vector3(data.constructionPosition.x, data.constructionPosition.y, z);
-        construction.transform.SetPositionAndRotation(pos, data.constructionRotation);
+
+        _data = _inspectorData.Data;
+
+        var z = _player.transform.position.z + Random.Range(_data.ZMinPosition, _data.ZMaxPosition);
+        var pos = new Vector3(_data.ConstructionPosition.x, _data.ConstructionPosition.y, z);
+        construction.transform.SetPositionAndRotation(pos, _data.ConstructionRotation);
+
         return construction;
     }
 }

@@ -5,8 +5,8 @@ public class FoodListData : MonoBehaviour
 {
 
 
-    [SerializeField] private Food[] foods;
-    public Food[] GetListData => foods;
+    [SerializeField] private Food[] _foods;
+    public Food[] GetListData => _foods;
 
     private void Update()
     {

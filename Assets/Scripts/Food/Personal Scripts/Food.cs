@@ -1,12 +1,13 @@
 using UnityEngine;
 
 
-
-
-public class Food : MonoBehaviour
+public class ServiceElementsForFood: MonoBehaviour
 {
-    private FoodOnClick onClick;
-    public enum Type
+    protected FoodOnClick _onClick;
+}
+public class Food : ServiceElementsForFood
+{
+    public enum Type : byte
     {
         Fruit,
         Vegetable,
@@ -15,7 +16,7 @@ public class Food : MonoBehaviour
         Milk,
         Multy,
     }
-    public enum Color
+    public enum Color : byte
     {
         Red,
         Green,
@@ -25,7 +26,7 @@ public class Food : MonoBehaviour
         Black,
         Brown,
     }
-    public enum Shape
+    public enum Shape : byte
     {
         Square,
         Circle,
@@ -34,18 +35,19 @@ public class Food : MonoBehaviour
         Shapeless,
     }
 
-    public Type type;
-    public Color color;
-    public Shape shape;
+    [SerializeField] private Type _type;
+    [SerializeField] private Color _color;
+    [SerializeField] private Shape _shape;
 
-    private void Start()
+    public void Init(FoodOnClick onClick)
     {
-        onClick = GameObject.FindObjectOfType<FoodOnClick>();
+        _onClick = onClick;
     }
     private void OnMouseDown()
     {
-        if (FoodOnClick.isCoroutineActive==false)
-            StartCoroutine(onClick.Final(this));
+        if (FoodOnClick.IsCoroutineActive == false)
+            StartCoroutine(_onClick.Final(this));
     }
+
 
 }

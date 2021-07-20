@@ -2,30 +2,28 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    private RoadRepeater roadRepeater;
+    public static bool OneTimeStop;
+    public static bool NeedOneTimeStop = true;
 
-    private Road road;
-    private Player player;
-    private GameObject constraction;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _speedPerClick;
+    [SerializeField] private float _speedReduction;
+    [SerializeField] float _baseSpeedReduction;
+    [SerializeField] private float _stopDistance = 10;
 
-    [SerializeField] private float speed;
-    public float Speed => speed;
-    [SerializeField] private float maxSpeed;
-    [SerializeField] private float speedPerClick;
-    [SerializeField] private float speedReduction;
-    [SerializeField] float baseSpeedReduction;
+    private RoadRepeater _roadRepeater;
+    private Road _road;
+    private Player _player;
+    private GameObject _constraction;
 
-
-    [SerializeField] private float stopDistance=10;
-
-    public static bool oneTimeStop;
-    public static bool needOneTimeStop=true;
+    public float Speed => _speed;
 
     private void Start()
     {
-        roadRepeater = GameObject.FindObjectOfType<RoadRepeater>();
-        road = GameObject.FindObjectOfType<Road>();
-        player = GameObject.FindObjectOfType<Player>();
+        _roadRepeater = GameObject.FindObjectOfType<RoadRepeater>();
+        _road = GameObject.FindObjectOfType<Road>();
+        _player = GameObject.FindObjectOfType<Player>();
     }
 
     private void FixedUpdate()
@@ -38,15 +36,15 @@ public class Mover : MonoBehaviour
 
     private void RoadMove()
     {
-        roadRepeater.TryRepeat();
-        road.transform.Translate(0,0,-speed*Time.deltaTime);
+        _roadRepeater.TryRepeat();
+        _road.transform.Translate(0, 0, -_speed * Time.deltaTime);
     }
     private void FoodMove()
     {
-        if (constraction!=null)
-            constraction.transform.Translate(0, 0, -speed * Time.deltaTime);
+        if (_constraction!=null)
+            _constraction.transform.Translate(0, 0, -_speed * Time.deltaTime);
         else
-            constraction = FoodSpawner.construction;
+            _constraction = FoodSpawner._construction;
     }
     public void Move()
     {
@@ -57,34 +55,34 @@ public class Mover : MonoBehaviour
 
     private void CheckDistance()
     {
-        if(constraction!=null && road!=null)
+        if (_constraction != null && _road != null)
         {
             var distance = FindDistance();
-            if (distance <= stopDistance && oneTimeStop==false && needOneTimeStop==true)
+            if (distance <= _stopDistance && OneTimeStop == false && NeedOneTimeStop == true)
             {
-                speed = 0;
+                _speed = 0;
 
-                if (FoodOnClick.isCoroutineActive==true)
-                    oneTimeStop = true;
+                if (FoodOnClick.IsCoroutineActive==true)
+                    OneTimeStop = true;
                 
             }
         }
-        else constraction = FoodSpawner.construction;
+        else _constraction = FoodSpawner._construction;
     }
     public float FindDistance()
     {
-        return constraction.transform.position.z - player.transform.position.z;
+        return _constraction.transform.position.z - _player.transform.position.z;
     }
 
-    public void AddSpeedPerClick() => speed += speedPerClick;
+    public void AddSpeedPerClick() => _speed += _speedPerClick;
     private void ReduceSpeed()
     {
-        speedReduction = (speed / maxSpeed)*0.1f+baseSpeedReduction;
-        if (speed > 0)
-            speed -= speedReduction;
-        else if(speed < 0)
-            speed = 0;
-        if (speed > 0 && speed < 0.3f)
-            speed = 0;
+        _speedReduction = (_speed / _maxSpeed) * 0.1f + _baseSpeedReduction;
+        if (_speed > 0)
+            _speed -= _speedReduction;
+        else if(_speed < 0)
+            _speed = 0;
+        if (_speed > 0 && _speed < 0.3f)
+            _speed = 0;
     }
 }
