@@ -3,9 +3,8 @@
 
 public class FoodListData : MonoBehaviour
 {
-
-
     [SerializeField] private Food[] _foods;
+
     public Food[] GetListData => _foods;
 
     private void Update()

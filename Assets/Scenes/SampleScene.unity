@@ -1304,7 +1304,10 @@ GameObject:
   m_Component:
   - component: {fileID: 510689323}
   - component: {fileID: 510689322}
+  - component: {fileID: 510689324}
   - component: {fileID: 510689321}
+  - component: {fileID: 510689325}
+  - component: {fileID: 510689326}
   m_Layer: 0
   m_Name: MoveManager
   m_TagString: Untagged
@@ -1338,10 +1341,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 0
   _maxSpeed: 100
-  _speedPerClick: 1
-  _speedReduction: 0
-  _baseSpeedReduction: 0.02
-  _stopDistance: 10
 --- !u!4 &510689323
 Transform:
   m_ObjectHideFlags: 0
@@ -1356,6 +1355,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &510689324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510689320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5bbb1e9f7422754eb947edc3651e355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedPerClick: 1
+  _speedReduction: 0
+  _baseSpeedReduction: 0.02
+--- !u!114 &510689325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510689320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 343f629ac9cabe84e8937b65a0d478bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &510689326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510689320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777adcba2954fca408b66b7b2adc3007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stopDistance: 10
 --- !u!1 &511954049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,6 +1925,7 @@ MonoBehaviour:
       ZMinPosition: 40
       ZMaxPosition: 200
       ConstructionRotation: {x: 0, y: 0, z: 0, w: 0}
+    _animController: {fileID: 9100000, guid: 117e23d1473f5564fbbf775da51ddb80, type: 2}
 --- !u!114 &762887385
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,19 +3,21 @@ using UnityEngine;
 
 public class FoodOnClick: MonoBehaviour
 {
-    public static bool IsCoroutineActive;
 
     [SerializeField] private float _coroutineStep = 0.05f;
     [SerializeField] private float _newStopDistance = 2;
     [SerializeField] private float _lengthReturnPath = 15;
 
+    private static bool _isCoroutineActive;
+    private bool CanChangeTarget = false;
+    private Coroutine Finalcor;
+    private Coroutine Undocor;
     private readonly WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
-
     private Player _player;
     private Mover _mover;
-
     private Vector3 _basePlayerPosition;
     private Quaternion _basePlayerRotation;
+    public static bool IsCoroutineActive => _isCoroutineActive;
 
 
     private void Start()
@@ -29,32 +31,29 @@ public class FoodOnClick: MonoBehaviour
 
     public  IEnumerator Final(Food food)
     {
-        IsCoroutineActive = true;
+        _isCoroutineActive = true;
+        CanChangeTarget = true;
         Mover.NeedOneTimeStop = false;
 
-        yield return StartCoroutine(Rotate(food));
-        yield return StartCoroutine(Move(food));        
-        
-        //анимация
 
-        // сравнение
-        if (FoodComparer.Compare(food) && _mover.FindDistance() <= _newStopDistance)
+        yield return StartCoroutine(Rotate(food));
+        yield return StartCoroutine(Move(food));
+
+        CanChangeTarget = false;
+        //анимация поедания
+
+        if (FoodComparer.Compare(food))
         {
             FoodSpawner.Delete();
             FoodSpawner.Spawn();
         }
-        
 
-        
-
-        IsCoroutineActive = false;
-        Mover.OneTimeStop = false;
+        //действия по итогу сравнения
+        _isCoroutineActive = false;
+        Mover.WasOneTimeStop = false;
         Mover.NeedOneTimeStop = true;
         yield return StartCoroutine(Undo());
     }
-
-
-
 
     public IEnumerator Rotate(Food food)
     {
@@ -71,12 +70,12 @@ public class FoodOnClick: MonoBehaviour
     }
     public IEnumerator Move(Food food)
     {
-        float allWay = _mover.FindDistance() - _newStopDistance;
+        float allWay = DistanceFinder.Find() - _newStopDistance;
         float coveredDistance = 0;
 
         var foodPos = food.transform.position;
         var playerPos = _player.transform.position;
-        while (_mover.FindDistance() >= _newStopDistance)
+        while (DistanceFinder.Find() >= _newStopDistance)
         {
 
             yield return _waitForFixedUpdate;
@@ -85,7 +84,7 @@ public class FoodOnClick: MonoBehaviour
             var posX = Vector3.Lerp(playerPos, foodPos, progress).x;
             _player.transform.position = new Vector3(posX, _player.transform.position.y, _player.transform.position.z);
 
-            if (Mover.OneTimeStop==true)
+            if (Mover.WasOneTimeStop==true)
                 _mover.Move();
             coveredDistance += (_mover.Speed * Time.deltaTime);
         }
@@ -123,6 +122,16 @@ public class FoodOnClick: MonoBehaviour
             _player.transform.position = new Vector3(posX, _player.transform.position.y, _player.transform.position.z);
 
             coveredDistance += (_mover.Speed * Time.deltaTime);
+        }
+    }
+
+    public void OnClick(Food food)
+    {
+        if (IsCoroutineActive == false || CanChangeTarget)
+        {
+            if (Finalcor != null)
+                StopCoroutine(Finalcor);
+            Finalcor = StartCoroutine(Final(food));
         }
     }
 }

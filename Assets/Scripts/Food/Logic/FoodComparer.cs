@@ -7,7 +7,6 @@ public static class FoodComparer
     public static Food TargetFood { get; set; }
     public static string[] TargetProperties { get; set; }
 
-    
     public static bool Compare(Food clickedFood)
     {
         

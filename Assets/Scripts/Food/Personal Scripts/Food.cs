@@ -1,53 +1,23 @@
+using System.Collections;
 using UnityEngine;
 
-
-public class ServiceElementsForFood: MonoBehaviour
-{
-    protected FoodOnClick _onClick;
-}
+[RequireComponent(typeof(Animator))]
 public class Food : ServiceElementsForFood
 {
-    public enum Type : byte
-    {
-        Fruit,
-        Vegetable,
-        Meat,
-        Bread,
-        Milk,
-        Multy,
-    }
-    public enum Color : byte
-    {
-        Red,
-        Green,
-        Yellow,
-        Blue,
-        White,
-        Black,
-        Brown,
-    }
-    public enum Shape : byte
-    {
-        Square,
-        Circle,
-        Sphere,
-        Arc,
-        Shapeless,
-    }
-
     [SerializeField] private Type _type;
     [SerializeField] private Color _color;
     [SerializeField] private Shape _shape;
 
-    public void Init(FoodOnClick onClick)
+    public void Init(FoodOnClick onClick, RuntimeAnimatorController controller)
     {
         _onClick = onClick;
+        _animator = GetComponent<Animator>();
+        _animator.runtimeAnimatorController = controller;
+        _animator.applyRootMotion = true;
     }
+
     private void OnMouseDown()
     {
-        if (FoodOnClick.IsCoroutineActive == false)
-            StartCoroutine(_onClick.Final(this));
+        _onClick.OnClick(this);
     }
-
-
 }

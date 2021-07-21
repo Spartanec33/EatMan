@@ -10,7 +10,6 @@ public static class FoodGetter
 
     public static Food GetRandomFood() => _foods[_random.Next(0, _foods.Length)];
     public static Food[] GetFoods() => _foodListData.GetListData;
-
     public static string[] GetProperties(Food food)
     {
         FieldInfo[] fields = food.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly ) ;
@@ -19,8 +18,6 @@ public static class FoodGetter
             res[i] = fields[i].GetValue(food).ToString();
         return res;
     }
-
-    //берет рандомное колличество свойст еды в случайном порядке 
     public static  string[] GetRandomProperties(Food food)
     {
         string[] fields = GetProperties(food);
