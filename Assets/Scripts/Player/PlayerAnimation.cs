@@ -4,18 +4,18 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimation : MonoBehaviour
 {
-    private Mover _mover;
+    private SpeedComponent _speedCom;
     private Animator _animator;
 
     private void Start()
     {
-        _mover = GameObject.FindObjectOfType<Mover>();
+        _speedCom = GameObject.FindObjectOfType<SpeedComponent>();
         _animator = GetComponent<Animator>();
     }
     private void Update()
     {
         //посадить на событие
-        _animator.SetFloat("Speed", _mover.Speed);
+        _animator.SetFloat("Speed", _speedCom.Speed);
 
     }
 }

@@ -11,10 +11,10 @@ public class FoodOnClick: MonoBehaviour
     private static bool _isCoroutineActive;
     private bool CanChangeTarget = false;
     private Coroutine Finalcor;
-    private Coroutine Undocor;
     private readonly WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
     private Player _player;
     private Mover _mover;
+    private SpeedComponent _speedCom;
     private Vector3 _basePlayerPosition;
     private Quaternion _basePlayerRotation;
     public static bool IsCoroutineActive => _isCoroutineActive;
@@ -24,6 +24,8 @@ public class FoodOnClick: MonoBehaviour
     {
         _player = GameObject.FindObjectOfType<Player>();
         _mover = GameObject.FindObjectOfType<Mover>();
+        _speedCom = GameObject.FindObjectOfType<SpeedComponent>();
+
 
         _basePlayerPosition = _player.transform.position;
         _basePlayerRotation = _player.transform.rotation;
@@ -84,9 +86,7 @@ public class FoodOnClick: MonoBehaviour
             var posX = Vector3.Lerp(playerPos, foodPos, progress).x;
             _player.transform.position = new Vector3(posX, _player.transform.position.y, _player.transform.position.z);
 
-            if (Mover.WasOneTimeStop==true)
-                _mover.Move();
-            coveredDistance += (_mover.Speed * Time.deltaTime);
+            coveredDistance += (_speedCom.Speed * Time.deltaTime);
         }
     }
 
@@ -121,7 +121,7 @@ public class FoodOnClick: MonoBehaviour
             var posX = Vector3.Lerp(playerPos, _basePlayerPosition, progress).x;
             _player.transform.position = new Vector3(posX, _player.transform.position.y, _player.transform.position.z);
 
-            coveredDistance += (_mover.Speed * Time.deltaTime);
+            coveredDistance += (_speedCom.Speed * Time.deltaTime);
         }
     }
 

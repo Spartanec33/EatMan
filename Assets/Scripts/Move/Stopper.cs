@@ -5,11 +5,11 @@ public class Stopper : MonoBehaviour
 {
     [SerializeField] private float _stopDistance = 10;
 
-    private Mover _mover;
+    private SpeedComponent _speedCom;
 
     private void Start()
     {
-        _mover = GetComponent<Mover>();
+        _speedCom = GetComponent<SpeedComponent>();
     }
     private void FixedUpdate()
     {
@@ -19,7 +19,7 @@ public class Stopper : MonoBehaviour
     {
         if (CheckForStop())
         {
-            _mover.Speed = 0;
+            _speedCom.Stop();
             if (FoodOnClick.IsCoroutineActive == true)
                 Mover.WasOneTimeStop = true;
         }

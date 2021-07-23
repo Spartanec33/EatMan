@@ -4,18 +4,16 @@ public class Mover : MonoBehaviour
 {
     public static bool WasOneTimeStop;
     public static bool NeedOneTimeStop = true;
-    [SerializeField] private float _speed;
-    [SerializeField] private float _maxSpeed;
 
     private GameObject _constraction;
     private Road _road;
+    private SpeedComponent _speedCom;
 
-    public  float Speed { get => _speed; set => _speed = value; }
-    public float MaxSpeed { get => _maxSpeed; }
 
     private void Start()
     {
-        _road = GameObject.FindObjectOfType<Road>();
+        _speedCom = GetComponent<SpeedComponent>();
+        _road = FindObjectOfType<Road>();
     }
     private void FixedUpdate()
     {
@@ -24,12 +22,12 @@ public class Mover : MonoBehaviour
 
     private void RoadMove()
     {
-        _road.transform.Translate(0, 0, -_speed * Time.deltaTime);
+        _road.transform.Translate(0, 0, -_speedCom.Speed * Time.deltaTime);
     }
     private void FoodMove()
     {
         if (_constraction!=null)
-            _constraction.transform.Translate(0, 0, -_speed * Time.deltaTime);
+            _constraction.transform.Translate(0, 0, -_speedCom.Speed * Time.deltaTime);
         else
             _constraction = FoodSpawner.Construction;
     }
