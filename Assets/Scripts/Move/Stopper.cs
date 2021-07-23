@@ -18,14 +18,9 @@ public class Stopper : MonoBehaviour
     private void TryStop()
     {
         if (CheckForStop())
-        {
             _speedCom.Stop();
-            if (FoodOnClick.IsCoroutineActive == true)
-                Mover.WasOneTimeStop = true;
-        }
+        else
+            _speedCom.UnStop();
     }
-    private bool CheckForStop()
-    {
-        return DistanceFinder.Find() <= _stopDistance && Mover.WasOneTimeStop == false && Mover.NeedOneTimeStop;
-    }
+    private bool CheckForStop() => DistanceFinder.Find() <= _stopDistance && Mover.NeedOneTimeStop;
 }

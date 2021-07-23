@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    public static bool WasOneTimeStop;
     public static bool NeedOneTimeStop = true;
 
     private GameObject _constraction;
@@ -17,23 +16,18 @@ public class Mover : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        _constraction = FoodSpawner.Construction;
         Move();
-    }
-
-    private void RoadMove()
-    {
-        _road.transform.Translate(0, 0, -_speedCom.Speed * Time.deltaTime);
-    }
-    private void FoodMove()
-    {
-        if (_constraction!=null)
-            _constraction.transform.Translate(0, 0, -_speedCom.Speed * Time.deltaTime);
-        else
-            _constraction = FoodSpawner.Construction;
     }
     public void Move()
     {
-            RoadMove();
-            FoodMove();
+        if (!_speedCom.IsStop)
+        {
+            if (_constraction != null)
+                IndividualMove(_constraction.transform);
+            if (_road != null)
+                IndividualMove(_road.transform);
+        }
     }
+    private void IndividualMove(Transform obj) => obj.Translate(0, 0, -_speedCom.Speed * Time.deltaTime);
 }

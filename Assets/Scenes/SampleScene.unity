@@ -1303,11 +1303,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 510689323}
-  - component: {fileID: 510689322}
   - component: {fileID: 510689324}
+  - component: {fileID: 510689326}
   - component: {fileID: 510689321}
   - component: {fileID: 510689325}
-  - component: {fileID: 510689326}
+  - component: {fileID: 510689322}
   m_Layer: 0
   m_Name: MoveManager
   m_TagString: Untagged
@@ -1339,8 +1339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003b9de952bf42c4f8cf284cb345b236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
-  _maxSpeed: 100
 --- !u!4 &510689323
 Transform:
   m_ObjectHideFlags: 0
@@ -1367,7 +1365,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bbb1e9f7422754eb947edc3651e355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedPerClick: 1
+  _speed: 0
+  _maxSpeed: 100
+  _speedPerClick: 5
   _speedReduction: 0
   _baseSpeedReduction: 0.02
 --- !u!114 &510689325

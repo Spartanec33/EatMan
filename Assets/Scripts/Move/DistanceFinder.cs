@@ -5,6 +5,7 @@ public static class DistanceFinder
 {
     private static GameObject _constraction;
     private static Player _player = GameObject.FindObjectOfType<Player>();
+
     public static float Find()
     {
         if (FoodSpawner.Construction != null)

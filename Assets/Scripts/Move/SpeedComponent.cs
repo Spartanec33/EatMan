@@ -10,6 +10,15 @@ public class SpeedComponent: MonoBehaviour
     [SerializeField] private float _speedReduction;
     [SerializeField] float _baseSpeedReduction;
 
+    private bool _isStop;
+
+    public bool IsStop
+    {
+        get { return _isStop; }
+        private set { _isStop = value; }
+    }
+
+
     public float Speed
     {
         get 
@@ -31,7 +40,12 @@ public class SpeedComponent: MonoBehaviour
     }
 
     public void AddSpeedPerClick() => Speed += _speedPerClick;
-    public void Stop() => Speed = 0;
+    public void Stop()
+    {
+        Speed = 0;
+        IsStop = true;
+    }
+    public void UnStop() => IsStop = false;
 
     private void ReduceSpeed()
     {
