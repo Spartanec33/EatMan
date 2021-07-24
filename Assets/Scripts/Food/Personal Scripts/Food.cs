@@ -14,6 +14,7 @@ public class Food : ServiceElementsForFood
         _animator = GetComponent<Animator>();
         _animator.runtimeAnimatorController = controller;
         _animator.applyRootMotion = true;
+
     }
 
     private void OnMouseDown()

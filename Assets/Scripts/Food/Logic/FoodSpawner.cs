@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 
+
 public static class FoodSpawner 
 {
-    private static FoodSpawnData _data= GameObject.FindObjectOfType<InspectorFoodSpawnData>().Data;
+    private static InspectorFoodSpawnData _inspectordata = GameObject.FindObjectOfType<InspectorFoodSpawnData>();
+    private static FoodSpawnData _data = _inspectordata.Data;
     private static Player _player = GameObject.FindObjectOfType<Player>();
     private static FoodOnClick _foodOnClick = GameObject.FindObjectOfType<FoodOnClick>();
     private static RuntimeAnimatorController _animController = _data.AnimController;
     private static GameObject _construction;
     private static readonly Food[] _foods = FoodGetter.GetFoods();
-
+    
     public static GameObject Construction => _construction;
 
     public static void Spawn()

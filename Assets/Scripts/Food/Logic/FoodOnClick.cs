@@ -7,7 +7,7 @@ using UnityEngine;
 //нужно прописывать условия для выхода каждой корутине
 public class FoodOnClick: MonoBehaviour
 {
-
+    [SerializeField] private GameObject _targetParticle;
     [SerializeField] private float _coroutineStep = 0.05f;
     [SerializeField] private float _newStopDistance = 2;
     [SerializeField] private float _lengthReturnPath = 15;
@@ -22,8 +22,10 @@ public class FoodOnClick: MonoBehaviour
     private SpeedComponent _speedCom;
 
     private Player _player;
+    private GameObject _spawnedTargetParticle;
     private Vector3 _basePlayerPosition;
     private Quaternion _basePlayerRotation;
+    
 
     private void Start()
     {
@@ -37,13 +39,15 @@ public class FoodOnClick: MonoBehaviour
 
     public IEnumerator Final(Food food)
     {
+        CreateTargetParticle(food);
+
         _oldFood = food;
         _isCoroutineActive = true;
         _canChangeTarget = true;
         Mover.NeedOneTimeStop = false;
 
         yield return StartCoroutineUsingAdapter(ChangeTransform(food));
-        
+
         _canChangeTarget = false;
 
         //анимация поедания
@@ -60,6 +64,13 @@ public class FoodOnClick: MonoBehaviour
         Mover.NeedOneTimeStop = true;
 
         yield return StartCoroutineUsingAdapter(UndoTransform());
+    }
+
+    private void CreateTargetParticle(Food food)
+    {
+        if (_spawnedTargetParticle != null)
+            Destroy(_spawnedTargetParticle);
+        _spawnedTargetParticle = Instantiate(_targetParticle, food.transform);
     }
 
 

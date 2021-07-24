@@ -32,4 +32,5 @@ public class ServiceElementsForFood: MonoBehaviour
 {
     protected FoodOnClick _onClick;
     protected Animator _animator;
+    protected ParticleSystem _particleSystem;
 }
