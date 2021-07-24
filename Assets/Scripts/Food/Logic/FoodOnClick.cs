@@ -14,8 +14,9 @@ public class FoodOnClick: MonoBehaviour
 
     private static Coroutine _cor;
     private List<Coroutine> _coroutines;
-    private static bool _isCoroutineActive;
+    private bool _isCoroutineActive;
     private bool _canChangeTarget;
+    private Food _oldFood;
 
     private readonly WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
     private SpeedComponent _speedCom;
@@ -23,9 +24,6 @@ public class FoodOnClick: MonoBehaviour
     private Player _player;
     private Vector3 _basePlayerPosition;
     private Quaternion _basePlayerRotation;
-
-    public static bool IsCoroutineActive => _isCoroutineActive;
-
 
     private void Start()
     {
@@ -39,13 +37,13 @@ public class FoodOnClick: MonoBehaviour
 
     public IEnumerator Final(Food food)
     {
-
+        _oldFood = food;
         _isCoroutineActive = true;
         _canChangeTarget = true;
         Mover.NeedOneTimeStop = false;
 
         yield return StartCoroutineUsingAdapter(ChangeTransform(food));
-
+        
         _canChangeTarget = false;
 
         //анимация поедания
@@ -117,9 +115,9 @@ public class FoodOnClick: MonoBehaviour
     }
     public void OnClick(Food food)
     {
-        if (food!=null)
+        if (food!=null && food!=_oldFood)
         {
-            if (IsCoroutineActive==false || _canChangeTarget)
+            if (_isCoroutineActive==false || _canChangeTarget)
             {
                 StopAllCoroutinesOfThisClass();
                 StartCoroutineAndAddToList(Final(food));
