@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 0
   _maxSpeed: 100
-  _speedPerClick: 5
+  _speedPerClick: 1
   _speedReduction: 0
   _baseSpeedReduction: 0.02
 --- !u!114 &510689325
@@ -1922,8 +1922,8 @@ MonoBehaviour:
     _numberOfPieces: 4
     _transform:
       ConstructionPosition: {x: -6, y: 1}
-      ZMinPosition: 40
-      ZMaxPosition: 200
+      ZMinPosition: 100
+      ZMaxPosition: 300
       ConstructionRotation: {x: 0, y: 0, z: 0, w: 0}
     _animController: {fileID: 9100000, guid: 117e23d1473f5564fbbf775da51ddb80, type: 2}
 --- !u!114 &762887385
@@ -3715,9 +3715,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1456957861}
   - component: {fileID: 1456957860}
-  - component: {fileID: 1456957859}
   - component: {fileID: 1456957862}
+  - component: {fileID: 1456957864}
   - component: {fileID: 1456957863}
+  - component: {fileID: 1456957859}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3797,6 +3798,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4808934, y: 2.9472234, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1456957864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456957858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b59c5cfdadd8e4996f951dba2c0d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSatiety: 100
+  _hungerForAdd: 0.1
+  _minSatietyWhenEating: 20
+  _maxSatietyWhenEating: 50
 --- !u!1 &1475426188
 GameObject:
   m_ObjectHideFlags: 0

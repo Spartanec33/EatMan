@@ -1,5 +1,7 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerAnimation))]
+[RequireComponent(typeof(HungerSystem))]
 public class Player : MonoBehaviour
 {
     private SpeedComponent _speedCom;

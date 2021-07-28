@@ -6,6 +6,7 @@ public class Mover : MonoBehaviour
 
     private GameObject _constraction;
     private Road _road;
+    private Camera _additionalCamera;
     private SpeedComponent _speedCom;
 
 
@@ -25,6 +26,7 @@ public class Mover : MonoBehaviour
         {
             if (_constraction != null)
                 IndividualMove(_constraction.transform);
+            
             if (_road != null)
                 IndividualMove(_road.transform);
         }

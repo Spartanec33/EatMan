@@ -20,6 +20,7 @@ public class FoodOnClick: MonoBehaviour
 
     private readonly WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
     private SpeedComponent _speedCom;
+    private HungerSystem _hungerSystem;
 
     private Player _player;
     private GameObject _spawnedTargetParticle;
@@ -31,6 +32,7 @@ public class FoodOnClick: MonoBehaviour
     {
         _player = GameObject.FindObjectOfType<Player>();
         _speedCom = GameObject.FindObjectOfType<SpeedComponent>();
+        _hungerSystem = GameObject.FindObjectOfType<HungerSystem>();
 
         _coroutines = new List<Coroutine>(10);
         _basePlayerPosition = _player.transform.position;
@@ -56,6 +58,7 @@ public class FoodOnClick: MonoBehaviour
         {
             FoodSpawner.Delete();
             FoodSpawner.Spawn();
+            _hungerSystem.AddSatiety();
         }
 
         //действия по итогу сравнения
