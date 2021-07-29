@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-//нужно прописывать условия для выхода каждой корутине
 public class FoodOnClick: MonoBehaviour
 {
     [SerializeField] private GameObject _targetParticle;
@@ -81,7 +78,7 @@ public class FoodOnClick: MonoBehaviour
     private IEnumerator ChangeTransform(Food food)
     {
         yield return StartCoroutineUsingAdapter(Rotate(GetFinalRotationToFood(food)));
-        yield return StartCoroutineUsingAdapter(Move(food.transform.position, DistanceFinder.Find() - _newStopDistance));
+        yield return StartCoroutineUsingAdapter(Move(food.transform.position, Distance.Value - _newStopDistance));
 
     }
 

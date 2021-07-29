@@ -22,5 +22,5 @@ public class Stopper : MonoBehaviour
         else
             _speedCom.UnStop();
     }
-    private bool CheckForStop() => DistanceFinder.Find() <= _stopDistance && Mover.NeedOneTimeStop;
+    private bool CheckForStop() => Distance.Value <= _stopDistance && Mover.NeedOneTimeStop;
 }

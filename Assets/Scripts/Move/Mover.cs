@@ -6,7 +6,6 @@ public class Mover : MonoBehaviour
 
     private GameObject _constraction;
     private Road _road;
-    private Camera _additionalCamera;
     private SpeedComponent _speedCom;
 
 

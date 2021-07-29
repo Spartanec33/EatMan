@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System;
 
-delegate void MessageHandler();
 public class SpeedComponent: MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -17,8 +15,6 @@ public class SpeedComponent: MonoBehaviour
         get { return _isStop; }
         private set { _isStop = value; }
     }
-
-
     public float Speed
     {
         get 
@@ -35,7 +31,6 @@ public class SpeedComponent: MonoBehaviour
     {
         ChangeSpeedReduction();
         ReduceSpeed();
-
         Validate();
     }
 

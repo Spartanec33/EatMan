@@ -1,18 +1,20 @@
 ﻿using System;
 using UnityEngine;
 
-public static class DistanceFinder
+public static class Distance
 {
     private static GameObject _constraction;
     private static Player _player = GameObject.FindObjectOfType<Player>();
+    public static float Value { get; private set; }
 
-    public static float Find()
+    public static void DistanceUpdate()
     {
         if (FoodSpawner.Construction != null)
         {
             _constraction = FoodSpawner.Construction;
-            return _constraction.transform.position.z - _player.transform.position.z;
+            Value = _constraction.transform.position.z - _player.transform.position.z;
         }
-        return 9999;
+        else
+            Value = 9999;
     }
 }
