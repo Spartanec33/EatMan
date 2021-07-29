@@ -12,7 +12,7 @@ public class AdditionalCamera : MonoBehaviour
         _constraction = FoodSpawner.Construction;
         if (_constraction!=null)
         {
-            transform.position = _constraction.transform.position - _offset;
+            transform.position = _constraction.transform.position + _offset;
         }
         
     }

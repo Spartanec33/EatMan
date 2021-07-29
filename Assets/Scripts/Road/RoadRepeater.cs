@@ -10,12 +10,16 @@ public class RoadRepeater : MonoBehaviour
     {
         _road = FindObjectOfType<Road>();
         _startPos = _road.transform.position;
-        _repeatWidth = _road.GetComponent<BoxCollider>().size.z / 2;
+        _repeatWidth = _road.GetComponent<BoxCollider>().size.z ;
     }
     private void TryRepeat()
     {
         if (_road.transform.position.z < _startPos.z - _repeatWidth)
-            _road.transform.position = _startPos;
+        {
+            float inaccuracy = _startPos.z - _repeatWidth - _road.transform.position.z;
+            Vector3 pos = new Vector3(_startPos.x, _startPos.y, _startPos.z - inaccuracy);
+            _road.transform.position = pos;
+        }
     }
     private void FixedUpdate()
     {

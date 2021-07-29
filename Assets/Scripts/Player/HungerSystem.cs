@@ -25,7 +25,6 @@ public class HungerSystem : MonoBehaviour
 
         AddHunger();
         Validate();
-        ShowSatiety();
     }
     public void AddSatiety()
     {
