@@ -60,10 +60,10 @@ public class FoodOnClick: MonoBehaviour
 
         //действия по итогу сравнения
 
-        _isCoroutineActive = false;
-        Mover.NeedOneTimeStop = true;
 
+        _isCoroutineActive = false;
         yield return StartCoroutineUsingAdapter(UndoTransform());
+        Mover.NeedOneTimeStop = true;
     }
 
     private void CreateTargetParticle(Food food)

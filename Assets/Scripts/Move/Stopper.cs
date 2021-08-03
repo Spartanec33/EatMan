@@ -18,7 +18,9 @@ public class Stopper : MonoBehaviour
     private void TryStop()
     {
         if (CheckForStop())
+        {
             _speedCom.Stop();
+        }
         else
             _speedCom.UnStop();
     }
