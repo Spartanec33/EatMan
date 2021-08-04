@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(DistanceUpdater))]
+[RequireComponent(typeof(Distance))]
 [RequireComponent(typeof(Mover))]
 [RequireComponent(typeof(SpeedComponent))]
 [RequireComponent(typeof(RoadRepeater))]

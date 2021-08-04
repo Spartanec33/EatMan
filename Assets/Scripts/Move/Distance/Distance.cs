@@ -1,20 +1,25 @@
-﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public static class Distance
+public class Distance : NeedConstruction
 {
-    private static GameObject _constraction;
-    private static Player _player = GameObject.FindObjectOfType<Player>();
+    private  Player _player;
     public static float Value { get; private set; }
-
-    public static void DistanceUpdate()
+    private void Start()
     {
-        if (FoodSpawner.Construction != null)
-        {
-            _constraction = FoodSpawner.Construction;
+        _player = GameObject.FindObjectOfType<Player>();
+    }
+
+    public void DistanceUpdate()
+    {
+        if (_constraction != null)
             Value = _constraction.transform.position.z - _player.transform.position.z;
-        }
         else
             Value = 9999;
+    }
+    private void FixedUpdate()
+    {
+        DistanceUpdate();
     }
 }

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public static class FoodSpawner 
 {
     private static InspectorFoodSpawnData _inspectordata = GameObject.FindObjectOfType<InspectorFoodSpawnData>();
@@ -10,9 +9,9 @@ public static class FoodSpawner
     private static RuntimeAnimatorController _animController = _data.AnimController;
     private static GameObject _construction;
     private static readonly Food[] _foods = FoodGetter.GetFoods();
-    
-    public static GameObject Construction => _construction;
 
+    public static GameObject Construction => _construction;
+    
     public static void Spawn()
     {
         if (_construction == null)
@@ -25,6 +24,7 @@ public static class FoodSpawner
             Quaternion rotation = _construction.transform.rotation;
             Vector3 position = _construction.transform.position;
             DirectlyGenerate(placeForTargetFood, rotation, position);
+            EventStorage.ChangeConstructionEvent.ActivateEvent();
         }
     }
     public static void Delete()
@@ -33,11 +33,11 @@ public static class FoodSpawner
         {
             GameObject.Destroy(_construction);
             _construction = null;
+            EventStorage.ChangeConstructionEvent.ActivateEvent();
         }
             
             
     }
-
     private static void ChooseFood()
     {
         FoodComparer.TargetFood = FoodGetter.GetRandomFood();
@@ -77,4 +77,6 @@ public static class FoodSpawner
             }
         }
     }
+
 }
+

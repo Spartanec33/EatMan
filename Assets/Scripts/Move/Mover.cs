@@ -1,13 +1,10 @@
 using UnityEngine;
 
-public class Mover : MonoBehaviour
+public class Mover : NeedConstruction
 {
     public static bool NeedOneTimeStop = true;
-
-    private GameObject _constraction;
     private Road _road;
     private SpeedComponent _speedCom;
-
 
     private void Start()
     {
@@ -16,7 +13,6 @@ public class Mover : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        _constraction = FoodSpawner.Construction;
         Move();
     }
     public void Move()
