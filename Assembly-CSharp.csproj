@@ -59,12 +59,13 @@
     <Compile Include="Assets\Scripts\Move\SpeedComponent.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\FoodGetter.cs" />
-    <Compile Include="Assets\Scripts\Food\Personal Scripts\Service\ServiceElementsForFood.cs" />
+    <Compile Include="Assets\Scripts\Food\Personal Scripts\ServiceElementsForFood.cs" />
     <Compile Include="Assets\Scripts\Player\HungerSystem.cs" />
     <Compile Include="Assets\Scripts\Food\Personal Scripts\Food.cs" />
     <Compile Include="Assets\Scripts\Move\MoveManager.cs" />
     <Compile Include="Assets\Scripts\Road\RoadRepeater.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\FoodListData.cs" />
+    <Compile Include="Assets\Scripts\Events\ChangeConstructionEvent.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\FoodSpawner.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\InspectorFoodSpawnData.cs" />
     <Compile Include="Assets\Scripts\Move\Stopper.cs" />
@@ -73,14 +74,14 @@
     <Compile Include="Assets\Scripts\Move\Mover.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\FoodManager.cs" />
     <Compile Include="Assets\Scripts\Road\Road.cs" />
+    <Compile Include="Assets\Scripts\Events\EventStorage.cs" />
+    <Compile Include="Assets\Scripts\Food\NeedConstruction.cs" />
     <Compile Include="Assets\Scripts\Move\Distance\Distance.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\Camera\FoodView.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\FoodComparer.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\ServiceFiles\FoodSpawnData.cs" />
-    <Compile Include="Assets\Scripts\Events\ChangeConstructionEvent.cs" />
-    <Compile Include="Assets\Scripts\Events\EventStorage.cs" />
-    <Compile Include="Assets\Scripts\Food\NeedConstruction.cs" />
+    <Compile Include="Assets\Scripts\Food\Personal Scripts\FoodData.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Scripts\DoLIst.txt" />

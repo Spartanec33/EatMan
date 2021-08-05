@@ -59,9 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8630f910d643d4588a14231ab7d00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
-  color: 0
-  shape: 1
+  FoodData: {fileID: 11400000, guid: 71ef4aa9131413d46bf41fb969592aa0, type: 2}
 --- !u!95 &1089129386534189961
 Animator:
   serializedVersion: 3

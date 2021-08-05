@@ -12,10 +12,12 @@ public static class FoodGetter
     public static Food[] GetFoods() => _foodListData.GetListData;
     public static string[] GetProperties(Food food)
     {
-        FieldInfo[] fields = food.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly ) ;
+        FoodData foodData = food.FoodData;
+        FieldInfo[] fields = foodData.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic) ;
+
         string[] res = new string[fields.Length];
         for (int i = 0; i < fields.Length; i++)
-            res[i] = fields[i].GetValue(food).ToString();
+            res[i] = fields[i].GetValue(foodData).ToString();
         return res;
     }
     public static  string[] GetRandomProperties(Food food)

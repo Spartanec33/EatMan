@@ -140,9 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8630f910d643d4588a14231ab7d00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
-  color: 6
-  shape: 0
+  FoodData: {fileID: 11400000, guid: 72e52105e3fd8d74ba6289be71290a53, type: 2}
 --- !u!95 &123037625159632527
 Animator:
   serializedVersion: 3

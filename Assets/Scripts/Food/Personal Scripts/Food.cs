@@ -4,9 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Food : ServiceElementsForFood
 {
-    [SerializeField] private Type _type;
-    [SerializeField] private Color _color;
-    [SerializeField] private Shape _shape;
+    public FoodData FoodData;
 
     public void Init(FoodOnClick onClick, RuntimeAnimatorController controller)
     {
@@ -14,7 +12,6 @@ public class Food : ServiceElementsForFood
         _animator = GetComponent<Animator>();
         _animator.runtimeAnimatorController = controller;
         _animator.applyRootMotion = true;
-
     }
 
     private void OnMouseDown()

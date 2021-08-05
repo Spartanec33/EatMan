@@ -57,7 +57,6 @@ public class FoodOnClick: MonoBehaviour
             FoodSpawner.Spawn();
             _hungerSystem.AddSatiety();
         }
-
         //действия по итогу сравнения
 
 
