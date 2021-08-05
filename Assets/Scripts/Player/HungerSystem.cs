@@ -35,12 +35,6 @@ public class HungerSystem : MonoBehaviour
     {
         Satiety += value;
     }
-
-    public void ShowSatiety()
-    {
-        Debug.Log(Satiety);
-    }
-
     private void AddHunger() => Satiety -= _hungerForAdd;
     private void Validate()
     {

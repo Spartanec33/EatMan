@@ -4,6 +4,7 @@ public class ChangeConstructionEvent
     public event Change Action;
     public void ActivateEvent()
     {
-        Action();
+        if (Action != null)
+            Action();
     }
 }
