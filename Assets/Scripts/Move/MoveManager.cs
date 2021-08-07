@@ -1,4 +1,6 @@
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Distance))]
 [RequireComponent(typeof(Mover))]
@@ -7,4 +9,5 @@ using UnityEngine;
 [RequireComponent(typeof(Stopper))]
 public class MoveManager : MonoBehaviour
 {
+
 }

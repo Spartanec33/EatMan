@@ -24,7 +24,7 @@ public static class FoodSpawner
             Quaternion rotation = _construction.transform.rotation;
             Vector3 position = _construction.transform.position;
             DirectlyGenerate(placeForTargetFood, rotation, position);
-            EventStorage.ChangeConstructionEvent.ActivateEvent();
+            ChangeConstructionEvent.ActivateEvent();
 
             for (int i = 0; i < FoodComparer.TargetProperties.Length; i++)
                 Debug.Log(FoodComparer.TargetProperties[i]);
@@ -36,7 +36,7 @@ public static class FoodSpawner
         {
             GameObject.Destroy(_construction);
             _construction = null;
-            EventStorage.ChangeConstructionEvent.ActivateEvent();
+            ChangeConstructionEvent.ActivateEvent();
         }
             
             
@@ -75,7 +75,7 @@ public static class FoodSpawner
             void SpawnOneFood(Food spawningFood)
             {
                 var food = GameObject.Instantiate(spawningFood, place, rotation);
-                food.Init(_foodOnClick, _animController);
+                food.Init(_animController);
                 food.transform.SetParent(_construction.transform);
             }
         }

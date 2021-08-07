@@ -21,7 +21,7 @@ public class Stopper : MonoBehaviour
         {
             _speedCom.Stop();
         }
-        else
+        else if(!Player.Died)
             _speedCom.UnStop();
     }
     private bool CheckForStop() => Distance.Value <= _stopDistance && Mover.NeedOneTimeStop;

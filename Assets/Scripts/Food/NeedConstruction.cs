@@ -5,7 +5,7 @@
 public class NeedConstruction : MonoBehaviour
 {
     protected GameObject _constraction;
-    protected void OnEnable() => EventStorage.ChangeConstructionEvent.Action += ChangeConstruction;
-    protected void OnDisable() => EventStorage.ChangeConstructionEvent.Action += ChangeConstruction;
+    protected void OnEnable() => ChangeConstructionEvent.OnAction += ChangeConstruction;
+    protected void OnDisable() => ChangeConstructionEvent.OnAction += ChangeConstruction;
     void ChangeConstruction() => _constraction = FoodSpawner.Construction;
 }

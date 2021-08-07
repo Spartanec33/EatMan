@@ -9,13 +9,14 @@ public class FoodOnClick: MonoBehaviour
     [SerializeField] private float _newStopDistance = 2;
     [SerializeField] private float _lengthReturnPath = 15;
 
-    private static Coroutine _cor;
+    private Coroutine _cor;
     private List<Coroutine> _coroutines;
+    private readonly WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
+
     private bool _isCoroutineActive;
     private bool _canChangeTarget;
     private Food _oldFood;
 
-    private readonly WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
     private SpeedComponent _speedCom;
     private HungerSystem _hungerSystem;
 
@@ -34,6 +35,16 @@ public class FoodOnClick: MonoBehaviour
         _coroutines = new List<Coroutine>(10);
         _basePlayerPosition = _player.transform.position;
         _basePlayerRotation = _player.transform.rotation;
+    }
+    private void OnEnable()
+    {
+        FoodClickEvent.OnAction += OnClick;
+        DieEvent.OnAction += StopAllCoroutinesOfThisClass;
+    }
+    private void OnDisable()
+    {
+        FoodClickEvent.OnAction -= OnClick;
+        DieEvent.OnAction -= StopAllCoroutinesOfThisClass;
     }
 
     public IEnumerator Final(Food food)
@@ -68,15 +79,13 @@ public class FoodOnClick: MonoBehaviour
         yield return StartCoroutineUsingAdapter(UndoTransform());
         Mover.NeedOneTimeStop = true;
     }
-
     private void CreateTargetParticle(Food food)
     {
         if (_spawnedTargetParticle != null)
             Destroy(_spawnedTargetParticle);
         _spawnedTargetParticle = Instantiate(_targetParticle, food.transform);
     }
-
-
+    
     //меняет положение игрока к еде
     private IEnumerator ChangeTransform(Food food)
     {
@@ -91,7 +100,6 @@ public class FoodOnClick: MonoBehaviour
         yield return StartCoroutineUsingAdapter(Rotate(_basePlayerRotation));
         yield return StartCoroutineUsingAdapter(Move(_basePlayerPosition, _lengthReturnPath));
     }
-
 
     private IEnumerator Move(Vector3 endPoint, float allWay)
     {
@@ -127,17 +135,19 @@ public class FoodOnClick: MonoBehaviour
         _player.transform.rotation = startRotation;
         return finalRotation;
     }
+
     public void OnClick(Food food)
     {
-        if (food!=null && food!=_oldFood)
+        if (food != null && food != _oldFood)
         {
-            if (_isCoroutineActive==false || _canChangeTarget)
+            if (_isCoroutineActive == false || _canChangeTarget)
             {
                 StopAllCoroutinesOfThisClass();
                 StartCoroutineAndAddToList(Final(food));
-            }       
+            }
         }
     }
+
     private void StopAllCoroutinesOfThisClass()
     {
         foreach (var item in _coroutines)

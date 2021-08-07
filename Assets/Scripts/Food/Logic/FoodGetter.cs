@@ -24,7 +24,6 @@ public static class FoodGetter
     {
         string[] fields = GetProperties(food);
         string[] answer = new string[_random.Next(1, fields.Length + 1)];
-
         int[] intermediateArray = new int[answer.Length];
 
         for (int i = 0; i < intermediateArray.Length; i++)
@@ -34,15 +33,13 @@ public static class FoodGetter
         //заполнение промежуточного массива
         for (int i = 0; i < intermediateArray.Length; i++)
         {
-            bool isComplete = false;
-
-            while (isComplete != true)
+            while (true)
             {
                 int index = _random.Next(0, fields.Length);
                 if (Array.IndexOf(intermediateArray, index) == -1)
                 {
                     intermediateArray[i] = index;
-                    isComplete = true;
+                    break;
                 }
             }
         }

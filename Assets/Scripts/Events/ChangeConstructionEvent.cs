@@ -1,10 +1,10 @@
 ﻿public delegate void Change();
-public class ChangeConstructionEvent
+public static class ChangeConstructionEvent
 {
-    public event Change Action;
-    public void ActivateEvent()
+    public static event Change OnAction;
+    public static void ActivateEvent()
     {
-        if (Action != null)
-            Action();
+        if (OnAction != null)
+            OnAction();
     }
 }

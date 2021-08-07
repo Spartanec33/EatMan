@@ -4,11 +4,12 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Food : ServiceElementsForFood
 {
-    public FoodData FoodData;
+    [SerializeField] private FoodData _foodData;
 
-    public void Init(FoodOnClick onClick, RuntimeAnimatorController controller)
+    public FoodData FoodData => _foodData;
+
+    public void Init(RuntimeAnimatorController controller)
     {
-        _onClick = onClick;
         _animator = GetComponent<Animator>();
         _animator.runtimeAnimatorController = controller;
         _animator.applyRootMotion = true;
@@ -16,6 +17,7 @@ public class Food : ServiceElementsForFood
 
     private void OnMouseDown()
     {
-        _onClick.OnClick(this);
+        if (!Player.Died)
+            FoodClickEvent.ActivateEvent(this);
     }
 }

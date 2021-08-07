@@ -9,7 +9,7 @@ public class HungerSystem : MonoBehaviour
     [SerializeField] private float _minSatietyWhenEating;
     [SerializeField] private float _maxSatietyWhenEating;
 
-    private float _satiety;
+    [SerializeField] private float _satiety;
     public float Satiety
     {
         get { return _satiety; }
@@ -38,8 +38,8 @@ public class HungerSystem : MonoBehaviour
     private void AddHunger() => Satiety -= _hungerForAdd;
     private void Validate()
     {
-        if (Satiety < 0)
-            Satiety = 0;
+        if (Satiety < 0 && !Player.Died)
+            DieEvent.ActivateEvent();
         else if (Satiety > _maxSatiety)
             Satiety = _maxSatiety;
     }
