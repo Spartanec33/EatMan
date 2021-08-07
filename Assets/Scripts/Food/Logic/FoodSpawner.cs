@@ -25,6 +25,9 @@ public static class FoodSpawner
             Vector3 position = _construction.transform.position;
             DirectlyGenerate(placeForTargetFood, rotation, position);
             EventStorage.ChangeConstructionEvent.ActivateEvent();
+
+            for (int i = 0; i < FoodComparer.TargetProperties.Length; i++)
+                Debug.Log(FoodComparer.TargetProperties[i]);
         }
     }
     public static void Delete()

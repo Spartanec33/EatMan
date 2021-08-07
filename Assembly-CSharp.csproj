@@ -79,10 +79,10 @@
     <Compile Include="Assets\Scripts\Food\NeedConstruction.cs" />
     <Compile Include="Assets\Scripts\Move\Distance\Distance.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimation.cs" />
-    <Compile Include="Assets\Scripts\Camera\FoodView.cs" />
+    <Compile Include="Assets\Scripts\Player\ClicableZone.cs" />
+    <Compile Include="Assets\Scripts\UI\FoodView.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\FoodComparer.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\ServiceFiles\FoodSpawnData.cs" />
-    <Compile Include="Assets\Scripts\Player\ClicableZone.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Scripts\DoLIst.txt" />

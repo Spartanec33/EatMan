@@ -47,16 +47,20 @@ public class FoodOnClick: MonoBehaviour
 
         yield return StartCoroutineUsingAdapter(ChangeTransform(food));
 
-        _canChangeTarget = false;
 
         //анимация поедания
 
-        if (FoodComparer.Compare(food))
+        while (FoodComparer.Compare(food)!=true)
         {
-            FoodSpawner.Delete();
-            FoodSpawner.Spawn();
-            _hungerSystem.AddSatiety();
+            _speedCom.Stop();
+            yield return _waitForFixedUpdate;
         }
+        _canChangeTarget = false;
+
+        FoodSpawner.Delete();
+        FoodSpawner.Spawn();
+        _hungerSystem.AddSatiety();
+        
         //действия по итогу сравнения
 
 

@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         foreach (var item in rigidbodies)
         {
             item.isKinematic = false;
-            item.velocity = new Vector3(0, 0, _speedcom.Speed / 10);
+            item.velocity = new Vector3(0, 0, _speedcom.Speed/10);
         }
         _speedcom.Stop();
     }

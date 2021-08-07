@@ -10,17 +10,11 @@ public class FoodListData : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-        {
-            
             FoodSpawner.Spawn();
-            for (int i = 0; i < FoodComparer.TargetProperties.Length; i++)
-                Debug.Log(FoodComparer.TargetProperties[i]);
-            
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
+
+        if (Input.GetKeyDown(KeyCode.V))
             FoodSpawner.Delete();
-        }
+
     }
 
 }
