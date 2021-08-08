@@ -6,10 +6,12 @@ public class Stopper : MonoBehaviour
     [SerializeField] private float _stopDistance = 10;
 
     private SpeedComponent _speedCom;
+    private Player _player;
 
     private void Start()
     {
         _speedCom = GetComponent<SpeedComponent>();
+        _player = FindObjectOfType<Player>();
     }
     private void FixedUpdate()
     {
@@ -21,8 +23,11 @@ public class Stopper : MonoBehaviour
         {
             _speedCom.Stop();
         }
-        else if(!Player.Died)
+        else
             _speedCom.UnStop();
     }
-    private bool CheckForStop() => Distance.Value <= _stopDistance && Mover.NeedOneTimeStop;
+    private bool CheckForStop()
+    {
+        return ((Distance.Value <= _stopDistance) && Mover.NeedOneTimeStop) || Player.Died;
+    }
 }

@@ -26,7 +26,6 @@ public class SpeedComponent: MonoBehaviour
             _speed = value;
         }
     }
-
     private void FixedUpdate()
     {
         ChangeSpeedReduction();

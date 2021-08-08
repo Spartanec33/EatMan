@@ -17,7 +17,7 @@ public class Mover : NeedConstruction
     }
     public void Move()
     {
-        if (!_speedCom.IsStop)
+        if (!_speedCom.IsStop && !Player.IsGoToFood)
         {
             if (_constraction != null)
                 IndividualMove(_constraction.transform);

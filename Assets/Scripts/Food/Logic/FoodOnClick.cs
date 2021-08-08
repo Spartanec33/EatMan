@@ -55,13 +55,20 @@ public class FoodOnClick: MonoBehaviour
         _isCoroutineActive = true;
         _canChangeTarget = true;
         Mover.NeedOneTimeStop = false;
-
         yield return StartCoroutineUsingAdapter(ChangeTransform(food));
 
 
         //анимация поедания
 
-        while (FoodComparer.Compare(food)!=true)
+        if (FoodComparer.Compare(food)!=true)
+        {
+            Destroy(food.gameObject);
+            _canChangeTarget = false;
+            yield return StartCoroutineUsingAdapter(_player.Puke());
+        }
+
+        _canChangeTarget = true; 
+        while (FoodComparer.Compare(food) != true)
         {
             _speedCom.Stop();
             yield return _waitForFixedUpdate;
@@ -89,8 +96,8 @@ public class FoodOnClick: MonoBehaviour
     //меняет положение игрока к еде
     private IEnumerator ChangeTransform(Food food)
     {
-        yield return StartCoroutineUsingAdapter(Rotate(GetFinalRotationToFood(food)));
-        yield return StartCoroutineUsingAdapter(Move(food.transform.position, Distance.Value - _newStopDistance));
+        yield return StartCoroutineUsingAdapter(Rotate(GetFinalRotation(food.transform.position)));
+        yield return StartCoroutineUsingAdapter(Move(food.transform.position));
 
     }
 
@@ -101,20 +108,45 @@ public class FoodOnClick: MonoBehaviour
         yield return StartCoroutineUsingAdapter(Move(_basePlayerPosition, _lengthReturnPath));
     }
 
+
     private IEnumerator Move(Vector3 endPoint, float allWay)
     {
         float coveredDistance = 0;
-        Vector3 playerPos = _player.transform.position;
+        Vector3 startPlayerPos = _player.transform.position;
         while (coveredDistance <= allWay)
         {
+            var playerPos = _player.transform.position;
             yield return _waitForFixedUpdate;
             var progress = (coveredDistance / allWay);
-            var posX = Vector3.Lerp(playerPos, endPoint, progress).x;
-            _player.transform.position = new Vector3(posX, _player.transform.position.y, _player.transform.position.z);
-
+            var posX = Vector3.Lerp(startPlayerPos, endPoint, progress).x;
+            _player.transform.position = new Vector3(posX, playerPos.y, playerPos.z);
             coveredDistance += (_speedCom.Speed * Time.deltaTime);
         }
     }
+    private IEnumerator Move(Vector3 endPoint)
+    {
+        float coveredDistance = 0;
+        Vector3 startPlayerPos = _player.transform.position;
+        float allWay = Vector3.Distance(startPlayerPos, endPoint) - _newStopDistance;
+        while (coveredDistance <= allWay)
+        {
+            var playerPos = _player.transform.position;
+            yield return _waitForFixedUpdate;
+
+            if (Mathf.Abs(playerPos.z - endPoint.z) <= _newStopDistance)
+                Player.IsGoToFood = true;
+
+            var progress = (coveredDistance / allWay);
+            if (progress>1)
+                progress = 1;
+            
+            var posX = Vector3.Lerp(startPlayerPos, endPoint, progress).x;
+            _player.transform.position = new Vector3(posX, playerPos.y, playerPos.z);
+            coveredDistance += (_speedCom.Speed * Time.deltaTime);
+        }
+        Player.IsGoToFood = false;
+    }
+
     private IEnumerator Rotate(Quaternion finalRotation)
     {
         float progress = 0;
@@ -126,10 +158,10 @@ public class FoodOnClick: MonoBehaviour
             progress += _coroutineStep;
         }
     }
-    private Quaternion GetFinalRotationToFood(Food food)
+    private Quaternion GetFinalRotation(Vector3 point)
     {
         Quaternion startRotation = _player.transform.rotation;
-        _player.transform.LookAt(food.transform);
+        _player.transform.LookAt(point);
         Quaternion finalRotation = _player.transform.rotation;
         finalRotation = new Quaternion(_basePlayerRotation.x, finalRotation.y, _basePlayerRotation.z, _basePlayerRotation.w);
         _player.transform.rotation = startRotation;
@@ -147,6 +179,10 @@ public class FoodOnClick: MonoBehaviour
             }
         }
     }
+
+
+
+
 
     private void StopAllCoroutinesOfThisClass()
     {

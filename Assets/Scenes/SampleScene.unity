@@ -2929,13 +2929,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d7775dbcc99f54191ebbf8f15d17f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbodies:
-  - {fileID: 758310471}
-  - {fileID: 324967750}
-  - {fileID: 538942006}
-  - {fileID: 838508981}
-  - {fileID: 583871296}
-  - {fileID: 910973780}
+  _rigidbodies: []
+  _pukeParticle: {fileID: 658781404}
 --- !u!114 &480885513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2948,7 +2943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b59c5cfdadd8e4996f951dba2c0d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSatiety: 100
+  _maxSatiety: 1000
   _hungerForAdd: 0.2
   _minSatietyWhenEating: 20
   _maxSatietyWhenEating: 50
