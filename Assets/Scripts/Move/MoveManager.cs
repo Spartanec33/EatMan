@@ -1,6 +1,4 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(Distance))]
 [RequireComponent(typeof(Mover))]

@@ -38,7 +38,7 @@ public class FoodOnClickFunctions : MonoBehaviour
     public IEnumerator ChangeTransform(Food food)
     {
         _controller.StartCoroutineAndAddToList(Rotate(GetFinalRotation(food.transform.position)));
-        yield return _controller.StartCoroutineAndWaitIt(MoveToFood(food.transform.position));
+        yield return _controller.StartCoroutineAndWaitIt(MoveToFood(food));
 
     }
 
@@ -49,7 +49,7 @@ public class FoodOnClickFunctions : MonoBehaviour
         yield return _controller.StartCoroutineAndWaitIt(Move(_basePlayerPosition, _lengthReturnPath));
     }
 
-    private IEnumerator MainPartMove(float allWay, Vector3 endPoint)
+    private IEnumerator MainPartMove(float allWay, Vector3 endPoint, bool NeedCorrectPos = false)
     {
         float coveredDistance = 0;
         Vector3 startPlayerPos = _player.transform.position;
@@ -59,6 +59,8 @@ public class FoodOnClickFunctions : MonoBehaviour
             yield return _waitForFixedUpdate;
 
             var playerPos = _player.transform.position;
+
+            coveredDistance += (_speedCom.Speed * Time.deltaTime);
             var progress = (coveredDistance / allWay);
 
             if (progress > 1)
@@ -66,21 +68,24 @@ public class FoodOnClickFunctions : MonoBehaviour
 
             var posX = Vector3.Lerp(startPlayerPos, endPoint, progress).x;
             _player.transform.position = new Vector3(posX, playerPos.y, playerPos.z);
-            coveredDistance += (_speedCom.Speed * Time.deltaTime);
         }
+        if (NeedCorrectPos)
+        {
+            CorrectEvent.ActivateEvent(coveredDistance - allWay);
+        }
+        
     }
     private IEnumerator Move(Vector3 endPoint, float allWay)
     {
         yield return _controller.StartCoroutineAndWaitIt(MainPartMove(allWay, endPoint));
     }
-    private IEnumerator MoveToFood(Vector3 endPoint)
+    private IEnumerator MoveToFood(Food food)
     {
         _moveToFoodCorIsActive = true;
-
+        var endPoint = food.transform.position;
         _controller.StartCoroutineAndAddToList(CheckPlayerGoingToFood(endPoint));
         float allWay = Vector3.Distance(_player.transform.position, endPoint) - _newStopDistance;
-        yield return _controller.StartCoroutineAndWaitIt(MainPartMove(allWay, endPoint));
-
+        yield return _controller.StartCoroutineAndWaitIt(MainPartMove(allWay, endPoint, true));
         _moveToFoodCorIsActive = false;
     }
     private IEnumerator CheckPlayerGoingToFood(Vector3 endPoint)

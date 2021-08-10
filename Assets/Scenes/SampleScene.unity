@@ -2949,7 +2949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b59c5cfdadd8e4996f951dba2c0d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSatiety: 300
+  _maxSatiety: 3000
   _hungerForAdd: 0.2
   _minSatietyWhenEating: 20
   _maxSatietyWhenEating: 50
@@ -3548,7 +3548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bbb1e9f7422754eb947edc3651e355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
+  _speed: 150
   _maxSpeed: 100
   _speedPerClick: 5
   _speedReduction: 0
@@ -9329,7 +9329,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 762887380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4dd703c6c1940d4a9b27e2c76cdf908, type: 3}
+  m_Script: {fileID: 11500000, guid: 63e2854109a944040a8f443d3beb3e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &762887386
@@ -9341,13 +9341,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 762887380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72468b29943e77846a3f49d9931ccbe7, type: 3}
+  m_Script: {fileID: 11500000, guid: 689de03ad7a342c4284503e0526b2f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _targetParticle: {fileID: 7770762418895694794, guid: f95c4b2535d5c014abc0f2fa436496d4,
     type: 3}
   _coroutineStep: 0.05
-  _newStopDistance: 2
+  _newStopDistance: 5
   _lengthReturnPath: 15
 --- !u!1 &806043668
 GameObject:

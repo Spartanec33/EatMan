@@ -4,6 +4,7 @@ using UnityEngine;
 public class Stopper : MonoBehaviour
 {
     [SerializeField] private float _stopDistance = 10;
+
     private SpeedComponent _speedCom;
 
     private void Start()
@@ -27,14 +28,18 @@ public class Stopper : MonoBehaviour
     {
         if ((Distance.Value <= _stopDistance) && Mover.NeedOneTimeStop)
         {
-            Stop1Event.ActivateEvent();
+            CorrectEvent.ActivateEvent(GetDelta());
             return true;
         }
         else if(Player.IsDied || Player.IsPuke)
         {
             return true;
         }
-        return ((Distance.Value <= _stopDistance) && Mover.NeedOneTimeStop) || Player.IsDied;
+        else if (FoodOnClickController.IsHaveTarget == false && Distance.Value <= _stopDistance)
+        {
+            return true;
+        }
+        return ((Distance.Value <= _stopDistance) && Mover.NeedOneTimeStop);
     }
 
     public float GetDelta()

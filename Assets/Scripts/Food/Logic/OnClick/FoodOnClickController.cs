@@ -7,6 +7,7 @@ public class FoodOnClickController : UsingNewCoroutines
     private FoodOnClickFunctions _func;
 
     private bool _isCoroutineActive;
+    private static bool _isHaveTarget;
     private bool _canChangeTarget;
     private Food _oldFood;
 
@@ -14,6 +15,8 @@ public class FoodOnClickController : UsingNewCoroutines
     private Player _player;
     private HungerSystem _hungerSystem;
     private readonly WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
+
+    public static bool IsHaveTarget => _isHaveTarget;
 
     private void Start()
     {
@@ -36,7 +39,7 @@ public class FoodOnClickController : UsingNewCoroutines
     public IEnumerator Final(Food food)
     {
         _func.CreateTargetParticle(food);
-
+        _isHaveTarget = true;
         _oldFood = food;
         _isCoroutineActive = true;
         _canChangeTarget = true;
@@ -50,6 +53,7 @@ public class FoodOnClickController : UsingNewCoroutines
         {
             Destroy(food.gameObject);
             _canChangeTarget = false;
+            _isHaveTarget = false;
             yield return StartCoroutineAndWaitIt(_player.Puke());
         }
         _canChangeTarget = true;
@@ -69,6 +73,7 @@ public class FoodOnClickController : UsingNewCoroutines
 
 
         _isCoroutineActive = false;
+        _isHaveTarget = false;
         yield return StartCoroutineAndWaitIt(_func.UndoTransform());
 
         Mover.NeedOneTimeStop = true;
@@ -84,5 +89,12 @@ public class FoodOnClickController : UsingNewCoroutines
                 StartCoroutineAndAddToList(Final(food));
             }
         }
+    }
+
+    private new void StopAllCoroutinesOfThisClass()
+    {
+        base.StopAllCoroutinesOfThisClass();
+        _isCoroutineActive = false;
+        _isHaveTarget = false;
     }
 }

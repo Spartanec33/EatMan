@@ -5,7 +5,6 @@ public static class FoodSpawner
     private static InspectorFoodSpawnData _inspectordata = GameObject.FindObjectOfType<InspectorFoodSpawnData>();
     private static FoodSpawnData _data = _inspectordata.Data;
     private static Player _player = GameObject.FindObjectOfType<Player>();
-    private static FoodOnClickController _foodOnClick = GameObject.FindObjectOfType<FoodOnClickController>();
     private static RuntimeAnimatorController _animController = _data.AnimController;
     private static GameObject _construction;
     private static readonly Food[] _foods = FoodGetter.GetFoods();

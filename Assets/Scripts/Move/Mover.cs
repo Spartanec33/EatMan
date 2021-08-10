@@ -10,12 +10,12 @@ public class Mover : NeedConstruction
     private new void OnEnable()
     {
         base.OnEnable();
-        Stop1Event.OnAction += CorrectPosition;
+        CorrectEvent.OnAction += CorrectPosition;
     }
     private new void OnDisable()
     {
         base.OnDisable();
-        Stop1Event.OnAction -= CorrectPosition;
+        CorrectEvent.OnAction -= CorrectPosition;
     }
 
 
@@ -42,9 +42,8 @@ public class Mover : NeedConstruction
 
     }
 
-    private void CorrectPosition()
+    public void CorrectPosition(float delta)
     {
-        var delta = _stopper.GetDelta();
         Move(delta);
     }
 }
