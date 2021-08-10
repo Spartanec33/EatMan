@@ -31,5 +31,4 @@ public enum Shape : byte
 public class ServiceElementsForFood: MonoBehaviour
 {
     protected Animator _animator;
-    protected ParticleSystem _particleSystem;
 }

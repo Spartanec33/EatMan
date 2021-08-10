@@ -38,7 +38,7 @@ public class HungerSystem : MonoBehaviour
     private void AddHunger() => Satiety -= _hungerForAdd;
     private void Validate()
     {
-        if (Satiety < 0 && !Player.Died)
+        if (Satiety < 0 && !Player.IsDied)
             DieEvent.ActivateEvent();
         else if (Satiety > _maxSatiety)
             Satiety = _maxSatiety;

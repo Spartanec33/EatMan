@@ -2929,7 +2929,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d7775dbcc99f54191ebbf8f15d17f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbodies: []
+  _rigidbodies:
+  - {fileID: 758310471}
+  - {fileID: 324967750}
+  - {fileID: 538942006}
+  - {fileID: 838508981}
+  - {fileID: 583871296}
+  - {fileID: 910973780}
   _pukeParticle: {fileID: 658781404}
 --- !u!114 &480885513
 MonoBehaviour:
@@ -2943,7 +2949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b59c5cfdadd8e4996f951dba2c0d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSatiety: 1000
+  _maxSatiety: 300
   _hungerForAdd: 0.2
   _minSatietyWhenEating: 20
   _maxSatietyWhenEating: 50
@@ -9239,6 +9245,7 @@ GameObject:
   - component: {fileID: 762887381}
   - component: {fileID: 762887384}
   - component: {fileID: 762887385}
+  - component: {fileID: 762887386}
   - component: {fileID: 762887383}
   m_Layer: 0
   m_Name: FoodManager
@@ -9325,10 +9332,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4dd703c6c1940d4a9b27e2c76cdf908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &762887386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762887380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72468b29943e77846a3f49d9931ccbe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _targetParticle: {fileID: 7770762418895694794, guid: f95c4b2535d5c014abc0f2fa436496d4,
     type: 3}
-  _coroutineStep: 0.1
-  _newStopDistance: 3
+  _coroutineStep: 0.05
+  _newStopDistance: 2
   _lengthReturnPath: 15
 --- !u!1 &806043668
 GameObject:

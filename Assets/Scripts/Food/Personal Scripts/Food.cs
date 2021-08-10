@@ -12,11 +12,12 @@ public class Food : ServiceElementsForFood
         _animator = GetComponent<Animator>();
         _animator.runtimeAnimatorController = controller;
         _animator.applyRootMotion = true;
+        GetComponent<BoxCollider>().isTrigger = true;
     }
 
     private void OnMouseDown()
     {
-        if (!Player.Died)
+        if (!Player.IsDied)
             FoodClickEvent.ActivateEvent(this);
     }
 }

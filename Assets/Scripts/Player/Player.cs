@@ -9,12 +9,14 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody[] _rigidbodies;
     [SerializeField] private ParticleSystem _pukeParticle;
 
-    private static bool _died;
+    private static bool _isDied;
+    private static bool _isPuke;
     private SpeedComponent _speedCom;
     private Animator _animator;
     private readonly WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
 
-    public static bool Died => _died;
+    public static bool IsDied => _isDied;
+    public static bool IsPuke => _isPuke;
     public static bool IsGoToFood { get; set; }
 
     private void Start()
@@ -50,15 +52,17 @@ public class Player : MonoBehaviour
     private void Die()
     {
         ToRagdoll();
-        _died = true;
+        _isDied = true;
     }
     public IEnumerator Puke()
     {
+        _isPuke = true;
         _pukeParticle.Play();
         while(_pukeParticle.isPlaying)
         {
             _speedCom.Stop();
             yield return _waitForFixedUpdate;
         }
+        _isPuke = false;
     }
 }

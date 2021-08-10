@@ -6,7 +6,7 @@ public class SpeedComponent: MonoBehaviour
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _speedPerClick;
     [SerializeField] private float _speedReduction;
-    [SerializeField] float _baseSpeedReduction;
+    [SerializeField] private float _baseSpeedReduction;
 
     private bool _isStop;
 
@@ -48,7 +48,7 @@ public class SpeedComponent: MonoBehaviour
     }
     private void ChangeSpeedReduction()
     {
-        _speedReduction = (Speed / _maxSpeed) * 0.1f + _baseSpeedReduction;
+        _speedReduction = (Speed / _maxSpeed) * 0.2f + _baseSpeedReduction;
     }
     private void Validate()
     {

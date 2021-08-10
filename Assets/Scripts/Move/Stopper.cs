@@ -4,16 +4,13 @@ using UnityEngine;
 public class Stopper : MonoBehaviour
 {
     [SerializeField] private float _stopDistance = 10;
-
     private SpeedComponent _speedCom;
-    private Player _player;
 
     private void Start()
     {
         _speedCom = GetComponent<SpeedComponent>();
-        _player = FindObjectOfType<Player>();
     }
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         TryStop();
     }
@@ -28,6 +25,21 @@ public class Stopper : MonoBehaviour
     }
     private bool CheckForStop()
     {
-        return ((Distance.Value <= _stopDistance) && Mover.NeedOneTimeStop) || Player.Died;
+        if ((Distance.Value <= _stopDistance) && Mover.NeedOneTimeStop)
+        {
+            Stop1Event.ActivateEvent();
+            return true;
+        }
+        else if(Player.IsDied || Player.IsPuke)
+        {
+            return true;
+        }
+        return ((Distance.Value <= _stopDistance) && Mover.NeedOneTimeStop) || Player.IsDied;
     }
+
+    public float GetDelta()
+    {        
+        return _stopDistance - Distance.Value;
+    }
+
 }

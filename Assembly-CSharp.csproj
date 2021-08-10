@@ -72,18 +72,22 @@
     <Compile Include="Assets\Scripts\Food\Logic\FoodSpawner.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\InspectorFoodSpawnData.cs" />
     <Compile Include="Assets\Scripts\Move\Stopper.cs" />
-    <Compile Include="Assets\Scripts\Food\Logic\FoodOnClick.cs" />
+    <Compile Include="Assets\Scripts\Events\Stop2Event.cs" />
+    <Compile Include="Assets\Scripts\Food\Logic\FoodOnClickController.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\ServiceFiles\FoodTransformSpawnData.cs" />
     <Compile Include="Assets\Scripts\Move\Mover.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\FoodManager.cs" />
     <Compile Include="Assets\Scripts\Road\Road.cs" />
     <Compile Include="Assets\Scripts\Food\NeedConstruction.cs" />
     <Compile Include="Assets\Scripts\Move\Distance.cs" />
+    <Compile Include="Assets\Scripts\Events\Stop1Event.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\Player\ClicableZone.cs" />
     <Compile Include="Assets\Scripts\UI\FoodView.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\FoodComparer.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\ServiceFiles\FoodSpawnData.cs" />
+    <Compile Include="Assets\Scripts\Food\Logic\FoodOnClickFunctions.cs" />
+    <Compile Include="Assets\Scripts\Food\Logic\UsingNewCoroutines.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Scripts\DoLIst.txt" />
