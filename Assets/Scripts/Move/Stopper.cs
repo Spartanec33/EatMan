@@ -6,10 +6,12 @@ public class Stopper : MonoBehaviour
     [SerializeField] private float _stopDistance = 10;
 
     private SpeedComponent _speedCom;
+    private Distance _distance;
 
     private void Start()
     {
         _speedCom = GetComponent<SpeedComponent>();
+        _distance = FindObjectOfType<Distance>();
     }
     private void LateUpdate()
     {
@@ -26,25 +28,26 @@ public class Stopper : MonoBehaviour
     }
     private bool CheckForStop()
     {
-        if ((Distance.Value <= _stopDistance) && Mover.NeedOneTimeStop)
+        var distance = _distance.Value;
+        if ((distance <= _stopDistance) && Mover.NeedOneTimeStop)
         {
-            CorrectEvent.ActivateEvent(GetDelta());
+            CorrectEvent.ActivateEvent(GetDelta(distance));
             return true;
         }
         else if(Player.IsDied || Player.IsPuke)
         {
             return true;
         }
-        else if (FoodOnClickController.IsHaveTarget == false && Distance.Value <= _stopDistance)
+        else if (FoodOnClickController.IsHaveTarget == false && distance <= _stopDistance)
         {
             return true;
         }
-        return ((Distance.Value <= _stopDistance) && Mover.NeedOneTimeStop);
+        return ((distance <= _stopDistance) && Mover.NeedOneTimeStop);
     }
 
-    public float GetDelta()
+    public float GetDelta(float distance)
     {        
-        return _stopDistance - Distance.Value;
+        return _stopDistance - distance;
     }
 
 }

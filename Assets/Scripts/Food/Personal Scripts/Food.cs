@@ -15,6 +15,11 @@ public class Food : ServiceElementsForFood
         GetComponent<BoxCollider>().isTrigger = true;
     }
 
+    public void Eat()
+    {
+        Destroy(gameObject);
+    }
+
     private void OnMouseDown()
     {
         if (!Player.IsDied)

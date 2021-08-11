@@ -44,6 +44,7 @@ public class FoodOnClickController : UsingNewCoroutines
         _isCoroutineActive = true;
         _canChangeTarget = true;
         Mover.NeedOneTimeStop = false;
+
         yield return StartCoroutineAndWaitIt(_func.ChangeTransform(food));
 
 
@@ -51,7 +52,7 @@ public class FoodOnClickController : UsingNewCoroutines
 
         if (FoodComparer.Compare(food) != true)
         {
-            Destroy(food.gameObject);
+            food.Eat();
             _canChangeTarget = false;
             _isHaveTarget = false;
             yield return StartCoroutineAndWaitIt(_player.Puke());
@@ -63,21 +64,20 @@ public class FoodOnClickController : UsingNewCoroutines
             _speedCom.Stop();
             yield return _waitForFixedUpdate;
         }
+
         _canChangeTarget = false;
 
+        food.Eat();
         FoodSpawner.Delete();
         FoodSpawner.Spawn();
         _hungerSystem.AddSatiety();
 
         //действия по итогу сравнения
-
-
         _isCoroutineActive = false;
-        _isHaveTarget = false;
-        yield return StartCoroutineAndWaitIt(_func.UndoTransform());
-
+        _isHaveTarget = false;                    
         Mover.NeedOneTimeStop = true;
 
+        yield return StartCoroutineAndWaitIt(_func.UndoTransform());
     }
     public void OnClick(Food food)
     {
@@ -93,8 +93,8 @@ public class FoodOnClickController : UsingNewCoroutines
 
     private new void StopAllCoroutinesOfThisClass()
     {
-        base.StopAllCoroutinesOfThisClass();
         _isCoroutineActive = false;
         _isHaveTarget = false;
+        base.StopAllCoroutinesOfThisClass();
     }
 }

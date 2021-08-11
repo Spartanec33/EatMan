@@ -47,7 +47,6 @@ public class Player : MonoBehaviour
             item.isKinematic = false;
             item.velocity = new Vector3(0, 0, _speedCom.Speed / 10);
         }
-        _speedCom.Stop();
     }
     private void Die()
     {
@@ -60,7 +59,6 @@ public class Player : MonoBehaviour
         _pukeParticle.Play();
         while(_pukeParticle.isPlaying)
         {
-            _speedCom.Stop();
             yield return _waitForFixedUpdate;
         }
         _isPuke = false;

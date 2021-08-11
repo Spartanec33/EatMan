@@ -5,7 +5,6 @@ public class Mover : NeedConstruction
     public static bool NeedOneTimeStop = true;
     private Road _road;
     private SpeedComponent _speedCom;
-    private Stopper _stopper;
 
     private new void OnEnable()
     {
@@ -23,7 +22,6 @@ public class Mover : NeedConstruction
     {
         _speedCom = GetComponent<SpeedComponent>();
         _road = FindObjectOfType<Road>();
-        _stopper = FindObjectOfType<Stopper>();
     }
     private void FixedUpdate()
     {

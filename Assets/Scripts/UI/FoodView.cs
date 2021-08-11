@@ -14,10 +14,12 @@ public class FoodView : NeedConstruction
     private Vector3 _startPos;
     private Vector3 _finishPos;
     private bool _isCoroutineActive = false;
+    private Distance _distance;
     private readonly WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
 
     private void Start()
     {
+        _distance = FindObjectOfType<Distance>();
         _startPos = transform.position;
         var RectTrans = gameObject.GetComponent<RectTransform>();
         var anchorDelta = RectTrans.anchorMax.y - RectTrans.anchorMin.y;
@@ -25,16 +27,16 @@ public class FoodView : NeedConstruction
     }
     private void LateUpdate()
     {
-        
+        var distance = _distance.Value;
         if (_constraction!=null)
         {
             _camera.transform.position = _constraction.transform.position + _offset;
         }
 
 
-        if (Distance.Value < _distanceToHide && _isCoroutineActive == false)
+        if (distance < _distanceToHide && _isCoroutineActive == false)
             StartCoroutine(Move(_finishPos));
-        else if ((Distance.Value > _distanceToHide && _isCoroutineActive == true))
+        else if ((distance > _distanceToHide && _isCoroutineActive == true))
         {
             StartCoroutine(Move(_startPos));
             _isCoroutineActive = false;
@@ -54,6 +56,8 @@ public class FoodView : NeedConstruction
         {
             yield return _waitForFixedUpdate;
             var progress = (coveredDistance / allWay);
+            if (progress>1)
+                progress = 1;
             var pos = Vector3.Lerp(viewPos, finishPos, progress);
             transform.position = pos;
             coveredDistance += (speed * Time.deltaTime);
