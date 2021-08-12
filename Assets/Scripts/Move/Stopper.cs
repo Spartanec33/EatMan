@@ -11,7 +11,7 @@ public class Stopper : MonoBehaviour
     private void Start()
     {
         _speedCom = GetComponent<SpeedComponent>();
-        _distance = FindObjectOfType<Distance>();
+        _distance = GetComponent<Distance>();
     }
     private void LateUpdate()
     {

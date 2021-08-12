@@ -25,4 +25,5 @@ public class Food : ServiceElementsForFood
         if (!Player.IsDied)
             FoodClickEvent.ActivateEvent(this);
     }
+
 }
