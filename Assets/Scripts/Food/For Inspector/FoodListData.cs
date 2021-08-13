@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public class FoodListData : MonoBehaviour
 {
     [SerializeField] private Food[] _foods;
@@ -14,7 +13,5 @@ public class FoodListData : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.V))
             FoodSpawner.Delete();
-
     }
-
 }
