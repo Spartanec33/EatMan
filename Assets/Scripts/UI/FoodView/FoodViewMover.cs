@@ -14,11 +14,18 @@ public class FoodViewMover : MonoBehaviour
     private Distance _distance;
     private FoodView _foodView;
 
+    private void OnEnable()
+    {
+        ChangeResolutionEvent.OnAction += InitMovePos;
+    }
+    private void OnDisable()
+    {
+        ChangeResolutionEvent.OnAction -= InitMovePos;
+    }
     private void Start()
     {
         _distance = FindObjectOfType<Distance>();
         _foodView = GetComponent<FoodView>();
-        InitMovePos();
     }
 
     private void Update()
@@ -56,10 +63,14 @@ public class FoodViewMover : MonoBehaviour
     }
     private void InitMovePos()
     {
-        _startPos = transform.position;
-        Debug.Log(_foodView.RectTrans);
+        var startPosX = (_foodView.RectTrans.anchorMin.x + ((_foodView.RectTrans.anchorMax.x - _foodView.RectTrans.anchorMin.x) / 2)) * _foodView.Canvas.pixelRect.width;
+        var startPosY = (_foodView.RectTrans.anchorMin.y + ((_foodView.RectTrans.anchorMax.y - _foodView.RectTrans.anchorMin.y) / 2)) * _foodView.Canvas.pixelRect.height;
+        _startPos = new Vector3(startPosX, startPosY);
 
         var anchorDelta = _foodView.RectTrans.anchorMax.y - _foodView.RectTrans.anchorMin.y;
-        _finishPos = new Vector3(_startPos.x, _foodView.Canvas.pixelRect.height + anchorDelta * _foodView.Canvas.pixelRect.height);
+        _finishPos = new Vector3(_startPos.x, _foodView.Canvas.pixelRect.height + anchorDelta * _foodView.Canvas.pixelRect.height*2);
+
+        if (_isCoroutineActive==true)
+            transform.position = _finishPos;
     }
 }

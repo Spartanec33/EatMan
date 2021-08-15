@@ -39,7 +39,7 @@ public class FoodView : MonoBehaviour, IPointerDownHandler
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-
+            Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere),hit.point,new Quaternion());
             if (hit.collider.GetComponent<Food>())
             {
                 Food food = hit.collider.GetComponent<Food>();
@@ -50,9 +50,11 @@ public class FoodView : MonoBehaviour, IPointerDownHandler
     }
     private Vector2 Convert(Vector2 pressPosition)
     {
-        var minA = _rectTrans.anchorMin.y;
+        var minAY = _rectTrans.anchorMin.y;
+        var minAX = _rectTrans.anchorMin.x;
         var cHeight = _canvas.pixelRect.height;
-        return new Vector2(pressPosition.x, pressPosition.y - cHeight * minA);
+        var cWidth = _canvas.pixelRect.width;
+        return new Vector2(pressPosition.x - cWidth * minAX, pressPosition.y - cHeight * minAY); 
     }
     private void ChangeTextureResolution()
     { 
