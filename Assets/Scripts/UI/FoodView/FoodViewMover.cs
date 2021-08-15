@@ -1,0 +1,65 @@
+﻿using System.Collections;
+using UnityEngine;
+
+[RequireComponent(typeof(FoodView))]
+public class FoodViewMover : MonoBehaviour
+{
+    [SerializeField] private float _timeForMove;
+    [SerializeField] private float _distanceToHide;
+
+    private Vector3 _startPos;
+    private Vector3 _finishPos;
+    private bool _isCoroutineActive = false;
+    private readonly WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
+    private Distance _distance;
+    private FoodView _foodView;
+
+    private void Start()
+    {
+        _distance = FindObjectOfType<Distance>();
+        _foodView = GetComponent<FoodView>();
+        InitMovePos();
+    }
+
+    private void Update()
+    {
+        var distance = _distance.Value;
+        ViewMover(distance);
+    }
+    private void ViewMover(float distance)
+    {
+        if (distance < _distanceToHide && _isCoroutineActive == false)
+            StartCoroutine(Move(_finishPos));
+        else if ((distance > _distanceToHide && _isCoroutineActive == true))
+        {
+            StartCoroutine(Move(_startPos));
+            _isCoroutineActive = false;
+
+        }
+    }
+    private IEnumerator Move(Vector3 finishPos)
+    {
+        _isCoroutineActive = true;
+        float allWay = Vector3.Distance(transform.position, finishPos);
+        float speed = allWay / _timeForMove;
+        float coveredDistance = 0;
+        Vector3 viewPos = transform.position;
+        while (coveredDistance <= allWay)
+        {
+            yield return _waitForFixedUpdate;
+            var progress = (coveredDistance / allWay);
+            if (progress > 1)
+                progress = 1;
+            transform.position = Vector3.Lerp(viewPos, finishPos, progress);
+            coveredDistance += (speed * Time.deltaTime);
+        }
+    }
+    private void InitMovePos()
+    {
+        _startPos = transform.position;
+        Debug.Log(_foodView.RectTrans);
+
+        var anchorDelta = _foodView.RectTrans.anchorMax.y - _foodView.RectTrans.anchorMin.y;
+        _finishPos = new Vector3(_startPos.x, _foodView.Canvas.pixelRect.height + anchorDelta * _foodView.Canvas.pixelRect.height);
+    }
+}

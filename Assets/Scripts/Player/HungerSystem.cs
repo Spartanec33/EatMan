@@ -22,9 +22,11 @@ public class HungerSystem : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
-        AddHunger();
-        Validate();
+        if (Player.IsDied != true)
+        {
+            AddHunger();
+            Validate();
+        }
     }
     public void AddSatiety()
     {
@@ -38,8 +40,11 @@ public class HungerSystem : MonoBehaviour
     private void AddHunger() => Satiety -= _hungerForAdd;
     private void Validate()
     {
-        if (Satiety < 0 && !Player.IsDied)
+        if (Satiety < 0)
+        {
             DieEvent.ActivateEvent();
+            Satiety = 0;
+        }
         else if (Satiety > _maxSatiety)
             Satiety = _maxSatiety;
     }
