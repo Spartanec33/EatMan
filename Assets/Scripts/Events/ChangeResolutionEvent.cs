@@ -1,9 +1,12 @@
-﻿public static class ChangeResolutionEvent
+﻿namespace UseEvents
 {
-    public static event Change OnAction;
-    public static void ActivateEvent()
+    public static class ChangeResolutionEvent
     {
-        if (OnAction != null)
-            OnAction();
+        public static event Change OnAction;
+        public static void ActivateEvent()
+        {
+            if (OnAction != null)
+                OnAction();
+        }
     }
 }

@@ -1,23 +1,25 @@
 using System;
+using UseFoodComponent.Personal;
 
-
-public static class FoodComparer
+namespace UseFoodComponent.Logic
 {
-
-    public static Food TargetFood { get; set; }
-    public static string[] TargetProperties { get; set; }
-
-    public static bool Compare(Food clickedFood)
+    public static class FoodComparer
     {
-        
-        string[] clickedProperties = FoodGetter.GetProperties(clickedFood);
+        public static Food TargetFood { get; set; }
+        public static string[] TargetProperties { get; set; }
 
-        for (int i = 0; i < TargetProperties.Length; i++)
+        public static bool Compare(Food clickedFood)
         {
-            if (Array.IndexOf(clickedProperties, TargetProperties[i]) == -1)
-                return false;
+
+            string[] clickedProperties = FoodGetter.GetProperties(clickedFood);
+
+            for (int i = 0; i < TargetProperties.Length; i++)
+            {
+                if (Array.IndexOf(clickedProperties, TargetProperties[i]) == -1)
+                    return false;
+            }
+            return true;
         }
-        return true;
     }
 }
 

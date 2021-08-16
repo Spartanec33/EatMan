@@ -1,11 +1,15 @@
 using UnityEngine;
+using UseRoadComponent;
 
-[RequireComponent(typeof(Distance))]
-[RequireComponent(typeof(Mover))]
-[RequireComponent(typeof(SpeedComponent))]
-[RequireComponent(typeof(RoadRepeater))]
-[RequireComponent(typeof(Stopper))]
-public class MoveManager : MonoBehaviour
+namespace UseMove
 {
+    [RequireComponent(typeof(Distance))]
+    [RequireComponent(typeof(Mover))]
+    [RequireComponent(typeof(SpeedComponent))]
+    [RequireComponent(typeof(RoadRepeater))]
+    [RequireComponent(typeof(Stopper))]
+    public class MoveManager : MonoBehaviour
+    {
 
+    }
 }

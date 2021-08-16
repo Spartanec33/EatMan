@@ -1,10 +1,13 @@
-﻿public delegate void Change();
-public static class ChangeConstructionEvent
-{
-    public static event Change OnAction;
-    public static void ActivateEvent()
+﻿namespace UseEvents 
+{ 
+    public delegate void Change();
+    public static class ChangeConstructionEvent
     {
-        if (OnAction != null)
-            OnAction();
+        public static event Change OnAction;
+        public static void ActivateEvent()
+        {
+            if (OnAction != null)
+                OnAction();
+        }
     }
 }

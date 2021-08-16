@@ -1,17 +1,22 @@
 ﻿
 using UnityEngine;
-public class StandFrontConstruction : NeedConstruction
+using UseFoodComponent.NeedConstruction;
+
+namespace UseMove
 {
-    [SerializeField] private Vector3 _offset;
-    private void Update()
+    public class StandFrontConstruction : NeedConstruction
     {
-        Stand();
-    }
-    private void Stand()
-    {
-        if (_constraction != null)
+        [SerializeField] private Vector3 _offset;
+        private void Update()
         {
-            transform.position = _constraction.transform.position + _offset;
+            Stand();
+        }
+        private void Stand()
+        {
+            if (_constraction != null)
+            {
+                transform.position = _constraction.transform.position + _offset;
+            }
         }
     }
 }

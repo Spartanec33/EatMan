@@ -1,10 +1,13 @@
-﻿public delegate void Die();
-public static class DieEvent
+﻿namespace UseEvents
 {
-    public static event Die OnAction;
-    public static void ActivateEvent()
+    public delegate void Die();
+    public static class DieEvent
     {
-        if (OnAction != null)
-            OnAction();
+        public static event Die OnAction;
+        public static void ActivateEvent()
+        {
+            if (OnAction != null)
+                OnAction();
+        }
     }
 }

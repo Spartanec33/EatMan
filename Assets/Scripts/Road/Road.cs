@@ -1,6 +1,8 @@
 using UnityEngine;
 
-
-public class Road : MonoBehaviour
+namespace UseRoadComponent
 {
+    public class Road : MonoBehaviour
+    {
+    }
 }

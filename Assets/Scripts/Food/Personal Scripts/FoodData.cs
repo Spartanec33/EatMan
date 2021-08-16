@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewFoodData", menuName = "FoodData", order = 0)]
-public class FoodData : ScriptableObject
+namespace UseFoodComponent.Personal
 {
-    [SerializeField] private Type _type;
-    [SerializeField] private Color _color;
-    [SerializeField] private Shape _shape;
+    [CreateAssetMenu(fileName = "NewFoodData", menuName = "FoodData", order = 0)]
+    public class FoodData : ScriptableObject
+    {
+        [SerializeField] private Type _type;
+        [SerializeField] private Color _color;
+        [SerializeField] private Shape _shape;
+    }
 }
-
 

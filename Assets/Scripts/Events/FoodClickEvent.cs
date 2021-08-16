@@ -1,10 +1,15 @@
-﻿public delegate void ClickOnFood(Food food);
-public static class FoodClickEvent
+﻿namespace UseEvents
 {
-    public static event ClickOnFood OnAction;
-    public static void ActivateEvent(Food food)
+    using UseFoodComponent.Personal;
+
+    public delegate void ClickOnFood(Food food);
+    public static class FoodClickEvent
     {
-        if (OnAction != null)
-            OnAction(food);
+        public static event ClickOnFood OnAction;
+        public static void ActivateEvent(Food food)
+        {
+            if (OnAction != null)
+                OnAction(food);
+        }
     }
 }

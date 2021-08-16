@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using UseFoodComponent.ForInspector.Service;
 
-public class InspectorFoodSpawnData : MonoBehaviour
+namespace UseFoodComponent.ForInspector
 {
-    [SerializeField] private FoodSpawnData _data;
-    public FoodSpawnData Data => _data;
+    public class InspectorFoodSpawnData : MonoBehaviour
+    {
+        [SerializeField] private FoodSpawnData _data;
+        public FoodSpawnData Data => _data;
+    }
 }
 

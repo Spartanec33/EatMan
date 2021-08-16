@@ -1,29 +1,33 @@
 using UnityEngine;
+using UseEvents;
+using UsePlayerComponents;
 
-[RequireComponent(typeof(Animator))]
-public class Food : ServiceElementsForFood
+namespace UseFoodComponent.Personal
 {
-    [SerializeField] private FoodData _foodData;
-
-    public FoodData FoodData => _foodData;
-
-    public void Init(RuntimeAnimatorController controller)
+    [RequireComponent(typeof(Animator))]
+    public class Food : ServiceElementsForFood
     {
-        _animator = GetComponent<Animator>();
-        _animator.runtimeAnimatorController = controller;
-        _animator.applyRootMotion = true;
-        GetComponent<BoxCollider>().isTrigger = true;
-    }
+        [SerializeField] private FoodData _foodData;
 
-    public void Eat()
-    {
-        Destroy(gameObject);
-    }
+        public FoodData FoodData => _foodData;
 
-    private void OnMouseDown()
-    {
-        if (!Player.IsDied)
-            FoodClickEvent.ActivateEvent(this);
-    }
+        public void Init(RuntimeAnimatorController controller)
+        {
+            _animator = GetComponent<Animator>();
+            _animator.runtimeAnimatorController = controller;
+            _animator.applyRootMotion = true;
+            GetComponent<BoxCollider>().isTrigger = true;
+        }
 
+        public void Eat()
+        {
+            Destroy(gameObject);
+        }
+
+        private void OnMouseDown()
+        {
+            if (!Player.IsDied)
+                FoodClickEvent.ActivateEvent(this);
+        }
+    }
 }

@@ -1,10 +1,13 @@
-﻿public delegate void Correct(float delta);
-public static class CorrectEvent
+﻿namespace UseEvents
 {
-    public static event Correct OnAction;
-    public static void ActivateEvent(float delta)
+    public delegate void Correct(float delta);
+    public static class CorrectEvent
     {
-        if (OnAction != null)
-            OnAction(delta);
+        public static event Correct OnAction;
+        public static void ActivateEvent(float delta)
+        {
+            if (OnAction != null)
+                OnAction(delta);
+        }
     }
 }

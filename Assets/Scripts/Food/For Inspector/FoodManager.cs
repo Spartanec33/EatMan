@@ -1,10 +1,12 @@
 using UnityEngine;
+using UseFoodComponent.Logic.OnClick;
 
-
-[RequireComponent(typeof(FoodListData))]
-[RequireComponent(typeof(FoodSpawnData))]
-[RequireComponent(typeof(FoodOnClickController))]
-[RequireComponent(typeof(InspectorFoodSpawnData))]
-public class FoodManager : MonoBehaviour
+namespace UseFoodComponent.ForInspector
 {
+    [RequireComponent(typeof(FoodListData))]
+    [RequireComponent(typeof(FoodOnClickController))]
+    [RequireComponent(typeof(InspectorFoodSpawnData))]
+    public class FoodManager : MonoBehaviour
+    {
+    }
 }

@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
+using UseFoodComponent.Personal;
+using UseFoodComponent.Logic;
 
-public class FoodListData : MonoBehaviour
+namespace UseFoodComponent.ForInspector
 {
-    [SerializeField] private Food[] _foods;
-
-    public Food[] GetListData => _foods;
-
-    private void Update()
+    public class FoodListData : MonoBehaviour
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            FoodSpawner.Spawn();
+        [SerializeField] private Food[] _foods;
 
-        if (Input.GetKeyDown(KeyCode.V))
-            FoodSpawner.Delete();
+        public Food[] GetListData => _foods;
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                FoodSpawner.Spawn();
+
+            if (Input.GetKeyDown(KeyCode.V))
+                FoodSpawner.Delete();
+        }
     }
 }

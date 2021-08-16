@@ -1,51 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UseEvents;
 
-public class HungerSystem : MonoBehaviour
+namespace UsePlayerComponents
 {
-    [SerializeField] private float _maxSatiety;
-    [SerializeField] private float _hungerForAdd;
-    [SerializeField] private float _minSatietyWhenEating;
-    [SerializeField] private float _maxSatietyWhenEating;
+    public class HungerSystem : MonoBehaviour
+    {
+        [SerializeField] private float _maxSatiety;
+        [SerializeField] private float _hungerForAdd;
+        [SerializeField] private float _minSatietyWhenEating;
+        [SerializeField] private float _maxSatietyWhenEating;
 
-    [SerializeField] private float _satiety;
-    public float Satiety
-    {
-        get { return _satiety; }
-        private set { _satiety = value; }
-    }
+        [SerializeField] private float _satiety;
+        public float Satiety
+        {
+            get { return _satiety; }
+            private set { _satiety = value; }
+        }
 
-    private void Start()
-    {
-        AddSatiety(_maxSatiety);
-    }
-    private void FixedUpdate()
-    {
-        if (Player.IsDied != true)
+        private void Start()
         {
-            AddHunger();
-            Validate();
+            AddSatiety(_maxSatiety);
         }
-    }
-    public void AddSatiety()
-    {
-        var value = Random.Range(_minSatietyWhenEating, _maxSatietyWhenEating);
-        Satiety += value;
-    }
-    public void AddSatiety(float value)
-    {
-        Satiety += value;
-    }
-    private void AddHunger() => Satiety -= _hungerForAdd;
-    private void Validate()
-    {
-        if (Satiety < 0)
+        private void FixedUpdate()
         {
-            DieEvent.ActivateEvent();
-            Satiety = 0;
+            if (Player.IsDied != true)
+            {
+                AddHunger();
+                Validate();
+            }
         }
-        else if (Satiety > _maxSatiety)
-            Satiety = _maxSatiety;
+        public void AddSatiety()
+        {
+            var value = Random.Range(_minSatietyWhenEating, _maxSatietyWhenEating);
+            Satiety += value;
+        }
+        public void AddSatiety(float value)
+        {
+            Satiety += value;
+        }
+        private void AddHunger() => Satiety -= _hungerForAdd;
+        private void Validate()
+        {
+            if (Satiety < 0)
+            {
+                DieEvent.ActivateEvent();
+                Satiety = 0;
+            }
+            else if (Satiety > _maxSatiety)
+                Satiety = _maxSatiety;
+        }
     }
 }

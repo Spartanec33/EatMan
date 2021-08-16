@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UseMove;
 
-public class ClicableZone : MonoBehaviour
+namespace UsePlayerComponents
 {
-    private SpeedComponent _speedCom;
-    private void Start()
+    public class ClicableZone : MonoBehaviour
     {
-        _speedCom = GameObject.FindObjectOfType<SpeedComponent>();
-    }
-    private void OnMouseDown()
-    {
-        _speedCom.AddSpeedPerClick();
+        private SpeedComponent _speedCom;
+        private void Start()
+        {
+            _speedCom = GameObject.FindObjectOfType<SpeedComponent>();
+        }
+        private void OnMouseDown()
+        {
+            _speedCom.AddSpeedPerClick();
+        }
     }
 }
