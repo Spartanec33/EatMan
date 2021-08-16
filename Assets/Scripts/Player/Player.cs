@@ -11,6 +11,7 @@ namespace UsePlayerComponents
     public class Player : MonoBehaviour
     {
         [SerializeField] private Rigidbody[] _rigidbodies;
+        [SerializeField] private GameObject[] _touchZones;
         [SerializeField] private ParticleSystem _pukeParticle;
         [SerializeField] private AudioSource _pukeSound;
 
@@ -50,6 +51,10 @@ namespace UsePlayerComponents
             {
                 item.isKinematic = false;
                 item.velocity = new Vector3(0, 0, _speedCom.Speed / 10);
+            }
+            foreach (var item in _touchZones)
+            {
+                item.SetActive(false);
             }
         }
         private void Die()
