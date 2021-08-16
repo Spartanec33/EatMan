@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Move\StandFrontConstruction.cs" />
     <Compile Include="Assets\Scripts\Move\SpeedComponent.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\UI\Resolution\CameraDynamicResolution.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\OnClick\FoodOnClickController.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\OnClick\FoodOnClickFunctions.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\FoodGetter.cs" />
@@ -67,8 +68,9 @@
     <Compile Include="Assets\Scripts\Player\HungerSystem.cs" />
     <Compile Include="Assets\Scripts\Food\Personal Scripts\Food.cs" />
     <Compile Include="Assets\Scripts\Events\FoodClickEvent.cs" />
+    <Compile Include="Assets\Scripts\UI\FoodView\FoodViewClick.cs" />
     <Compile Include="Assets\Scripts\Move\MoveManager.cs" />
-    <Compile Include="Assets\Scripts\Food\Personal Scripts\FoodData.cs" />
+    <Compile Include="Assets\Scripts\Food\Personal Scripts\FoodPropertiesData.cs" />
     <Compile Include="Assets\Scripts\Road\RoadRepeater.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\FoodListData.cs" />
     <Compile Include="Assets\Scripts\Events\ChangeConstructionEvent.cs" />
@@ -89,10 +91,8 @@
     <Compile Include="Assets\Scripts\Player\ClicableZone.cs" />
     <Compile Include="Assets\Scripts\UI\FoodView\FoodViewMover.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\FoodComparer.cs" />
-    <Compile Include="Assets\Scripts\Food\For Inspector\ServiceFiles\FoodSpawnData.cs" />
-    <Compile Include="Assets\Scripts\UI\FoodView\FoodViewClick.cs" />
-    <Compile Include="Assets\Scripts\UI\Resolution\CameraDynamicResolution.cs" />
     <Compile Include="Assets\Scripts\UI\Resolution\CheckChangeResolution.cs" />
+    <Compile Include="Assets\Scripts\Food\For Inspector\ServiceFiles\FoodSpawnData.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

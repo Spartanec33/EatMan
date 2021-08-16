@@ -4,6 +4,7 @@ using UseEvents;
 using UseFoodComponent.Personal;
 using UseMove;
 using UsePlayerComponents;
+using UseRoadComponent;
 
 namespace UseFoodComponent.Logic.OnClick
 {
@@ -13,6 +14,7 @@ namespace UseFoodComponent.Logic.OnClick
         [SerializeField] private float _coroutineStep = 0.05f;
         [SerializeField] private float _newStopDistance = 2;
         [SerializeField] private float _lengthReturnPath = 15;
+        [Range(0,360)][SerializeField] private float _pukeAngle;
 
         private Player _player;
         private FoodOnClickController _controller;
@@ -108,16 +110,19 @@ namespace UseFoodComponent.Logic.OnClick
             IsGoToFood = false;
         }
 
-        private IEnumerator Rotate(Quaternion finalRotation)
+        public IEnumerator Rotate(Quaternion finalRotation)
         {
             float progress = 0;
             var startRotation = _player.transform.rotation;
-            while (progress < 1)
+            while (progress <= 1)
             {
                 yield return _waitForFixedUpdate;
                 _player.transform.rotation = Quaternion.Lerp(startRotation, finalRotation, progress);
                 progress += _coroutineStep;
             }
+            if (progress>=1)
+                _player.transform.rotation = finalRotation;
+            
         }
         private Quaternion GetFinalRotation(Vector3 point)
         {
@@ -128,6 +133,12 @@ namespace UseFoodComponent.Logic.OnClick
             _player.transform.rotation = startRotation;
             return finalRotation;
         }
-
+        public IEnumerator RotateToVomit()
+        {
+            
+            var direction = _player.transform.position.x < 0 / 2 ? 1 : -1;
+            var rotation = Quaternion.Euler(transform.rotation.x, _pukeAngle * direction, transform.rotation.z);
+            yield return _controller.StartCoroutineAndWaitIt(Rotate(rotation));
+        }
     }
 }

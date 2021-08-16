@@ -16,7 +16,7 @@ namespace UseFoodComponent.Logic
         public static Food[] GetFoods() => _foodListData.GetListData;
         public static string[] GetProperties(Food food)
         {
-            FoodData foodData = food.FoodData;
+            FoodPropertiesData foodData = food.FoodData;
             FieldInfo[] fields = foodData.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
 
             string[] res = new string[fields.Length];

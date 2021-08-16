@@ -10,6 +10,7 @@ namespace UseFoodComponent.ForInspector.Service
         [SerializeField] private int _numberOfPieces;
         [SerializeField] private FoodTransformSpawnData _transform;
         [SerializeField] private RuntimeAnimatorController _animController;
+        [SerializeField] private AudioSource _audioSourceEat;
 
         public float Offset => _offset;
         public int NumberOfPieces => _numberOfPieces;
@@ -19,6 +20,7 @@ namespace UseFoodComponent.ForInspector.Service
         public float ZMaxPosition => _transform.ZMaxPosition;
         public Quaternion ConstructionRotation => _transform.ConstructionRotation;
         public RuntimeAnimatorController AnimController => _animController;
+        public AudioSource AudioSourceEat => _audioSourceEat;
     }
 }
 

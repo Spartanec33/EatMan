@@ -1,6 +1,6 @@
-﻿namespace UseEvents
+﻿using UseFoodComponent.Personal;
+namespace UseEvents
 {
-    using UseFoodComponent.Personal;
 
     public delegate void ClickOnFood(Food food);
     public static class FoodClickEvent

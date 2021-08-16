@@ -61,7 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8630f910d643d4588a14231ab7d00c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _foodData: {fileID: 11400000, guid: 87a6bda2fa0dea340a8a073c2ebb55ed, type: 2}
+  _foodPropertiesData: {fileID: 11400000, guid: 87a6bda2fa0dea340a8a073c2ebb55ed,
+    type: 2}
+  _eatSound: {fileID: 8300000, guid: b0da932e2df46a049b57241b4c0357ef, type: 3}
 --- !u!95 &7408185070608166131
 Animator:
   serializedVersion: 3

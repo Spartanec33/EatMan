@@ -12,6 +12,7 @@ namespace UsePlayerComponents
     {
         [SerializeField] private Rigidbody[] _rigidbodies;
         [SerializeField] private ParticleSystem _pukeParticle;
+        [SerializeField] private AudioSource _pukeSound;
 
         private static bool _isDied;
         private static bool _isPuke;
@@ -59,11 +60,11 @@ namespace UsePlayerComponents
         public IEnumerator Puke()
         {
             _isPuke = true;
+            _pukeSound.Play();
             _pukeParticle.Play();
             while (_pukeParticle.isPlaying)
-            {
                 yield return _waitForFixedUpdate;
-            }
+            
             _isPuke = false;
         }
     }

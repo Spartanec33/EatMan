@@ -7,12 +7,14 @@ namespace UseFoodComponent.Personal
     [RequireComponent(typeof(Animator))]
     public class Food : ServiceElementsForFood
     {
-        [SerializeField] private FoodData _foodData;
+        [SerializeField] private FoodPropertiesData _foodPropertiesData;
 
-        public FoodData FoodData => _foodData;
+        private AudioSource _audioSource; 
+        public FoodPropertiesData FoodData => _foodPropertiesData;
 
-        public void Init(RuntimeAnimatorController controller)
+        public void Init(RuntimeAnimatorController controller, AudioSource audioSource)
         {
+            _audioSource = audioSource;
             _animator = GetComponent<Animator>();
             _animator.runtimeAnimatorController = controller;
             _animator.applyRootMotion = true;
@@ -21,6 +23,7 @@ namespace UseFoodComponent.Personal
 
         public void Eat()
         {
+            _audioSource.Play();
             Destroy(gameObject);
         }
 

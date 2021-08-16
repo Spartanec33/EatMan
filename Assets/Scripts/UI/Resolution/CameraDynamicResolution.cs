@@ -21,7 +21,6 @@ namespace UseUIComponents.Resolution
         private void OnDisable()
         {
             ChangeResolutionEvent.OnAction -= ChangeFov;
-            Debug.Log("отписка");
         }
 
         private void Start()

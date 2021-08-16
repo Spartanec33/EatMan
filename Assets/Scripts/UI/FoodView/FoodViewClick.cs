@@ -45,7 +45,6 @@ namespace UseUIComponents.FoodView
 
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), hit.point, new Quaternion());
                 if (hit.collider.GetComponent<Food>())
                 {
                     Food food = hit.collider.GetComponent<Food>();

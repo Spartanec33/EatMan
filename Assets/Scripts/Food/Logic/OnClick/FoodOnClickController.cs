@@ -60,6 +60,7 @@ namespace UseFoodComponent.Logic.OnClick
                 food.Eat();
                 _canChangeTarget = false;
                 _isHaveTarget = false;
+                StartCoroutineAndAddToList(_func.RotateToVomit());
                 yield return StartCoroutineAndWaitIt(_player.Puke());
             }
             _canChangeTarget = true;

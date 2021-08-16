@@ -13,6 +13,7 @@ namespace UseFoodComponent.Logic
         private static FoodSpawnData _data = _inspectordata.Data;
         private static Player _player = GameObject.FindObjectOfType<Player>();
         private static RuntimeAnimatorController _animController = _data.AnimController;
+        private static AudioSource _audioSourceEat = _data.AudioSourceEat;
         private static GameObject _construction;
         private static readonly Food[] _foods = FoodGetter.GetFoods();
 
@@ -81,7 +82,7 @@ namespace UseFoodComponent.Logic
                 void SpawnOneFood(Food spawningFood)
                 {
                     var food = GameObject.Instantiate(spawningFood, place, rotation);
-                    food.Init(_animController);
+                    food.Init(_animController, _audioSourceEat);
                     food.transform.SetParent(_construction.transform);
                 }
             }
