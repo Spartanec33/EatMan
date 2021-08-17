@@ -8,8 +8,9 @@ namespace UseFoodComponent.Personal
     public class Food : ServiceElementsForFood
     {
         [SerializeField] private FoodPropertiesData _foodPropertiesData;
+        [SerializeField] private ParticleSystem _eatParticle;
 
-        private AudioSource _audioSource; 
+        private AudioSource _audioSource;
         public FoodPropertiesData FoodData => _foodPropertiesData;
 
         public void Init(RuntimeAnimatorController controller, AudioSource audioSource)
@@ -21,9 +22,12 @@ namespace UseFoodComponent.Personal
             GetComponent<BoxCollider>().isTrigger = true;
         }
 
-        public void Eat()
+        public void Eat(bool withSound = true)
         {
-            _audioSource.Play();
+            Instantiate(_eatParticle,transform.position,transform.rotation);
+            if (withSound)
+                _audioSource.Play();
+            
             Destroy(gameObject);
         }
 

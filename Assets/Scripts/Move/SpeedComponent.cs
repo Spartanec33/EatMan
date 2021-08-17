@@ -29,6 +29,8 @@ namespace UseMove
                 _speed = value;
             }
         }
+        public float MaxSpeed => _maxSpeed;
+
         private void FixedUpdate()
         {
             ChangeSpeedReduction();

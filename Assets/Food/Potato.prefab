@@ -142,7 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _foodPropertiesData: {fileID: 11400000, guid: 7191971ea65782340a0bfd2b96a14d1a,
     type: 2}
-  _eatSound: {fileID: 8300000, guid: b0da932e2df46a049b57241b4c0357ef, type: 3}
+  _eatParticle: {fileID: 4623778639793908415, guid: 2467110326ec3b54a9f2fe914e30816c,
+    type: 3}
 --- !u!95 &824911040338708652
 Animator:
   serializedVersion: 3

@@ -9,43 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: fc689c4a722a6bf47bbe6502b67a292a, type: 3}
   m_Name: FoodProperty-Sprite
   m_EditorClassIdentifier: Assembly-CSharp::FoodPropertiesMap
-  _foodProperties:
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
-  - Property: 
-    Image: {fileID: 0}
+  _type: 0
+  _color: 0
+  _shape: 0

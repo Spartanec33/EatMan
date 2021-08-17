@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\UI\Resolution\CameraDynamicResolution.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\OnClick\FoodOnClickController.cs" />
+    <Compile Include="Assets\Scripts\Player\Steps.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\OnClick\FoodOnClickFunctions.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\FoodGetter.cs" />
     <Compile Include="Assets\Scripts\Food\Personal Scripts\ServiceElementsForFood.cs" />
@@ -93,7 +94,7 @@
     <Compile Include="Assets\Scripts\Food\Logic\FoodComparer.cs" />
     <Compile Include="Assets\Scripts\UI\Resolution\CheckChangeResolution.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\ServiceFiles\FoodSpawnData.cs" />
-    <Compile Include="Assets\Scripts\Player\Steps.cs" />
+    <Compile Include="Assets\Scripts\Player\SpeedAdapt.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

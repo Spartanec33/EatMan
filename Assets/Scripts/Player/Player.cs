@@ -8,6 +8,7 @@ namespace UsePlayerComponents
     [RequireComponent(typeof(PlayerAnimation))]
     [RequireComponent(typeof(HungerSystem))]
     [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(SpeedAdapt))]
     public class Player : MonoBehaviour
     {
         [SerializeField] private Rigidbody[] _rigidbodies;

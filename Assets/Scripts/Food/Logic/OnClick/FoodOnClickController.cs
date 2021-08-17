@@ -57,7 +57,7 @@ namespace UseFoodComponent.Logic.OnClick
 
             if (FoodComparer.Compare(food) != true)
             {
-                food.Eat();
+                food.Eat(false);
                 _canChangeTarget = false;
                 _isHaveTarget = false;
                 StartCoroutineAndAddToList(_func.RotateToVomit());
