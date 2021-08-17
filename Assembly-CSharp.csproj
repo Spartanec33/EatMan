@@ -95,6 +95,14 @@
     <Compile Include="Assets\Scripts\UI\Resolution\CheckChangeResolution.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\ServiceFiles\FoodSpawnData.cs" />
     <Compile Include="Assets\Scripts\Player\SpeedAdapt.cs" />
+    <Compile Include="Assets\Scripts\UI\SpeedText.cs" />
+    <Compile Include="Assets\Scripts\Events\SpeedChangedEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\OnPlayerClickedEvent.cs" />
+    <Compile Include="Assets\Scripts\Move\ScoreCounter.cs" />
+    <Compile Include="Assets\Scripts\Events\ScoreChangedEvent.cs" />
+    <Compile Include="Assets\Scripts\UI\ScoreText.cs" />
+    <Compile Include="Assets\Scripts\UI\SatietyBar.cs" />
+    <Compile Include="Assets\Scripts\Events\SatietyChangedEvent.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

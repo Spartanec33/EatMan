@@ -11,14 +11,19 @@ namespace UsePlayerComponents
         [SerializeField] private float _hungerForAdd;
         [SerializeField] private float _minSatietyWhenEating;
         [SerializeField] private float _maxSatietyWhenEating;
-
         [SerializeField] private float _satiety;
-        public float Satiety
-        {
-            get { return _satiety; }
-            private set { _satiety = value; }
-        }
 
+        public float Satiety => _satiety;
+        public float MaxSatiety => _maxSatiety;
+
+        private void OnEnable()
+        {
+            SatietyChangedEvent.OnAction += Validate;
+        }
+        private void OnDisable()
+        {
+            SatietyChangedEvent.OnAction -= Validate;
+        }
         private void Start()
         {
             AddSatiety(_maxSatiety);
@@ -28,28 +33,34 @@ namespace UsePlayerComponents
             if (Player.IsDied != true)
             {
                 AddHunger();
-                Validate();
             }
         }
         public void AddSatiety()
         {
             var value = Random.Range(_minSatietyWhenEating, _maxSatietyWhenEating);
-            Satiety += value;
+            _satiety += value;
+            SatietyChangedEvent.ActivateEvent();
         }
         public void AddSatiety(float value)
         {
-            Satiety += value;
+            _satiety += value;
+            SatietyChangedEvent.ActivateEvent();
         }
-        private void AddHunger() => Satiety -= _hungerForAdd;
+        private void AddHunger()
+        {
+            _satiety -= _hungerForAdd;
+            SatietyChangedEvent.ActivateEvent();
+        }
+
         private void Validate()
         {
-            if (Satiety < 0)
+            if (_satiety < 0)
             {
                 DieEvent.ActivateEvent();
-                Satiety = 0;
+                _satiety = 0;
             }
-            else if (Satiety > _maxSatiety)
-                Satiety = _maxSatiety;
+            else if (_satiety > _maxSatiety)
+                _satiety = _maxSatiety;
         }
     }
 }

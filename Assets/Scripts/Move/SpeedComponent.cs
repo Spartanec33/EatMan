@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UseEvents;
 
 namespace UseMove
 {
@@ -31,6 +31,17 @@ namespace UseMove
         }
         public float MaxSpeed => _maxSpeed;
 
+        private void OnEnable()
+        {
+            SpeedChangedEvent.OnAction += Validate;
+            OnPlayerClickedEvent.OnAction += AddSpeedPerClick;
+        }
+        private void OnDisable()
+        {
+            SpeedChangedEvent.OnAction -= Validate;
+            OnPlayerClickedEvent.OnAction -= AddSpeedPerClick;
+        }
+
         private void FixedUpdate()
         {
             ChangeSpeedReduction();
@@ -38,18 +49,26 @@ namespace UseMove
             Validate();
         }
 
-        public void AddSpeedPerClick() => Speed += _speedPerClick;
+        private void AddSpeedPerClick()
+        {
+            Speed += _speedPerClick;
+            SpeedChangedEvent.ActivateEvent();
+        }
         public void Stop()
         {
             Speed = 0;
             IsStop = true;
+            SpeedChangedEvent.ActivateEvent();
         }
         public void UnStop() => IsStop = false;
 
         private void ReduceSpeed()
         {
             if (Speed > 0)
+            {
                 Speed -= _speedReduction;
+                SpeedChangedEvent.ActivateEvent();
+            }
         }
         private void ChangeSpeedReduction()
         {

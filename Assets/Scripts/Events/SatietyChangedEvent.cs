@@ -1,6 +1,7 @@
 ﻿namespace UseEvents
 {
-    public static class ChangeResolutionEvent
+    public delegate void ValueChanged();
+    public static class SatietyChangedEvent
     {
         public static event ValueChanged OnAction;
         public static void ActivateEvent()

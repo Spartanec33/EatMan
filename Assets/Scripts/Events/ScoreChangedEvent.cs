@@ -1,6 +1,6 @@
 ﻿namespace UseEvents
 {
-    public static class ChangeResolutionEvent
+    public static class ScoreChangedEvent
     {
         public static event ValueChanged OnAction;
         public static void ActivateEvent()
