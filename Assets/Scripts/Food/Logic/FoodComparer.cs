@@ -20,6 +20,11 @@ namespace UseFoodComponent.Logic
             }
             return true;
         }
+        public static void ChooseFood()
+        {
+            TargetFood = FoodGetter.GetRandomFood();
+            TargetProperties = FoodGetter.GetRandomProperties(FoodComparer.TargetFood);
+        }
     }
 }
 

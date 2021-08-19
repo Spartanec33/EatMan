@@ -62,8 +62,10 @@
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\UI\Resolution\CameraDynamicResolution.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\OnClick\FoodOnClickController.cs" />
+    <Compile Include="Assets\Scripts\Events\SpeedChangedEvent.cs" />
     <Compile Include="Assets\Scripts\Player\Steps.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\OnClick\FoodOnClickFunctions.cs" />
+    <Compile Include="Assets\Scripts\UI\SpeedText.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\FoodGetter.cs" />
     <Compile Include="Assets\Scripts\Food\Personal Scripts\ServiceElementsForFood.cs" />
     <Compile Include="Assets\Scripts\Player\HungerSystem.cs" />
@@ -75,13 +77,18 @@
     <Compile Include="Assets\Scripts\Road\RoadRepeater.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\FoodListData.cs" />
     <Compile Include="Assets\Scripts\Events\ChangeConstructionEvent.cs" />
+    <Compile Include="Assets\Scripts\Move\ScoreCounter.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\FoodSpawner.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\InspectorFoodSpawnData.cs" />
+    <Compile Include="Assets\Scripts\Events\SatietyChangedEvent.cs" />
     <Compile Include="Assets\Scripts\Move\Stopper.cs" />
+    <Compile Include="Assets\Scripts\UI\SatietyBar.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\ServiceFiles\FoodTransformSpawnData.cs" />
     <Compile Include="Assets\Scripts\Move\Mover.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\FoodManager.cs" />
+    <Compile Include="Assets\Scripts\Events\ScoreChangedEvent.cs" />
     <Compile Include="Assets\Scripts\Road\Road.cs" />
+    <Compile Include="Assets\Scripts\UI\ScoreText.cs" />
     <Compile Include="Assets\Scripts\Food\NeedConstruction.cs" />
     <Compile Include="Assets\Scripts\Move\Distance.cs" />
     <Compile Include="Assets\Scripts\Food\Personal Scripts\FoodPropertiesMap.cs" />
@@ -94,15 +101,9 @@
     <Compile Include="Assets\Scripts\Food\Logic\FoodComparer.cs" />
     <Compile Include="Assets\Scripts\UI\Resolution\CheckChangeResolution.cs" />
     <Compile Include="Assets\Scripts\Food\For Inspector\ServiceFiles\FoodSpawnData.cs" />
-    <Compile Include="Assets\Scripts\Player\SpeedAdapt.cs" />
-    <Compile Include="Assets\Scripts\UI\SpeedText.cs" />
-    <Compile Include="Assets\Scripts\Events\SpeedChangedEvent.cs" />
     <Compile Include="Assets\Scripts\Events\OnPlayerClickedEvent.cs" />
-    <Compile Include="Assets\Scripts\Move\ScoreCounter.cs" />
-    <Compile Include="Assets\Scripts\Events\ScoreChangedEvent.cs" />
-    <Compile Include="Assets\Scripts\UI\ScoreText.cs" />
-    <Compile Include="Assets\Scripts\UI\SatietyBar.cs" />
-    <Compile Include="Assets\Scripts\Events\SatietyChangedEvent.cs" />
+    <Compile Include="Assets\Scripts\Player\SpeedAdapt.cs" />
+    <Compile Include="Assets\Scripts\UI\Properties\PropertyiesViewController.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

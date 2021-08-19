@@ -13,17 +13,27 @@ namespace UsePlayerComponents
         [SerializeField] private float _maxSatietyWhenEating;
         [SerializeField] private float _satiety;
 
-        public float Satiety => _satiety;
+        public float Satiety
+        {
+            get 
+            {
+                return _satiety;
+            }
+            private set 
+            {
+                _satiety = value;
+                if (_satiety < 0)
+                {
+                    DieEvent.ActivateEvent();
+                    _satiety = 0;
+                }
+                else if (_satiety > _maxSatiety)
+                    _satiety = _maxSatiety;
+            }
+        }
+
         public float MaxSatiety => _maxSatiety;
 
-        private void OnEnable()
-        {
-            SatietyChangedEvent.OnAction += Validate;
-        }
-        private void OnDisable()
-        {
-            SatietyChangedEvent.OnAction -= Validate;
-        }
         private void Start()
         {
             AddSatiety(_maxSatiety);
@@ -38,29 +48,19 @@ namespace UsePlayerComponents
         public void AddSatiety()
         {
             var value = Random.Range(_minSatietyWhenEating, _maxSatietyWhenEating);
-            _satiety += value;
+            Satiety += value;
             SatietyChangedEvent.ActivateEvent();
         }
         public void AddSatiety(float value)
         {
-            _satiety += value;
+            Satiety += value;
             SatietyChangedEvent.ActivateEvent();
         }
         private void AddHunger()
         {
-            _satiety -= _hungerForAdd;
+            Satiety -= _hungerForAdd;
             SatietyChangedEvent.ActivateEvent();
         }
 
-        private void Validate()
-        {
-            if (_satiety < 0)
-            {
-                DieEvent.ActivateEvent();
-                _satiety = 0;
-            }
-            else if (_satiety > _maxSatiety)
-                _satiety = _maxSatiety;
-        }
     }
 }

@@ -23,7 +23,7 @@ namespace UseFoodComponent.Logic
         {
             if (_construction == null)
             {
-                ChooseFood();
+                FoodComparer.ChooseFood();
 
                 _construction = CreateConstuction();
 
@@ -48,11 +48,7 @@ namespace UseFoodComponent.Logic
 
 
         }
-        private static void ChooseFood()
-        {
-            FoodComparer.TargetFood = FoodGetter.GetRandomFood();
-            FoodComparer.TargetProperties = FoodGetter.GetRandomProperties(FoodComparer.TargetFood);
-        }
+
         private static GameObject CreateConstuction()
         {
             var construction = new GameObject();

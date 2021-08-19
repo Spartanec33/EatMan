@@ -10,7 +10,7 @@ namespace UseUIComponents
         private Image _image;
         private HungerSystem _hungerSystem;
 
-        private void Start()
+        private void Awake()
         {
             _image = GetComponent<Image>();
             _hungerSystem = FindObjectOfType<HungerSystem>();

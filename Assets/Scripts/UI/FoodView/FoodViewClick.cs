@@ -36,6 +36,7 @@ namespace UseUIComponents.FoodView
         {
             _rectTrans = GetComponent<RectTransform>();
             _rawImage = GetComponent<RawImage>();
+            ChangeTextureResolution();
         }
 
         public void OnPointerDown(PointerEventData eventData)
