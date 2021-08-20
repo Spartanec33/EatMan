@@ -1,4 +1,5 @@
-﻿namespace UseEvents 
+﻿using System.Collections;
+namespace UseEvents 
 { 
     public static class ChangeConstructionEvent
     {

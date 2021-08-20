@@ -1,4 +1,6 @@
-﻿namespace UseEvents
+﻿using System.Collections;
+
+namespace UseEvents
 {
     public delegate void Correct(float delta);
     public static class CorrectEvent
