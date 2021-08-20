@@ -8,22 +8,31 @@ namespace UseFoodComponent.Personal
     [CreateAssetMenu(fileName = "FoodProperty-Sprite", menuName = "FoodProperty-Sprite(dict)")]
     public class FoodPropertiesMap : ScriptableObject
     {
-        private Dictionary<string, Image> _dic;
         [SerializeField] private FoodPropertiesEntry[] _foodProperties;
+
+        private Dictionary<string, Sprite> _dic;
+
+        public Dictionary<string, Sprite> GetDictionary()
+        {
+            InitializeDictionary();
+            return _dic;
+        }
 
         [Serializable]
         private class FoodPropertiesEntry
         {
             public string Property;
-            public Image Image;
+            public Sprite Sprite;
         }
-        private void Start()
+        private void InitializeDictionary()
         {
-            _dic = new Dictionary<string, Image>(_foodProperties.Length);
+            _dic = new Dictionary<string, Sprite>(_foodProperties.Length);
             foreach (var item in _foodProperties)
             {
-                _dic.Add(item.Property, item.Image);
+                _dic.Add(item.Property, item.Sprite);
             }
+            Debug.Log("create _dic");
+
         }
     }
 }

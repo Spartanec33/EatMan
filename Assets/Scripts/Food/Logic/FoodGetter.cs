@@ -11,6 +11,8 @@ namespace UseFoodComponent.Logic
         private static readonly FoodListData _foodListData = GameObject.FindObjectOfType<FoodListData>();
         private static readonly Food[] _foods = GetFoods();
         private static readonly System.Random _random = new System.Random();
+        public static Food TargetFood { get; private set; }
+        public static string[] TargetProperties { get; private set; }
 
         public static Food GetRandomFood() => _foods[_random.Next(0, _foods.Length)];
         public static Food[] GetFoods() => _foodListData.GetListData;
@@ -52,6 +54,11 @@ namespace UseFoodComponent.Logic
             for (int i = 0; i < answer.Length; i++)
                 answer[i] = fields[intermediateArray[i]];
             return answer;
+        }
+        public static void ChooseFood()
+        {
+            TargetFood = GetRandomFood();
+            TargetProperties = GetRandomProperties(TargetFood);
         }
 
     }

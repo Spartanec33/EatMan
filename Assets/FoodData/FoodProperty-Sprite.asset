@@ -7,11 +7,45 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc689c4a722a6bf47bbe6502b67a292a, type: 3}
+  m_Script: {fileID: 11500000, guid: e058c6e81a0d510479fcc1f343e71802, type: 3}
   m_Name: FoodProperty-Sprite
-  m_EditorClassIdentifier: Assembly-CSharp::FoodPropertiesMap
-  _type: 0
-  _color: 0
-  _shape: 0
+  m_EditorClassIdentifier: 
+  _foodProperties:
+  - Property: Fruit
+    Sprite: {fileID: 21300000, guid: 246859b14973e33448baa57eb5feac6c, type: 3}
+  - Property: Vegetable
+    Sprite: {fileID: 21300000, guid: cc37bb50af887eb479ed94741564d8b1, type: 3}
+  - Property: Meat
+    Sprite: {fileID: 21300000, guid: 4b796ba453d66d442b88f623f465daa0, type: 3}
+  - Property: Bread
+    Sprite: {fileID: 21300000, guid: 8a0a7c823425c1946908f1ffffb46d68, type: 3}
+  - Property: Milk
+    Sprite: {fileID: 21300000, guid: 7668637fad57dba40819027cae056360, type: 3}
+  - Property: Multy
+    Sprite: {fileID: 21300000, guid: cc3340aa52be5694cb6e58455c1ddff2, type: 3}
+  - Property: Red
+    Sprite: {fileID: 21300000, guid: 70d73870efa8ace4abca801dd33484d2, type: 3}
+  - Property: Green
+    Sprite: {fileID: 21300000, guid: c2c4cc6d609d2414ebc6e644e3b18c0a, type: 3}
+  - Property: Yellow
+    Sprite: {fileID: 21300000, guid: ba29335f4c0a3884e9a06603182b6edf, type: 3}
+  - Property: Blue
+    Sprite: {fileID: 21300000, guid: cf737c3d67cd79449a8f2f00754b4de4, type: 3}
+  - Property: White
+    Sprite: {fileID: 21300000, guid: 0cb75755ead6a164d8ec7221c52dbd74, type: 3}
+  - Property: Black
+    Sprite: {fileID: 21300000, guid: 38d7c0979bd37dd45a93d3c6d6698cfe, type: 3}
+  - Property: Brown
+    Sprite: {fileID: 21300000, guid: 1723e0fca03abbb4cad0590d3fe02be2, type: 3}
+  - Property: Square
+    Sprite: {fileID: 21300000, guid: d0defdd0d02660d4599c82bb07e5f549, type: 3}
+  - Property: Circle
+    Sprite: {fileID: 21300000, guid: 1efbe3c3321424d459caa46875e13f7f, type: 3}
+  - Property: Sphere
+    Sprite: {fileID: 21300000, guid: af5d992dde0afd0449b48386421f1dcb, type: 3}
+  - Property: Arc
+    Sprite: {fileID: 21300000, guid: 0591dc16b6b014142b6a0764d4850da5, type: 3}
+  - Property: Shapeless
+    Sprite: {fileID: 21300000, guid: 93e13f4b0a8a39f4fbf4c5ce6aadfdaf, type: 3}

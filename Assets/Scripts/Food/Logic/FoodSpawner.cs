@@ -23,7 +23,7 @@ namespace UseFoodComponent.Logic
         {
             if (_construction == null)
             {
-                FoodComparer.ChooseFood();
+                FoodGetter.ChooseFood();
 
                 _construction = CreateConstuction();
 
@@ -33,8 +33,8 @@ namespace UseFoodComponent.Logic
                 DirectlyGenerate(placeForTargetFood, rotation, position);
                 ChangeConstructionEvent.ActivateEvent();
 
-                for (int i = 0; i < FoodComparer.TargetProperties.Length; i++)
-                    Debug.Log(FoodComparer.TargetProperties[i]);
+                for (int i = 0; i < FoodGetter.TargetProperties.Length; i++)
+                    Debug.Log(FoodGetter.TargetProperties[i]);
             }
         }
         public static void Delete()
@@ -73,7 +73,7 @@ namespace UseFoodComponent.Logic
                     SpawnOneFood(randomFood);
                 }
                 else
-                    SpawnOneFood(FoodComparer.TargetFood);
+                    SpawnOneFood(FoodGetter.TargetFood);
 
                 void SpawnOneFood(Food spawningFood)
                 {
