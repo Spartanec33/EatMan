@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc689c4a722a6bf47bbe6502b67a292a, type: 3}
   m_Name: Pizza
   m_EditorClassIdentifier: 
-  _type: 5
-  _color: 6
-  _shape: 1
+  _type: 010203
+  _color: 00020106
+  _shape: 01

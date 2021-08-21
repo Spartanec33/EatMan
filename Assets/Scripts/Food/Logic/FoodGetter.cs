@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Reflection;
 using System;
+using System.Collections.Generic;
+using System.Collections;
 using UseFoodComponent.ForInspector;
 using UseFoodComponent.Personal;
 
@@ -16,20 +18,28 @@ namespace UseFoodComponent.Logic
 
         public static Food GetRandomFood() => _foods[_random.Next(0, _foods.Length)];
         public static Food[] GetFoods() => _foodListData.GetListData;
-        public static string[] GetProperties(Food food)
+        public static List<string> GetProperties(Food food)
         {
             FoodPropertiesData foodData = food.FoodData;
+
+            //массив полей
             FieldInfo[] fields = foodData.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
 
-            string[] res = new string[fields.Length];
+            //лист массивов
+            List<string> res = new List<string>(5);
+
             for (int i = 0; i < fields.Length; i++)
-                res[i] = fields[i].GetValue(foodData).ToString();
+            {
+                IEnumerable Arr = fields[i].GetValue(foodData) as IEnumerable;
+                foreach (var item in Arr)
+                    res.Add(item.ToString());
+            }
             return res;
         }
         public static string[] GetRandomProperties(Food food)
         {
-            string[] fields = GetProperties(food);
-            string[] answer = new string[_random.Next(1, fields.Length + 1)];
+            List<string> AllPropertyies = GetProperties(food);
+            string[] answer = new string[_random.Next(1, AllPropertyies.Count + 1)];
             int[] intermediateArray = new int[answer.Length];
 
             for (int i = 0; i < intermediateArray.Length; i++)
@@ -41,7 +51,7 @@ namespace UseFoodComponent.Logic
             {
                 while (true)
                 {
-                    int index = _random.Next(0, fields.Length);
+                    int index = _random.Next(0, AllPropertyies.Count);
                     if (Array.IndexOf(intermediateArray, index) == -1)
                     {
                         intermediateArray[i] = index;
@@ -52,7 +62,7 @@ namespace UseFoodComponent.Logic
 
             //заполнение итогового массива с помощью индексов из промежуточного
             for (int i = 0; i < answer.Length; i++)
-                answer[i] = fields[intermediateArray[i]];
+                answer[i] = AllPropertyies[intermediateArray[i]];
             return answer;
         }
         public static void ChooseFood()

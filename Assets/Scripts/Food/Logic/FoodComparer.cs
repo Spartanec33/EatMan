@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UseFoodComponent.Personal;
 
 namespace UseFoodComponent.Logic
@@ -8,11 +9,11 @@ namespace UseFoodComponent.Logic
         public static bool Compare(Food clickedFood)
         {
 
-            string[] clickedProperties = FoodGetter.GetProperties(clickedFood);
+            List<string> AllPropertiesInFood = FoodGetter.GetProperties(clickedFood);
 
             for (int i = 0; i < FoodGetter.TargetProperties.Length; i++)
             {
-                if (Array.IndexOf(clickedProperties, FoodGetter.TargetProperties[i]) == -1)
+                if (AllPropertiesInFood.IndexOf(FoodGetter.TargetProperties[i]) == -1)
                     return false;
             }
             return true;

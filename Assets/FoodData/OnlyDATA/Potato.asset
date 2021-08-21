@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc689c4a722a6bf47bbe6502b67a292a, type: 3}
   m_Name: Potato
   m_EditorClassIdentifier: 
-  _type: 1
-  _color: 6
-  _shape: 2
+  _type: 01
+  _color: 06
+  _shape: 02

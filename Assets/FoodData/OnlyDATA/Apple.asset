@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc689c4a722a6bf47bbe6502b67a292a, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  _type: 0
-  _color: 0
-  _shape: 2
+  _type: 00
+  _color: 00
+  _shape: 02

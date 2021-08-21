@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc689c4a722a6bf47bbe6502b67a292a, type: 3}
   m_Name: Bread
   m_EditorClassIdentifier: 
-  _type: 3
-  _color: 6
-  _shape: 0
+  _type: 03
+  _color: 02
+  _shape: 00

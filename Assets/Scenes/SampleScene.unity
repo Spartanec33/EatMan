@@ -4949,12 +4949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _foods:
-  - {fileID: 811049898685344926, guid: 34c667a9de9595a45b2d533126eab3e4, type: 3}
-  - {fileID: 5423759746425505065, guid: 4e68e61aa1550fc48b44bd2a3d538c67, type: 3}
-  - {fileID: 185282959961617095, guid: 1e436ff84a0ecf64a9d2a442cd5968c5, type: 3}
-  - {fileID: 4059423185044858256, guid: 984ad85496e10b341a451dbd35c8e1b4, type: 3}
   - {fileID: 7254418064199343594, guid: 746a4046d905cd249bfe194b5de8be78, type: 3}
-  - {fileID: 2029920639161877039, guid: 3d6c8935e18bbf249965a5e2ca4040ab, type: 3}
 --- !u!4 &762887382
 Transform:
   m_ObjectHideFlags: 0
@@ -9928,6 +9923,7 @@ MonoBehaviour:
   _fixedBasePadding: 0
   _minYAnchorProp: 0.1
   _maxYAnchorProp: 0.9
+  _timeForResize: 0.25
   _foodPropertiesMap: {fileID: 11400000, guid: 367708977464aac408977f16046b013d, type: 2}
 --- !u!1 &1543720171
 GameObject:

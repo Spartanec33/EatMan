@@ -32,9 +32,6 @@ namespace UseFoodComponent.Logic
                 Vector3 position = _construction.transform.position;
                 DirectlyGenerate(placeForTargetFood, rotation, position);
                 ChangeConstructionEvent.ActivateEvent();
-
-                for (int i = 0; i < FoodGetter.TargetProperties.Length; i++)
-                    Debug.Log(FoodGetter.TargetProperties[i]);
             }
         }
         public static void Delete()

@@ -28,11 +28,7 @@ namespace UseFoodComponent.Personal
         {
             _dic = new Dictionary<string, Sprite>(_foodProperties.Length);
             foreach (var item in _foodProperties)
-            {
                 _dic.Add(item.Property, item.Sprite);
-            }
-            Debug.Log("create _dic");
-
         }
     }
 }
