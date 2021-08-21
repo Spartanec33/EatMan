@@ -54,16 +54,17 @@ namespace UseUIComponents.FoodView
             float allWay = Vector3.Distance(transform.position, finishPos);
             float speed = allWay / _timeForMove;
             float coveredDistance = 0;
+            float progress = 0;
             Vector3 viewPos = transform.position;
-            while (coveredDistance <= allWay)
+            while (progress <= 1)
             {
                 yield return _waitForFixedUpdate;
-                var progress = (coveredDistance / allWay);
-                if (progress > 1)
-                    progress = 1;
+                progress = (coveredDistance / allWay);
                 transform.position = Vector3.Lerp(viewPos, finishPos, progress);
                 coveredDistance += (speed * Time.deltaTime);
             }
+            if (progress >= 1)
+                transform.position = Vector3.Lerp(viewPos, finishPos, 1);
         }
         private void InitMovePos()
         {

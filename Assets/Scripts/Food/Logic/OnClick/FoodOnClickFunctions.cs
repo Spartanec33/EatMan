@@ -61,24 +61,28 @@ namespace UseFoodComponent.Logic.OnClick
 
         private IEnumerator MainPartMove(float allWay, Vector3 endPoint, bool NeedCorrectPos = false)
         {
+            float progress = 0;
             float coveredDistance = 0;
             Vector3 startPlayerPos = _player.transform.position;
 
-            while (coveredDistance <= allWay)
+            while (progress <= 1)
             {
                 yield return _waitForFixedUpdate;
 
                 var playerPos = _player.transform.position;
 
                 coveredDistance += (_speedCom.Speed * Time.deltaTime);
-                var progress = (coveredDistance / allWay);
-
-                if (progress > 1)
-                    progress = 1;
+                progress = (coveredDistance / allWay);
 
                 var posX = Vector3.Lerp(startPlayerPos, endPoint, progress).x;
                 _player.transform.position = new Vector3(posX, playerPos.y, playerPos.z);
             }
+            if (progress > 1)
+            {
+                var posX = Vector3.Lerp(startPlayerPos, endPoint, progress).x;
+                _player.transform.position = new Vector3(posX, _player.transform.position.y, _player.transform.position.z);
+            }
+
             if (NeedCorrectPos)
             {
                 CorrectEvent.ActivateEvent(coveredDistance - allWay);

@@ -13,19 +13,22 @@ namespace UseFoodComponent.Logic
         private static readonly FoodListData _foodListData = GameObject.FindObjectOfType<FoodListData>();
         private static readonly Food[] _foods = GetFoods();
         private static readonly System.Random _random = new System.Random();
+        private static readonly int _maxNumberOfTargetProperties = _foodListData.MaxNumberOfTargetProperties;
         public static Food TargetFood { get; private set; }
         public static string[] TargetProperties { get; private set; }
 
         public static Food GetRandomFood() => _foods[_random.Next(0, _foods.Length)];
-        public static Food[] GetFoods() => _foodListData.GetListData;
+        public static Food[] GetFoods()
+        {
+            return _foodListData.GetListData;
+        }
+
         public static List<string> GetProperties(Food food)
         {
             FoodPropertiesData foodData = food.FoodData;
 
-            //массив полей
             FieldInfo[] fields = foodData.GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
 
-            //лист массивов
             List<string> res = new List<string>(5);
 
             for (int i = 0; i < fields.Length; i++)
@@ -39,7 +42,15 @@ namespace UseFoodComponent.Logic
         public static string[] GetRandomProperties(Food food)
         {
             List<string> AllPropertyies = GetProperties(food);
-            string[] answer = new string[_random.Next(1, AllPropertyies.Count + 1)];
+
+            int TargetPropertiesAmount;
+            if (AllPropertyies.Count > _maxNumberOfTargetProperties)
+                TargetPropertiesAmount = _random.Next(1, _maxNumberOfTargetProperties + 1);
+
+            else
+                TargetPropertiesAmount = _random.Next(1, AllPropertyies.Count + 1);
+
+            string[] answer = new string[TargetPropertiesAmount];
             int[] intermediateArray = new int[answer.Length];
 
             for (int i = 0; i < intermediateArray.Length; i++)
