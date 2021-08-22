@@ -20,11 +20,11 @@ namespace UseUIComponents.FoodView
 
         private void OnEnable()
         {
-            ChangeResolutionEvent.OnAction += InitMovePos;
+            OnChangeResolution.OnAction += InitMovePos;
         }
         private void OnDisable()
         {
-            ChangeResolutionEvent.OnAction -= InitMovePos;
+            OnChangeResolution.OnAction -= InitMovePos;
         }
         private void Start()
         {
@@ -45,7 +45,6 @@ namespace UseUIComponents.FoodView
             {
                 StartCoroutine(Move(_startPos));
                 _isCoroutineActive = false;
-
             }
         }
         private IEnumerator Move(Vector3 finishPos)

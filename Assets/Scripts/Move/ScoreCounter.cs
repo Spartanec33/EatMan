@@ -1,4 +1,5 @@
 ﻿using UseEvents;
+using UsePlayerComponents;
 using UnityEngine;
 
 namespace UseMove
@@ -14,8 +15,11 @@ namespace UseMove
         }
         private void FixedUpdate()
         {
-            _score += _speedCom.Speed * Time.deltaTime;
-            ScoreChangedEvent.ActivateEvent();
+            if (GameState.IsStarted)
+            {
+                _score += _speedCom.Speed * Time.deltaTime;
+                OnScoreChanged.ActivateEvent();
+            }
         }
     }
 }

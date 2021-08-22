@@ -15,12 +15,12 @@ namespace UseMove
         private new void OnEnable()
         {
             base.OnEnable();
-            CorrectEvent.OnAction += CorrectPosition;
+            OnCorrect.OnAction += CorrectPosition;
         }
         private new void OnDisable()
         {
             base.OnDisable();
-            CorrectEvent.OnAction -= CorrectPosition;
+            OnCorrect.OnAction -= CorrectPosition;
         }
 
 

@@ -17,7 +17,7 @@ namespace UseUIComponents.Resolution
             Vector2 canvasNow = new Vector2(_canvas.pixelRect.width, _canvas.pixelRect.height);
             if (_canvasOld != canvasNow)
             {
-                ChangeResolutionEvent.ActivateEvent();
+                OnChangeResolution.ActivateEvent();
                 _canvasOld = canvasNow;
             }
         }

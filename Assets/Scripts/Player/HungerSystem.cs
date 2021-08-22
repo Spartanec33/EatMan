@@ -24,7 +24,7 @@ namespace UsePlayerComponents
                 _satiety = value;
                 if (_satiety < 0)
                 {
-                    DieEvent.ActivateEvent();
+                    OnDie.ActivateEvent();
                     _satiety = 0;
                 }
                 else if (_satiety > _maxSatiety)
@@ -40,7 +40,7 @@ namespace UsePlayerComponents
         }
         private void FixedUpdate()
         {
-            if (Player.IsDied != true)
+            if (Player.IsDied != true && GameState.IsStarted != false)
             {
                 AddHunger();
             }
@@ -49,17 +49,17 @@ namespace UsePlayerComponents
         {
             var value = Random.Range(_minSatietyWhenEating, _maxSatietyWhenEating);
             Satiety += value;
-            SatietyChangedEvent.ActivateEvent();
+            OnSatietyChanged.ActivateEvent();
         }
         public void AddSatiety(float value)
         {
             Satiety += value;
-            SatietyChangedEvent.ActivateEvent();
+            OnSatietyChanged.ActivateEvent();
         }
         private void AddHunger()
         {
             Satiety -= _hungerForAdd;
-            SatietyChangedEvent.ActivateEvent();
+            OnSatietyChanged.ActivateEvent();
         }
 
     }

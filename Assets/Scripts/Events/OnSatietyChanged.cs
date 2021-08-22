@@ -1,7 +1,7 @@
-﻿using System.Collections;
-namespace UseEvents 
-{ 
-    public static class ChangeConstructionEvent
+﻿namespace UseEvents
+{
+    public delegate void ValueChanged();
+    public static class OnSatietyChanged
     {
         public static event ValueChanged OnAction;
         public static void ActivateEvent()

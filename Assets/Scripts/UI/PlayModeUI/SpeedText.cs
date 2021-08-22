@@ -17,11 +17,11 @@ namespace UseUIComponents
         }
         private void OnEnable()
         {
-            SpeedChangedEvent.OnAction += ChangeText;
+            OnSpeedChanged.OnAction += ChangeText;
         }
         private void OnDisable()
         {
-            SpeedChangedEvent.OnAction += ChangeText;
+            OnSpeedChanged.OnAction += ChangeText;
         }
         private void ChangeText()
         {

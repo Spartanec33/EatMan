@@ -31,7 +31,7 @@ namespace UseFoodComponent.Logic
                 Quaternion rotation = _construction.transform.rotation;
                 Vector3 position = _construction.transform.position;
                 DirectlyGenerate(placeForTargetFood, rotation, position);
-                ChangeConstructionEvent.ActivateEvent();
+                OnChangeConstruction.ActivateEvent();
             }
         }
         public static void Delete()
@@ -40,7 +40,7 @@ namespace UseFoodComponent.Logic
             {
                 GameObject.Destroy(_construction);
                 _construction = null;
-                ChangeConstructionEvent.ActivateEvent();
+                OnChangeConstruction.ActivateEvent();
             }
 
 

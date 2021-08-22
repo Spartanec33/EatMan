@@ -8,7 +8,7 @@ namespace UsePlayerComponents
     {
         private void OnMouseDown()
         {
-            OnPlayerClickedEvent.ActivateEvent();
+            OnPlayerClick.ActivateEvent();
         }
     }
 }

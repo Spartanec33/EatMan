@@ -24,12 +24,12 @@ namespace UseUIComponents.FoodView
 
         private void OnEnable()
         {
-            ChangeResolutionEvent.OnAction += ChangeTextureResolution;
+            OnChangeResolution.OnAction += ChangeTextureResolution;
         }
 
         private void OnDisable()
         {
-            ChangeResolutionEvent.OnAction -= ChangeTextureResolution;
+            OnChangeResolution.OnAction -= ChangeTextureResolution;
         }
 
         private void Awake()
@@ -50,7 +50,7 @@ namespace UseUIComponents.FoodView
                 {
                     Food food = hit.collider.GetComponent<Food>();
                     if (!Player.IsDied)
-                        FoodClickEvent.ActivateEvent(food);
+                        OnFoodClickEvent.ActivateEvent(food);
                 }
             }
         }

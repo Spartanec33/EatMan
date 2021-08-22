@@ -25,11 +25,11 @@ namespace UseUIComponents
 
         private void OnEnable()
         {
-            ChangeConstructionEvent.OnAction += ActivateSetProperties;
+            OnChangeConstruction.OnAction += ActivateSetProperties;
         }
         private void OnDisable()
         {
-            ChangeConstructionEvent.OnAction -= ActivateSetProperties;
+            OnChangeConstruction.OnAction -= ActivateSetProperties;
         }
         private void Start()
         {

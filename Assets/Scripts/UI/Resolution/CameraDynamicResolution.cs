@@ -16,11 +16,11 @@ namespace UseUIComponents.Resolution
 
         private void OnEnable()
         {
-            ChangeResolutionEvent.OnAction += ChangeFov;
+            OnChangeResolution.OnAction += ChangeFov;
         }
         private void OnDisable()
         {
-            ChangeResolutionEvent.OnAction -= ChangeFov;
+            OnChangeResolution.OnAction -= ChangeFov;
         }
 
         private void Start()

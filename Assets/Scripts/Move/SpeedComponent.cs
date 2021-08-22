@@ -33,13 +33,13 @@ namespace UseMove
 
         private void OnEnable()
         {
-            SpeedChangedEvent.OnAction += Validate;
-            OnPlayerClickedEvent.OnAction += AddSpeedPerClick;
+            OnSpeedChanged.OnAction += Validate;
+            OnPlayerClick.OnAction += AddSpeedPerClick;
         }
         private void OnDisable()
         {
-            SpeedChangedEvent.OnAction -= Validate;
-            OnPlayerClickedEvent.OnAction -= AddSpeedPerClick;
+            OnSpeedChanged.OnAction -= Validate;
+            OnPlayerClick.OnAction -= AddSpeedPerClick;
         }
 
         private void FixedUpdate()
@@ -52,13 +52,13 @@ namespace UseMove
         private void AddSpeedPerClick()
         {
             Speed += _speedPerClick;
-            SpeedChangedEvent.ActivateEvent();
+            OnSpeedChanged.ActivateEvent();
         }
         public void Stop()
         {
             Speed = 0;
             IsStop = true;
-            SpeedChangedEvent.ActivateEvent();
+            OnSpeedChanged.ActivateEvent();
         }
         public void UnStop() => IsStop = false;
 
@@ -67,7 +67,7 @@ namespace UseMove
             if (Speed > 0)
             {
                 Speed -= _speedReduction;
-                SpeedChangedEvent.ActivateEvent();
+                OnSpeedChanged.ActivateEvent();
             }
         }
         private void ChangeSpeedReduction()

@@ -8,8 +8,8 @@ namespace UseFoodComponent.NeedConstruction
     public class NeedConstruction : MonoBehaviour
     {
         protected GameObject _constraction;
-        protected void OnEnable() => ChangeConstructionEvent.OnAction += ChangeConstruction;
-        protected void OnDisable() => ChangeConstructionEvent.OnAction += ChangeConstruction;
+        protected void OnEnable() => OnChangeConstruction.OnAction += ChangeConstruction;
+        protected void OnDisable() => OnChangeConstruction.OnAction += ChangeConstruction;
         void ChangeConstruction() => _constraction = FoodSpawner.Construction;
     }
 }

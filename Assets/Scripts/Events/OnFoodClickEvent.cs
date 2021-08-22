@@ -3,7 +3,7 @@ namespace UseEvents
 {
 
     public delegate void ClickOnFood(Food food);
-    public static class FoodClickEvent
+    public static class OnFoodClickEvent
     {
         public static event ClickOnFood OnAction;
         public static void ActivateEvent(Food food)

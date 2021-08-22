@@ -17,11 +17,11 @@ namespace UseUIComponents
         }
         private void OnEnable()
         {
-            ScoreChangedEvent.OnAction += ChangeText;
+            OnScoreChanged.OnAction += ChangeText;
         }
         private void OnDisable()
         {
-            ScoreChangedEvent.OnAction += ChangeText;
+            OnScoreChanged.OnAction += ChangeText;
         }
         private void ChangeText()
         {

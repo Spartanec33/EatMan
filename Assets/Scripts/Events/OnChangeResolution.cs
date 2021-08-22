@@ -1,13 +1,13 @@
 ﻿namespace UseEvents
 {
-    public delegate void Die();
-    public static class DieEvent
+    public static class OnChangeResolution
     {
-        public static event Die OnAction;
+        public static event ValueChanged OnAction;
         public static void ActivateEvent()
         {
             if (OnAction != null)
                 OnAction();
         }
     }
+
 }

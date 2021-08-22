@@ -1,9 +1,8 @@
 ﻿namespace UseEvents
 {
-    public delegate void OnPlayerClicked();
-    public static class OnPlayerClickedEvent
+    public static class OnScoreChanged
     {
-        public static event OnPlayerClicked OnAction;
+        public static event ValueChanged OnAction;
         public static void ActivateEvent()
         {
             if (OnAction != null)

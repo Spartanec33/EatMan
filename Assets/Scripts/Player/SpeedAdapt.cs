@@ -58,6 +58,7 @@ namespace UsePlayerComponents
         private void ChangeParticles(float speed)
         {
             var t = speed / _speedCom.MaxSpeed;
+            
 
             var emission = _dirtParticle.emission;
             emission.rateOverTime = _emissionByMaxSpeed*t;

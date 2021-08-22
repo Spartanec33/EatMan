@@ -34,7 +34,7 @@ namespace UseFoodComponent.Personal
         private void OnMouseDown()
         {
             if (!Player.IsDied)
-                FoodClickEvent.ActivateEvent(this);
+                OnFoodClickEvent.ActivateEvent(this);
         }
     }
 }

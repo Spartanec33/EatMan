@@ -17,11 +17,11 @@ namespace UseUIComponents
         }
         private void OnEnable()
         {
-            SatietyChangedEvent.OnAction += ChangeSatietyBar;
+            OnSatietyChanged.OnAction += ChangeSatietyBar;
         }
         private void OnDisable()
         {
-            SatietyChangedEvent.OnAction += ChangeSatietyBar;
+            OnSatietyChanged.OnAction += ChangeSatietyBar;
         }
         private void ChangeSatietyBar()
         {

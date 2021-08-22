@@ -79,13 +79,13 @@ namespace UseFoodComponent.Logic.OnClick
             }
             if (progress > 1)
             {
-                var posX = Vector3.Lerp(startPlayerPos, endPoint, progress).x;
+                var posX = Vector3.Lerp(startPlayerPos, endPoint, 1).x;
                 _player.transform.position = new Vector3(posX, _player.transform.position.y, _player.transform.position.z);
             }
 
             if (NeedCorrectPos)
             {
-                CorrectEvent.ActivateEvent(coveredDistance - allWay);
+                OnCorrect.ActivateEvent(coveredDistance - allWay);
             }
 
         }

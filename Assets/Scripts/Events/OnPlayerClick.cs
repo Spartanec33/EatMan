@@ -1,13 +1,13 @@
 ﻿namespace UseEvents
 {
-    public static class ChangeResolutionEvent
+    public delegate void OnPlayerClicked();
+    public static class OnPlayerClick
     {
-        public static event ValueChanged OnAction;
+        public static event OnPlayerClicked OnAction;
         public static void ActivateEvent()
         {
             if (OnAction != null)
                 OnAction();
         }
     }
-
 }

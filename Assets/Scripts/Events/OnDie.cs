@@ -1,8 +1,9 @@
 ﻿namespace UseEvents
 {
-    public static class SpeedChangedEvent
+    public delegate void Die();
+    public static class OnDie
     {
-        public static event ValueChanged OnAction;
+        public static event Die OnAction;
         public static void ActivateEvent()
         {
             if (OnAction != null)

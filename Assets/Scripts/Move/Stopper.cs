@@ -34,9 +34,13 @@ namespace UseMove
         private bool CheckForStop()
         {
             var distance = _distance.Value;
-            if ((distance <= _stopDistance) && Mover.NeedOneTimeStop)
+            if(GameState.IsStarted == false)
             {
-                CorrectEvent.ActivateEvent(GetDelta(distance));
+                return true;
+            }
+            else if ((distance <= _stopDistance) && Mover.NeedOneTimeStop)
+            {
+                OnCorrect.ActivateEvent(GetDelta(distance));
                 return true;
             }
             else if (Player.IsDied || Player.IsPuke)

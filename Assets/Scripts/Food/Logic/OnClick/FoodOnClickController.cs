@@ -32,13 +32,13 @@ namespace UseFoodComponent.Logic.OnClick
         }
         private void OnEnable()
         {
-            FoodClickEvent.OnAction += OnClick;
-            DieEvent.OnAction += StopAllCoroutinesOfThisClass;
+            OnFoodClickEvent.OnAction += OnClick;
+            OnDie.OnAction += StopAllCoroutinesOfThisClass;
         }
         private void OnDisable()
         {
-            FoodClickEvent.OnAction -= OnClick;
-            DieEvent.OnAction -= StopAllCoroutinesOfThisClass;
+            OnFoodClickEvent.OnAction -= OnClick;
+            OnDie.OnAction -= StopAllCoroutinesOfThisClass;
         }
 
         public IEnumerator Final(Food food)

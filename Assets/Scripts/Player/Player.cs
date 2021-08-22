@@ -32,19 +32,14 @@ namespace UsePlayerComponents
         }
         private void OnEnable()
         {
-            DieEvent.OnAction += Die;
+            OnDie.OnAction += Die;
         }
+
         private void OnDisable()
         {
-            DieEvent.OnAction -= Die;
+            OnDie.OnAction -= Die;
         }
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                Die();
-            }
-        }
+
         private void ToRagdoll()
         {
             _animator.enabled = false;

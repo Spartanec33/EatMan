@@ -1,7 +1,6 @@
 ﻿namespace UseEvents
 {
-    public delegate void ValueChanged();
-    public static class SatietyChangedEvent
+    public static class OnSpeedChanged
     {
         public static event ValueChanged OnAction;
         public static void ActivateEvent()
