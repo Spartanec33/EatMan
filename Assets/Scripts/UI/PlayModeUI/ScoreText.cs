@@ -21,7 +21,7 @@ namespace UseUIComponents
         }
         private void OnDisable()
         {
-            OnScoreChanged.OnAction += ChangeText;
+            OnScoreChanged.OnAction -= ChangeText;
         }
         private void ChangeText()
         {

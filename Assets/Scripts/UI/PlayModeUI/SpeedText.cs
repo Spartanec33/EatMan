@@ -21,7 +21,7 @@ namespace UseUIComponents
         }
         private void OnDisable()
         {
-            OnSpeedChanged.OnAction += ChangeText;
+            OnSpeedChanged.OnAction -= ChangeText;
         }
         private void ChangeText()
         {

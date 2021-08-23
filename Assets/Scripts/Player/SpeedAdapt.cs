@@ -50,14 +50,14 @@ namespace UsePlayerComponents
                 _animator.speed = GetAnimSpeed(speed,_speedToRun);
 
             else if (speed >= _speedToRun)
-                _animator.speed = GetAnimSpeed(speed,_speedCom.MaxSpeed);
+                _animator.speed = GetAnimSpeed(speed,_speedCom.SpeedLimit);
 
             else if (speed == 0)
                 _animator.speed = 1;
         }
         private void ChangeParticles(float speed)
         {
-            var t = speed / _speedCom.MaxSpeed;
+            var t = speed / _speedCom.SpeedLimit;
             
 
             var emission = _dirtParticle.emission;

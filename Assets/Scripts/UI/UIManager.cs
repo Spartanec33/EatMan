@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UseEvents;
@@ -9,19 +10,23 @@ namespace UseUIComponents
     {
         [SerializeField] private CanvasGroup _startUI;
         [SerializeField] private CanvasGroup _playModeUI;
-        [SerializeField] private float _time;
+        [SerializeField] private CanvasGroup _deadModeUI;
+        [SerializeField] private float _timeToTogle;
+        [SerializeField] private float _timeToWaitAfterDie;
 
         private WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
 
         private void OnEnable()
         {
-            OnStartButtonClick.OnAction += ActivateChangeActiveCanvas;    
+            OnStartButtonClick.OnAction += ActivateSwitchStartToPlayMode;
+            OnDie.OnAction += ActivateSwitchPlayModeToDeadMode;
         }
         private void OnDisable()
         {
-            OnStartButtonClick.OnAction -= ActivateChangeActiveCanvas;
+            OnStartButtonClick.OnAction -= ActivateSwitchStartToPlayMode;
+            OnDie.OnAction -= ActivateSwitchPlayModeToDeadMode;
         }
-        private IEnumerator ChangeAlpha(CanvasGroup canvasGroup,float finalAlpha, float time)
+        private IEnumerator ChangeAlpha(CanvasGroup canvasGroup, float finalAlpha, float time)
         {
             float speed = 1 / time;
             float progress = 0;
@@ -36,17 +41,34 @@ namespace UseUIComponents
                 canvasGroup.alpha = finalAlpha;
         }
         
-        private IEnumerator ChangeActiveCanvas()
+        private IEnumerator TogleCanvas(CanvasGroup canvas, float time, bool activate)
         {
-            yield return StartCoroutine(ChangeAlpha(_startUI, 0, _time));
-            _startUI.gameObject.SetActive(false);
-            _playModeUI.GetComponent<GraphicRaycaster>().enabled = true;
-            yield return StartCoroutine(ChangeAlpha(_playModeUI, 1, _time));
+            if (canvas != null)
+            {
+                canvas.GetComponent<GraphicRaycaster>().enabled = activate;
+                yield return StartCoroutine(ChangeAlpha(canvas, activate ? 1 : 0, time));
+            }
+        }
+
+        private IEnumerator SwitchStartToPlayMode(float time)
+        {
+            yield return TogleCanvas(_startUI, time, false);
+            yield return TogleCanvas(_playModeUI, time, true);
             OnGameStarted.ActivateEvent();
         }
-        private void ActivateChangeActiveCanvas()
+        private void ActivateSwitchStartToPlayMode()
         {
-            StartCoroutine(ChangeActiveCanvas());
+            StartCoroutine(SwitchStartToPlayMode(_timeToTogle));
+        }
+        private IEnumerator SwitchPlayModeToDeadMode(float time, float timeToWaitAfterDie)
+        {
+            yield return TogleCanvas(_playModeUI, time, false);
+            yield return new WaitForSeconds(timeToWaitAfterDie);
+            yield return TogleCanvas(_deadModeUI, time, true);
+        }
+        private void ActivateSwitchPlayModeToDeadMode()
+        {
+            StartCoroutine(SwitchPlayModeToDeadMode(_timeToTogle, _timeToWaitAfterDie));
         }
     }
 }

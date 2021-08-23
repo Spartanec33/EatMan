@@ -15,7 +15,7 @@ namespace UseMove
         }
         private void FixedUpdate()
         {
-            if (GameState.IsStarted)
+            if (GameState.IsStarted && Player.IsDied==false)
             {
                 _score += _speedCom.Speed * Time.deltaTime;
                 OnScoreChanged.ActivateEvent();

@@ -22,6 +22,7 @@ namespace UsePlayerComponents
             private set 
             {
                 _satiety = value;
+                OnSatietyChanged.ActivateEvent();
                 if (_satiety < 0)
                 {
                     OnDie.ActivateEvent();
@@ -49,17 +50,14 @@ namespace UsePlayerComponents
         {
             var value = Random.Range(_minSatietyWhenEating, _maxSatietyWhenEating);
             Satiety += value;
-            OnSatietyChanged.ActivateEvent();
         }
         public void AddSatiety(float value)
         {
             Satiety += value;
-            OnSatietyChanged.ActivateEvent();
         }
         private void AddHunger()
         {
             Satiety -= _hungerForAdd;
-            OnSatietyChanged.ActivateEvent();
         }
 
     }

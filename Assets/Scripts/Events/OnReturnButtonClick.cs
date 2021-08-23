@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace UseEvents
 {
-    public static class OnSatietyChanged
+    public class OnReturnButtonClick : MonoBehaviour
     {
-        public static event ValueChanged OnAction;
+
+        public static event ButtonClicked OnAction;
         public static void ActivateEvent()
         {
             if (OnAction != null)

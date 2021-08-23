@@ -11,6 +11,7 @@ namespace UsePlayerComponents
 
         private void OnEnable()
         {
+            
             OnGameStarted.OnAction += ConfirmStart;
         }
         private void OnDisable()
