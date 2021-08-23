@@ -35,6 +35,7 @@ namespace UseFoodComponent.Logic.OnClick
 
             _basePlayerPosition = _player.transform.position;
             _basePlayerRotation = _player.transform.rotation;
+            IsGoToFood = false;
         }
         public void CreateTargetParticle(Food food)
         {
