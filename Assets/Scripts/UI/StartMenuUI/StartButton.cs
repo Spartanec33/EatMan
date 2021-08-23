@@ -12,7 +12,7 @@ namespace UseUIComponents
             if (WasClicked == false)
             {
                 OnStartButtonClick.ActivateEvent();
-                FoodSpawner.Spawn();
+                OnSpawnConstruction.ActivateEvent();
                 WasClicked = true;
             }
         }

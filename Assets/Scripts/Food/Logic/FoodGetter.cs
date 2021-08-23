@@ -8,17 +8,27 @@ using UseFoodComponent.Personal;
 
 namespace UseFoodComponent.Logic
 {
-    public static class FoodGetter
+    public class FoodGetter: MonoBehaviour
     {
-        private static readonly FoodListData _foodListData = GameObject.FindObjectOfType<FoodListData>();
-        private static readonly Food[] _foods = GetFoods();
-        private static readonly System.Random _random = new System.Random();
-        private static readonly int _maxNumberOfTargetProperties = _foodListData.MaxNumberOfTargetProperties;
+        [SerializeField] private int _maxNumberOfTargetProperties ;
+
+        private FoodListData _foodListData;
+        private Food[] _foods;
+        private System.Random _random = new System.Random();
+
         public static Food TargetFood { get; private set; }
         public static string[] TargetProperties { get; private set; }
 
-        public static Food GetRandomFood() => _foods[_random.Next(0, _foods.Length)];
-        public static Food[] GetFoods()
+
+        private void Awake()
+        {
+            _foodListData = GetComponent<FoodListData>();
+            _foods = GetFoods();
+            TargetFood = null;
+            TargetProperties = null;
+        }
+        public Food GetRandomFood() => _foods[_random.Next(0, _foods.Length)];
+        public Food[] GetFoods()
         {
             return _foodListData.GetListData;
         }
@@ -39,7 +49,7 @@ namespace UseFoodComponent.Logic
             }
             return res;
         }
-        public static string[] GetRandomProperties(Food food)
+        public string[] GetRandomProperties(Food food)
         {
             List<string> AllPropertyies = GetProperties(food);
 
@@ -76,7 +86,7 @@ namespace UseFoodComponent.Logic
                 answer[i] = AllPropertyies[intermediateArray[i]];
             return answer;
         }
-        public static void ChooseFood()
+        public void ChooseFood()
         {
             TargetFood = GetRandomFood();
             TargetProperties = GetRandomProperties(TargetFood);

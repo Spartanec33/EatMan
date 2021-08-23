@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
-namespace UseEvents
+﻿namespace UseEvents
 {
-    public static class OnChangeConstruction
+    public delegate void ConstructionDelegate();
+    public static class OnSpawnConstruction
     {
         public static event ConstructionDelegate OnAction;
         public static void ActivateEvent()

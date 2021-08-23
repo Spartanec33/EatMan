@@ -4,7 +4,6 @@ using UseEvents;
 using UseFoodComponent.Personal;
 using UseMove;
 using UsePlayerComponents;
-using UseRoadComponent;
 
 namespace UseFoodComponent.Logic.OnClick
 {
@@ -32,7 +31,7 @@ namespace UseFoodComponent.Logic.OnClick
         {
             _speedCom = FindObjectOfType<SpeedComponent>();
             _player = FindObjectOfType<Player>();
-            _controller = FindObjectOfType<FoodOnClickController>();
+            _controller = GetComponent<FoodOnClickController>();
 
             _basePlayerPosition = _player.transform.position;
             _basePlayerRotation = _player.transform.rotation;

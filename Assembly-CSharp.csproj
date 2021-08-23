@@ -84,7 +84,6 @@
     <Compile Include="Assets\Scripts\Move\ScoreCounter.cs" />
     <Compile Include="Assets\Scripts\Food\Logic\FoodSpawner.cs" />
     <Compile Include="Assets\Scripts\Events\OnGameStarted.cs" />
-    <Compile Include="Assets\Scripts\Food\For Inspector\InspectorFoodSpawnData.cs" />
     <Compile Include="Assets\Scripts\Events\OnSatietyChanged.cs" />
     <Compile Include="Assets\Scripts\Move\Stopper.cs" />
     <Compile Include="Assets\Scripts\UI\PlayModeUI\SatietyBar.cs" />
@@ -114,6 +113,8 @@
     <Compile Include="Assets\Scripts\UI\DeadModeUI\SetParamsAfterDie.cs" />
     <Compile Include="Assets\Scripts\Events\OnReturnButtonClick.cs" />
     <Compile Include="Assets\Scripts\UI\DeadModeUI\ReloadScene.cs" />
+    <Compile Include="Assets\Scripts\Events\OnSpawnConstruction.cs" />
+    <Compile Include="Assets\Scripts\Events\OnDeleteConstruction.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

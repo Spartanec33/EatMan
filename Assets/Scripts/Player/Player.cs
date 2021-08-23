@@ -27,6 +27,8 @@ namespace UsePlayerComponents
 
         private void Start()
         {
+            _isDied = false;
+            _isPuke = false;
             _speedCom = FindObjectOfType<SpeedComponent>();
             _animator = GetComponent<Animator>();
         }

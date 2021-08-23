@@ -1,10 +1,11 @@
 using System;
+using UnityEngine;
 using System.Collections.Generic;
 using UseFoodComponent.Personal;
 
 namespace UseFoodComponent.Logic
 {
-    public static class FoodComparer
+    public class FoodComparer:MonoBehaviour
     {
         public static bool Compare(Food clickedFood)
         {

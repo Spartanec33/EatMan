@@ -11,8 +11,6 @@ namespace UseEvents
         {
             if (OnAction != null)
                 OnAction();
-            Debug.Log("OngameStarted");
-
         }
     }
 }

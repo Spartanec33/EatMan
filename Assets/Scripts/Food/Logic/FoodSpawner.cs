@@ -1,29 +1,42 @@
 ﻿using UnityEngine;
 using UseEvents;
-using UseFoodComponent.ForInspector;
 using UseFoodComponent.ForInspector.Service;
 using UseFoodComponent.Personal;
 using UsePlayerComponents;
 
 namespace UseFoodComponent.Logic
 {
-    public static class FoodSpawner
+    public class FoodSpawner: MonoBehaviour
     {
-        private static InspectorFoodSpawnData _inspectordata = GameObject.FindObjectOfType<InspectorFoodSpawnData>();
-        private static FoodSpawnData _data = _inspectordata.Data;
-        private static Player _player = GameObject.FindObjectOfType<Player>();
-        private static RuntimeAnimatorController _animController = _data.AnimController;
-        private static AudioSource _audioSourceEat = _data.AudioSourceEat;
+        [SerializeField] private FoodSpawnData _data;
+        private Player _player;
         private static GameObject _construction;
-        private static readonly Food[] _foods = FoodGetter.GetFoods();
+        private FoodGetter _foodGetter;
+        private Food[] _foods;
+
 
         public static GameObject Construction => _construction;
-
-        public static void Spawn()
+        private void OnEnable()
+        {
+            OnSpawnConstruction.OnAction += Spawn;
+            OnDeleteConstruction.OnAction += Delete;
+        }
+        private void OnDisable()
+        {
+            OnSpawnConstruction.OnAction -= Spawn;
+            OnDeleteConstruction.OnAction -= Delete;
+        }
+        private void Start()
+        {
+            _player = FindObjectOfType<Player>();
+            _foodGetter = GetComponent<FoodGetter>();
+            _foods = _foodGetter.GetFoods();
+        }
+        private void Spawn()
         {
             if (_construction == null)
             {
-                FoodGetter.ChooseFood();
+                _foodGetter.ChooseFood();
 
                 _construction = CreateConstuction();
 
@@ -34,11 +47,11 @@ namespace UseFoodComponent.Logic
                 OnChangeConstruction.ActivateEvent();
             }
         }
-        public static void Delete()
+        private void Delete()
         {
             if (_construction != null)
             {
-                GameObject.Destroy(_construction);
+                Destroy(_construction);
                 _construction = null;
                 OnChangeConstruction.ActivateEvent();
             }
@@ -46,7 +59,7 @@ namespace UseFoodComponent.Logic
 
         }
 
-        private static GameObject CreateConstuction()
+        private GameObject CreateConstuction()
         {
             var construction = new GameObject();
 
@@ -56,7 +69,7 @@ namespace UseFoodComponent.Logic
 
             return construction;
         }
-        private static void DirectlyGenerate(int placeForTargetFood, Quaternion rotation, Vector3 position)
+        private void DirectlyGenerate(int placeForTargetFood, Quaternion rotation, Vector3 position)
         {
             for (int i = 0; i < _data.NumberOfPieces; i++)
             {
@@ -74,8 +87,8 @@ namespace UseFoodComponent.Logic
 
                 void SpawnOneFood(Food spawningFood)
                 {
-                    var food = GameObject.Instantiate(spawningFood, place, rotation);
-                    food.Init(_animController, _audioSourceEat);
+                    var food = Instantiate(spawningFood, place, rotation);
+                    food.Init(_data.AnimController, _data.AudioSourceEat);
                     food.transform.SetParent(_construction.transform);
                 }
             }

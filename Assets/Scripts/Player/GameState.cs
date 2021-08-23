@@ -9,6 +9,10 @@ namespace UsePlayerComponents
 
         public static bool IsStarted { get; private set; }
 
+        private void Start()
+        {
+            IsStarted = false;
+        }
         private void OnEnable()
         {
             

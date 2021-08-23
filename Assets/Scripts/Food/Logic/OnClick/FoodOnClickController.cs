@@ -7,6 +7,7 @@ using UsePlayerComponents;
 
 namespace UseFoodComponent.Logic.OnClick
 {
+    [RequireComponent(typeof(FoodOnClickFunctions))]
     public class FoodOnClickController : UsingNewCoroutines
     {
         private FoodOnClickFunctions _func;
@@ -25,7 +26,7 @@ namespace UseFoodComponent.Logic.OnClick
 
         private void Start()
         {
-            _func = FindObjectOfType<FoodOnClickFunctions>();
+            _func = GetComponent<FoodOnClickFunctions>();
             _speedCom = FindObjectOfType<SpeedComponent>();
             _hungerSystem = FindObjectOfType<HungerSystem>();
             _player = FindObjectOfType<Player>();
@@ -74,8 +75,8 @@ namespace UseFoodComponent.Logic.OnClick
             _canChangeTarget = false;
 
             food.Eat();
-            FoodSpawner.Delete();
-            FoodSpawner.Spawn();
+            OnDeleteConstruction.ActivateEvent();
+            OnSpawnConstruction.ActivateEvent();
             _hungerSystem.AddSatiety();
 
             //действия по итогу сравнения
