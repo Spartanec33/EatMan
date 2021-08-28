@@ -20,11 +20,12 @@ namespace UseUIComponents.FoodView
         private RawImage _rawImage;
 
         public Canvas Canvas => _canvas;
+        public Camera Camera => _camera;
         public RectTransform RectTrans => _rectTrans;
 
         private void OnEnable()
         {
-            OnChangeResolution.OnAction += ChangeTextureResolution;
+           OnChangeResolution.OnAction += ChangeTextureResolution;
         }
 
         private void OnDisable()

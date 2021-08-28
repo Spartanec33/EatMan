@@ -4,7 +4,7 @@ using UsePlayerComponents;
 
 namespace UseFoodComponent.Personal
 {
-    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(PersonalFoodAnimation))]
     public class Food : ServiceElementsForFood
     {
         [SerializeField] private FoodPropertiesData _foodPropertiesData;
@@ -13,12 +13,13 @@ namespace UseFoodComponent.Personal
         private AudioSource _audioSource;
         public FoodPropertiesData FoodData => _foodPropertiesData;
 
-        public void Init(RuntimeAnimatorController controller, AudioSource audioSource)
+        public void Init(FoodAnimData data, AudioSource audioSource)
         {
             _audioSource = audioSource;
-            _animator = GetComponent<Animator>();
-            _animator.runtimeAnimatorController = controller;
-            _animator.applyRootMotion = true;
+
+            var animData = GetComponent<PersonalFoodAnimation>();
+            animData.Init(data);
+            
             GetComponent<BoxCollider>().isTrigger = true;
         }
 

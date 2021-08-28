@@ -1,15 +1,26 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using UseEvents;
 using UnityEngine.SceneManagement;
 
 namespace UseUIComponents
 {
     public class ReloadScene : MonoBehaviour
     {
-        
-        public void Reload()
+        private void OnEnable()
+        {
+            OnReload.OnAction += Reload;   
+        }
+        private void OnDisable()
+        {
+            OnReload.OnAction -= Reload;
+        }
+        private void Reload()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        public void Click()
+        {
+            OnReloadButtonClick.ActivateEvent();
         }
     }
 }

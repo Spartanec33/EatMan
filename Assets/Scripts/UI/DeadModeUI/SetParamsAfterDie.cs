@@ -28,7 +28,7 @@ public class SetParamsAfterDie : MonoBehaviour
     }
     private void SetText()
     {
-        _maxSpeedText.text = $"Max Speed: {_speedCom.MaxSpeed:0}";
+        _maxSpeedText.text = $"Max Speed: {_speedCom.MaxSpeed}";
         var scoreValue = (int)_scoreCounter.Score;
         _scoreText.text = $"Score: {scoreValue}";
     }

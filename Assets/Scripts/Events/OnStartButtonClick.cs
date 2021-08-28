@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UseEvents
 {
     public delegate void ButtonClicked();
-    public class OnStartButtonClick : MonoBehaviour
+    public class OnStartButtonClick
     {
 
         public static event ButtonClicked OnAction;

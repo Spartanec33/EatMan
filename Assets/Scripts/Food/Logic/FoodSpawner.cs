@@ -9,6 +9,7 @@ namespace UseFoodComponent.Logic
     public class FoodSpawner: MonoBehaviour
     {
         [SerializeField] private FoodSpawnData _data;
+        [SerializeField] private FoodAnimData _animData;
         private Player _player;
         private static GameObject _construction;
         private FoodGetter _foodGetter;
@@ -88,7 +89,8 @@ namespace UseFoodComponent.Logic
                 void SpawnOneFood(Food spawningFood)
                 {
                     var food = Instantiate(spawningFood, place, rotation);
-                    food.Init(_data.AnimController, _data.AudioSourceEat);
+                    //food.Init(_data.AnimController, _data.AudioSourceEat);
+                    food.Init(_animData, _data.AudioSourceEat);
                     food.transform.SetParent(_construction.transform);
                 }
             }

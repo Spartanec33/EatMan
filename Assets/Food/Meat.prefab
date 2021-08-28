@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 7662275916108917082}
   - component: {fileID: 8021560132719266878}
   - component: {fileID: 811049898685344926}
-  - component: {fileID: 1089129386534189961}
   m_Layer: 0
   m_Name: Meat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &7662275916108917082
 Transform:
@@ -63,25 +62,6 @@ MonoBehaviour:
     type: 2}
   _eatParticle: {fileID: 4623778639793908415, guid: 93bdad24580faa04992c9e2c656822d9,
     type: 3}
---- !u!95 &1089129386534189961
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 49886213697691491}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 117e23d1473f5564fbbf775da51ddb80, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1649110215414032926
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +78,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &912924834782457123
 Transform:

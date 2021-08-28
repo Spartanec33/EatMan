@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &926102952550366757
 Transform:
@@ -92,13 +92,12 @@ GameObject:
   - component: {fileID: 8180465390063318519}
   - component: {fileID: 7850760899297366323}
   - component: {fileID: 2029920639161877039}
-  - component: {fileID: 824911040338708652}
   m_Layer: 0
   m_Name: Potato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &8180465390063318519
 Transform:
@@ -144,22 +143,3 @@ MonoBehaviour:
     type: 2}
   _eatParticle: {fileID: 4623778639793908415, guid: 2467110326ec3b54a9f2fe914e30816c,
     type: 3}
---- !u!95 &824911040338708652
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7265448978177998048}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 117e23d1473f5564fbbf775da51ddb80, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
