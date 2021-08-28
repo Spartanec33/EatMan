@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PRop
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 38d7c0979bd37dd45a93d3c6d6698cfe, type: 3}
+    - {fileID: 2800000, guid: cf737c3d67cd79449a8f2f00754b4de4, type: 3}
+    - {fileID: 2800000, guid: 1723e0fca03abbb4cad0590d3fe02be2, type: 3}
+    - {fileID: 2800000, guid: c2c4cc6d609d2414ebc6e644e3b18c0a, type: 3}
+    - {fileID: 2800000, guid: 70d73870efa8ace4abca801dd33484d2, type: 3}
+    - {fileID: 2800000, guid: 0cb75755ead6a164d8ec7221c52dbd74, type: 3}
+    - {fileID: 2800000, guid: ba29335f4c0a3884e9a06603182b6edf, type: 3}
+    - {fileID: 2800000, guid: 0591dc16b6b014142b6a0764d4850da5, type: 3}
+    - {fileID: 2800000, guid: 1efbe3c3321424d459caa46875e13f7f, type: 3}
+    - {fileID: 2800000, guid: 93e13f4b0a8a39f4fbf4c5ce6aadfdaf, type: 3}
+    - {fileID: 2800000, guid: af5d992dde0afd0449b48386421f1dcb, type: 3}
+    - {fileID: 2800000, guid: d0defdd0d02660d4599c82bb07e5f549, type: 3}
+    - {fileID: 2800000, guid: cc37bb50af887eb479ed94741564d8b1, type: 3}
+    - {fileID: 2800000, guid: 8a0a7c823425c1946908f1ffffb46d68, type: 3}
+    - {fileID: 2800000, guid: 246859b14973e33448baa57eb5feac6c, type: 3}
+    - {fileID: 2800000, guid: 4b796ba453d66d442b88f623f465daa0, type: 3}
+    - {fileID: 2800000, guid: 7668637fad57dba40819027cae056360, type: 3}
+    - {fileID: 2800000, guid: cc3340aa52be5694cb6e58455c1ddff2, type: 3}
+    - {fileID: 2800000, guid: 9dc03a3d1b407b247aa9e5d4282dd563, type: 3}
+    - {fileID: 2800000, guid: b9afa8df5552edd45b90e2011059e428, type: 3}
+    totalSpriteSurfaceArea: 1260170
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: cc37bb50af887eb479ed94741564d8b1, type: 3}
+  - {fileID: 21300000, guid: 70d73870efa8ace4abca801dd33484d2, type: 3}
+  - {fileID: 21300000, guid: d0defdd0d02660d4599c82bb07e5f549, type: 3}
+  - {fileID: 21300000, guid: 246859b14973e33448baa57eb5feac6c, type: 3}
+  - {fileID: 21300000, guid: 8a0a7c823425c1946908f1ffffb46d68, type: 3}
+  - {fileID: 21300000, guid: 1efbe3c3321424d459caa46875e13f7f, type: 3}
+  - {fileID: 21300000, guid: 4b796ba453d66d442b88f623f465daa0, type: 3}
+  - {fileID: 21300000, guid: 0cb75755ead6a164d8ec7221c52dbd74, type: 3}
+  - {fileID: 21300000, guid: 0591dc16b6b014142b6a0764d4850da5, type: 3}
+  - {fileID: 21300000, guid: 38d7c0979bd37dd45a93d3c6d6698cfe, type: 3}
+  - {fileID: 21300000, guid: cc3340aa52be5694cb6e58455c1ddff2, type: 3}
+  - {fileID: 21300000, guid: 93e13f4b0a8a39f4fbf4c5ce6aadfdaf, type: 3}
+  - {fileID: 21300000, guid: 1723e0fca03abbb4cad0590d3fe02be2, type: 3}
+  - {fileID: 21300000, guid: af5d992dde0afd0449b48386421f1dcb, type: 3}
+  - {fileID: 21300000, guid: 9dc03a3d1b407b247aa9e5d4282dd563, type: 3}
+  - {fileID: 21300000, guid: cf737c3d67cd79449a8f2f00754b4de4, type: 3}
+  - {fileID: 21300000, guid: c2c4cc6d609d2414ebc6e644e3b18c0a, type: 3}
+  - {fileID: 21300000, guid: ba29335f4c0a3884e9a06603182b6edf, type: 3}
+  - {fileID: 21300000, guid: 7668637fad57dba40819027cae056360, type: 3}
+  - {fileID: 21300000, guid: b9afa8df5552edd45b90e2011059e428, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Vegetable
+  - Red
+  - Square
+  - Fruit
+  - Bread
+  - Circle
+  - Meat
+  - White
+  - Arc
+  - Black
+  - Multy
+  - ShapeLess
+  - Brown
+  - Sphere
+  - Square
+  - Blue
+  - Green
+  - Yellow
+  - Milk
+  - HungerIcon
+  m_RenderDataMap: {}
+  m_Tag: PRop
+  m_IsVariant: 0

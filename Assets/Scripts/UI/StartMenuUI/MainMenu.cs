@@ -4,10 +4,10 @@ using UseFoodComponent.Logic;
 
 namespace UseUIComponents
 {
-    class StartButton: MonoBehaviour
+    class MainMenu: MonoBehaviour
     {
         private bool WasClicked;
-        public void OnClick()
+        public void StartButtonClick()
         {
             if (WasClicked == false)
             {
@@ -15,6 +15,10 @@ namespace UseUIComponents
                 OnSpawnConstruction.ActivateEvent();
                 WasClicked = true;
             }
+        }
+        public void QuitButtonClick()
+        {
+            Application.Quit();
         }
     }
 }
