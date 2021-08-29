@@ -562,7 +562,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 94.55
+  m_fontSize: 100.3
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -696,7 +696,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 79.5
+  m_fontSize: 74.25
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1513,7 +1513,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 2}
-  m_SizeDelta: {x: 0, y: 150}
+  m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &185997822
 MonoBehaviour:
@@ -2245,7 +2245,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 155.65
+  m_fontSize: 165.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2809,7 +2809,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 63.7
+  m_fontSize: 67.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3519,7 +3519,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 2}
-  m_SizeDelta: {x: 0, y: 150}
+  m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &360622737
 MonoBehaviour:
@@ -4573,7 +4573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSatiety: 100
-  _hungerForAdd: 0.2
+  _hungerForAdd: 0.15
   _minSatietyWhenEating: 20
   _maxSatietyWhenEating: 50
   _satiety: 0
@@ -5193,7 +5193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 0
   _speedLimit: 100
-  _speedPerClick: 15
+  _speedPerClick: 5
   _speedReduction: 0
   _baseSpeedReduction: 0.02
 --- !u!114 &510689325
@@ -7821,7 +7821,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 130.1
+  m_fontSize: 122.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8432,7 +8432,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1258705518}
         m_TargetAssemblyTypeName: Settings, Assembly-CSharp
-        m_MethodName: QulitySetter
+        m_MethodName: SetQulity
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8660,7 +8660,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 156.65
+  m_fontSize: 147.9
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9129,7 +9129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1112281313
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10357,7 +10357,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioMixerBackGround: {fileID: 1672720933926892282, guid: 9a159ca1668cb304782c90005ac85965,
     type: 2}
+  _backgroundMusicToggle: {fileID: 1421782126}
   _resolutionDropdown: {fileID: 1960277435}
+  _resolutionsMoreThanTheCurrent: 3
+  _resolutionsLessThanTheCurrent: 10
+  _resolutionMultiplier: 0.9
+  _graphicDropdown: {fileID: 979115188}
 --- !u!1 &1276762908
 GameObject:
   m_ObjectHideFlags: 0
@@ -11200,7 +11205,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 104.95
+  m_fontSize: 111.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -12030,7 +12035,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1258705518}
         m_TargetAssemblyTypeName: Settings, Assembly-CSharp
-        m_MethodName: SetActiveMusic
+        m_MethodName: ToggleBackgroundMusic
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12802,7 +12807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1496683446
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13274,7 +13279,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 128.8
+  m_fontSize: 121.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13855,7 +13860,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 79.5
+  m_fontSize: 74.25
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14942,7 +14947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1689535735
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18311,7 +18316,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 166.95
+  m_fontSize: 174.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -18715,7 +18720,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 84.85
+  m_fontSize: 90.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -19295,7 +19300,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 906.3
+  m_fontSize: 904.45
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
