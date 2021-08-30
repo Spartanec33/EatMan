@@ -17,16 +17,17 @@ namespace UsePlayerComponents
         [SerializeField] private ParticleSystem _dirtParticle;
         [SerializeField] private float _emissionByMaxSpeed;
         [SerializeField] private float _startSpeedByMaxSpeed;
-        [SerializeField] private float _maxStartSizeByMaxSpeed;
-        [SerializeField] private float _minStartSizeByMaxSpeed;
 
         private Animator _animator;
         private SpeedComponent _speedCom;
+
 
         private void Start()
         {
             _animator = GetComponent<Animator>();
             _speedCom = FindObjectOfType<SpeedComponent>();
+            ChangeAnimSpeed(0);
+            ChangeParticles(0);
         }
         private void Update()
         {

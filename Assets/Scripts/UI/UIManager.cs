@@ -18,7 +18,7 @@ namespace UseUIComponents
 
         private static WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
         private static bool _wasBlackoutAfterDeath = false;
-
+    
         private void OnEnable()
         {
             OnStartButtonClick.OnAction += ActivateSwitchStartToPlayMode;

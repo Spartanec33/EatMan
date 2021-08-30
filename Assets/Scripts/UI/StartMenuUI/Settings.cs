@@ -31,6 +31,9 @@ public class Settings : MonoBehaviour
             SaveBaseResolution();
         _mainResolution = GetBaseResolution();
         InitializeResolutionDropdown();
+    }
+    private void Start()
+    {
         LoadData();
     }
 
@@ -40,7 +43,7 @@ public class Settings : MonoBehaviour
         for (int i = 0; i < _resolutionsMoreThanTheCurrent+1; i++)
         {
             baseResolution.width = (int)(baseResolution.width / _resolutionMultiplier);
-            baseResolution.height = (int)(baseResolution.width / _resolutionMultiplier);
+            baseResolution.height = (int)(baseResolution.height / _resolutionMultiplier);
         }
         for (int i = 0; i < _resolutionsMoreThanTheCurrent; i++)
         {
@@ -96,9 +99,13 @@ public class Settings : MonoBehaviour
     }
     public void ToggleBackgroundMusic(bool state)
     {
-        _audioMixerBackGround.audioMixer.SetFloat("backGroundVolume", state ? 0 : -80);
+        SetBackgroundMusic(state);
         PlayerPrefs.SetInt("isBackgroundMusicActive", state ? 1 : 0);
         PlayerPrefs.Save();
+    }
+    private void SetBackgroundMusic(bool state)
+    {
+        _audioMixerBackGround.audioMixer.SetFloat("backGroundVolume", state ? 0 : -80);
     }
 
     private void LoadData()
@@ -110,6 +117,9 @@ public class Settings : MonoBehaviour
         _graphicDropdown.RefreshShownValue();
 
         _backgroundMusicToggle.isOn = PlayerPrefs.GetInt("isBackgroundMusicActive", 1) == 1 ? true : false;
+        Debug.Log(_backgroundMusicToggle.isOn);
+
+        SetBackgroundMusic(_backgroundMusicToggle.isOn);
     }
 
     private void SaveBaseResolution()
