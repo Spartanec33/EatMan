@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PRop
+  m_Name: PlayModeAtlas
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -111,5 +111,5 @@ SpriteAtlas:
   - Milk
   - HungerIcon
   m_RenderDataMap: {}
-  m_Tag: PRop
+  m_Tag: PlayModeAtlas
   m_IsVariant: 0

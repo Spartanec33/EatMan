@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\UI\DeadModeUI\SetParamsAfterDie.cs" />
      <Compile Include="Assets\Scripts\Food\Logic\FoodGetter.cs" />
      <Compile Include="Assets\Scripts\Food\Personal Scripts\ServiceElementsForFood.cs" />
+     <Compile Include="Assets\Scripts\Road\RoadPart.cs" />
      <Compile Include="Assets\Scripts\Player\HungerSystem.cs" />
      <Compile Include="Assets\Scripts\Food\Personal Scripts\Food.cs" />
      <Compile Include="Assets\Scripts\UI\StartMenuUI\Settings.cs" />
@@ -88,6 +89,7 @@
      <Compile Include="Assets\Scripts\Food\For Inspector\FoodManager.cs" />
      <Compile Include="Assets\Scripts\Events\OnScoreChanged.cs" />
      <Compile Include="Assets\Scripts\Road\Road.cs" />
+     <Compile Include="Assets\Scripts\Player\AfterFall.cs" />
      <Compile Include="Assets\Scripts\Food\NeedConstruction.cs" />
      <Compile Include="Assets\Scripts\Events\OnSpawnConstruction.cs" />
      <Compile Include="Assets\Scripts\Move\Distance.cs" />
@@ -109,8 +111,9 @@
      <Compile Include="Assets\Scripts\Events\OnPlayerClick.cs" />
      <Compile Include="Assets\Scripts\Events\OnDeleteConstruction.cs" />
      <Compile Include="Assets\Scripts\Player\SpeedAdapt.cs" />
-     <Compile Include="Assets\Scripts\Player\AfterFall.cs" />
-     <Compile Include="Assets\Scripts\Road\RoadPart.cs" />
+     <Compile Include="Assets\Scripts\UI\StartMenuUI\Statistic.cs" />
+     <Compile Include="Assets\Scripts\Events\OnFalseFoodEat.cs" />
+     <Compile Include="Assets\Scripts\Events\OnTrueFoodEat.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Scripts\DoLIst.txt" />

@@ -13,7 +13,6 @@ public class Settings : MonoBehaviour
 
     [Header("Resolution")] 
     [SerializeField] private TMP_Dropdown _resolutionDropdown;
-    [SerializeField] private int _resolutionsMoreThanTheCurrent;
     [SerializeField] private int _resolutionsLessThanTheCurrent;
     [SerializeField] private float _resolutionMultiplier = 0.9f;
 
@@ -40,15 +39,6 @@ public class Settings : MonoBehaviour
     private void InitializeResolutionDropdown()
     {
         Resolution baseResolution = _mainResolution;
-        for (int i = 0; i < _resolutionsMoreThanTheCurrent+1; i++)
-        {
-            baseResolution.width = (int)(baseResolution.width / _resolutionMultiplier);
-            baseResolution.height = (int)(baseResolution.height / _resolutionMultiplier);
-        }
-        for (int i = 0; i < _resolutionsMoreThanTheCurrent; i++)
-        {
-            baseResolution = GetResolution(baseResolution);
-        }
 
         baseResolution = _mainResolution;
         _resolutions.Add(baseResolution);
@@ -117,8 +107,6 @@ public class Settings : MonoBehaviour
         _graphicDropdown.RefreshShownValue();
 
         _backgroundMusicToggle.isOn = PlayerPrefs.GetInt("isBackgroundMusicActive", 1) == 1 ? true : false;
-        Debug.Log(_backgroundMusicToggle.isOn);
-
         SetBackgroundMusic(_backgroundMusicToggle.isOn);
     }
 

@@ -53,12 +53,10 @@ namespace UseFoodComponent.Logic.OnClick
 
             yield return StartCoroutineAndWaitIt(_func.ChangeTransform(food));
 
-
-            //анимация поедания
-
             if (FoodComparer.Compare(food) != true)
             {
                 food.Eat(false);
+                OnFalseFoodEat.ActivateEvent();
                 _canChangeTarget = false;
                 _isHaveTarget = false;
                 StartCoroutineAndAddToList(_func.RotateToVomit());
@@ -75,11 +73,11 @@ namespace UseFoodComponent.Logic.OnClick
             _canChangeTarget = false;
 
             food.Eat();
+            OnTrueFoodEat.ActivateEvent();
             OnDeleteConstruction.ActivateEvent();
             OnSpawnConstruction.ActivateEvent();
             _hungerSystem.AddSatiety();
 
-            //действия по итогу сравнения
             _isCoroutineActive = false;
             _isHaveTarget = false;
             Mover.NeedOneTimeStop = true;

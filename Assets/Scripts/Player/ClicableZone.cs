@@ -10,5 +10,9 @@ namespace UsePlayerComponents
         {
             OnPlayerClick.ActivateEvent();
         }
+        void Update()
+        {
+
+        }
     }
 }
