@@ -13,6 +13,7 @@ namespace UseFoodComponent.Logic.OnClick
         private FoodOnClickFunctions _func;
 
         private bool _isCoroutineActive;
+        private bool _isTrueFoodChoosen;
         private static bool _isHaveTarget;
         private bool _canChangeTarget;
         private Food _oldFood;
@@ -23,6 +24,7 @@ namespace UseFoodComponent.Logic.OnClick
         private readonly WaitForFixedUpdate _waitForFixedUpdate = new WaitForFixedUpdate();
 
         public static bool IsHaveTarget => _isHaveTarget;
+        public bool IsTrueFoodChoosen => _isTrueFoodChoosen;
 
         private void Start()
         {
@@ -45,6 +47,7 @@ namespace UseFoodComponent.Logic.OnClick
         public IEnumerator Final(Food food)
         {
             _func.CreateTargetParticle(food);
+            _isTrueFoodChoosen = FoodComparer.Compare(food);
             _isHaveTarget = true;
             _oldFood = food;
             _isCoroutineActive = true;
@@ -53,7 +56,7 @@ namespace UseFoodComponent.Logic.OnClick
 
             yield return StartCoroutineAndWaitIt(_func.ChangeTransform(food));
 
-            if (FoodComparer.Compare(food) != true)
+            if (_isTrueFoodChoosen != true)
             {
                 food.Eat(false);
                 OnFalseFoodEat.ActivateEvent();
@@ -64,7 +67,7 @@ namespace UseFoodComponent.Logic.OnClick
             }
             _canChangeTarget = true;
 
-            while (FoodComparer.Compare(food) != true)
+            while (_isTrueFoodChoosen != true)
             {
                 _speedCom.Stop();
                 yield return _waitForFixedUpdate;

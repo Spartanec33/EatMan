@@ -17,6 +17,7 @@ namespace UseFoodComponent.Logic.OnClick
 
         private Player _player;
         private FoodOnClickController _controller;
+        private Distance _distance;
         private SpeedComponent _speedCom;
         private GameObject _spawnedTargetParticle;
         private Vector3 _basePlayerPosition;
@@ -32,6 +33,7 @@ namespace UseFoodComponent.Logic.OnClick
             _speedCom = FindObjectOfType<SpeedComponent>();
             _player = FindObjectOfType<Player>();
             _controller = GetComponent<FoodOnClickController>();
+            _distance = FindObjectOfType<Distance>();
 
             _basePlayerPosition = _player.transform.position;
             _basePlayerRotation = _player.transform.rotation;
@@ -64,30 +66,21 @@ namespace UseFoodComponent.Logic.OnClick
             float progress = 0;
             float coveredDistance = 0;
             Vector3 startPlayerPos = _player.transform.position;
+            var playerPos = _player.transform.position;
 
             while (progress <= 1)
             {
                 yield return _waitForFixedUpdate;
-
-                var playerPos = _player.transform.position;
-
                 coveredDistance += (_speedCom.Speed * Time.deltaTime);
                 progress = (coveredDistance / allWay);
-
                 var posX = Vector3.Lerp(startPlayerPos, endPoint, progress).x;
                 _player.transform.position = new Vector3(posX, playerPos.y, playerPos.z);
             }
-            if (progress > 1)
+            if (progress>1)
             {
                 var posX = Vector3.Lerp(startPlayerPos, endPoint, 1).x;
-                _player.transform.position = new Vector3(posX, _player.transform.position.y, _player.transform.position.z);
+                _player.transform.position = new Vector3(posX, playerPos.y, playerPos.z);
             }
-
-            if (NeedCorrectPos)
-            {
-                OnCorrect.ActivateEvent(coveredDistance - allWay);
-            }
-
         }
         private IEnumerator Move(Vector3 endPoint, float allWay)
         {
@@ -98,18 +91,25 @@ namespace UseFoodComponent.Logic.OnClick
             _moveToFoodCorIsActive = true;
             var endPoint = food.transform.position;
             _controller.StartCoroutineAndAddToList(CheckPlayerGoingToFood(endPoint));
-            float allWay = Vector3.Distance(_player.transform.position, endPoint) - _newStopDistance;
+            float allWay = Mathf.Abs(Vector3.Distance(_player.transform.position, endPoint) - _newStopDistance);
             yield return _controller.StartCoroutineAndWaitIt(MainPartMove(allWay, endPoint, true));
             _moveToFoodCorIsActive = false;
         }
         private IEnumerator CheckPlayerGoingToFood(Vector3 endPoint)
         {
+            var wasCorrect = false;
             while (_moveToFoodCorIsActive)
             {
                 yield return _waitForFixedUpdate;
 
-                if (Mathf.Abs(_player.transform.position.z - endPoint.z) <= _newStopDistance)
+                if (_distance.Value <= _newStopDistance)
+                {
+                    if(!wasCorrect)
+                        OnCorrect.ActivateEvent(_newStopDistance - _distance.Value);
                     IsGoToFood = true;
+                }
+                else
+                    IsGoToFood = false;
             }
             IsGoToFood = false;
         }

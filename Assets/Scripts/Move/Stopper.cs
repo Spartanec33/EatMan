@@ -54,7 +54,7 @@ namespace UseMove
             return ((distance <= _stopDistance) && Mover.NeedOneTimeStop);
         }
 
-        public float GetDelta(float distance)
+        private float GetDelta(float distance)
         {
             return _stopDistance - distance;
         }
